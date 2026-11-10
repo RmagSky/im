@@ -262,7 +262,7 @@ body[data-theme="dark"] .kbd-bar .kico{color:#B9BBC2}
 /* mine */
 .profile-hd{background:linear-gradient(160deg,#1B1C22,#0E0F13);color:#fff;padding:14px 20px 26px;display:flex;align-items:center;gap:14px;position:relative;overflow:hidden}
 .profile-hd::after{content:'';position:absolute;right:-30px;top:-40px;width:180px;height:180px;border-radius:50%;border:1px solid rgba(255,255,255,.06)}
-.profile-hd .av{width:58px;height:58px;color:#4E3F7C;background:#E1DCEF;border-radius:50%;font-size:22px}
+.profile-hd .av{width:58px;height:58px;color:#2F5A78;background:#DAE4EE;border-radius:50%;font-size:22px}
 .profile-hd .nm{font-size:18px;font-weight:500}
 .profile-hd .id{font-size:12px;opacity:.62;margin-top:5px;display:flex;align-items:center;gap:6px}
 .profile-hd .qr-btn{position:absolute;right:18px;top:24px;opacity:.85;cursor:pointer}
@@ -561,8 +561,8 @@ const ic = (n,s=22,sw=1.7)=>`<svg viewBox="0 0 24 24" width="${s}" height="${s}"
 /* ---------- helpers ---------- */
 const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 const AVPAIR = [
-  ['#33427A','#DCE2F4'], ['#4E3F7C','#E1DCEF'], ['#27547F','#D8E3F0'], ['#245B58','#D9E5E4'],
-  ['#414682','#DEDFF0'], ['#33603D','#DDE6DD'], ['#5A4A6B','#E3DEE9'], ['#3E4C63','#E0E5EB'],
+  ['#33427A','#DCE2F4'], ['#2F5A78','#DAE4EE'], ['#27547F','#D8E3F0'], ['#245B58','#D9E5E4'],
+  ['#35507F','#DCE1EF'], ['#33603D','#DDE6DD'], ['#3D5A5A','#DCE6E6'], ['#3E4C63','#E0E5EB'],
   ['#8A93A3','#E6E8EC']
 ];
 const AVMAP = {}; AVPAIR.forEach(p=>{ AVMAP[p[0]] = p[1]; });
@@ -710,20 +710,20 @@ const D = {
     {id:'c1',name:'足球交流频道（停用）',type:'group',c:'#8A93A3',lab:'停用',preview:'本群已停用，请退出后联系管理员加入新群',time:'10:39',gray:true},
     {id:'c2',name:'老周',type:'p2p',c:'#3E4C63',lab:'周',preview:'本周观赛活动开始报名啦，私聊我登记～',time:'昨天 19:19',online:true},
     {id:'c3',name:'周末足球局',type:'group',c:'#33427A',lab:'周末',preview:'周六下午 2 点老地方，还差两个人',time:'昨天 15:20'},
-    {id:'c4',name:'球迷福利一群',type:'group',c:'#4E3F7C',lab:'福利',preview:'新赛季球票抽奖已开始，群内登记',time:'昨天 09:12'},
-    {id:'c5',name:'球迷福利二群',type:'group',c:'#414682',lab:'福利',preview:'群规更新，详情看群公告',time:'周一'},
+    {id:'c4',name:'球迷福利一群',type:'group',c:'#2F5A78',lab:'福利',preview:'新赛季球票抽奖已开始，群内登记',time:'昨天 09:12'},
+    {id:'c5',name:'球迷福利二群',type:'group',c:'#35507F',lab:'福利',preview:'群规更新，详情看群公告',time:'周一'},
     {id:'c6',name:'足球赛事讨论群',type:'group',c:'#27547F',lab:'讨论',preview:'欧冠抽签结果出来了，来聊聊',time:'周一'},
     {id:'c7',name:'羽毛球活动群',type:'group',c:'#245B58',lab:'羽球',preview:'场地已订好，周六上午 10 点集合',time:'11-08'},
     {id:'c8',name:'足球装备交流群',type:'group',c:'#33603D',lab:'装备',preview:'新到的球鞋有人拼单吗',time:'11-07'}
   ],
   groups:{
-    c1:{members:'39046', names:['足球交流频道（停用）'], members9:['#33427A','#4E3F7C','#27547F','#245B58','#414682','#33603D','#5A4A6B','#3E4C63','#8A93A3'], notice:'🍀 本群为球迷交流频道，禁止发布广告及任何违规内容。\n⚠️ 群内请文明发言、理性讨论，互相尊重。\n🍀 群内活动福利可直接咨询群管理员了解登记参与。', keep:'7天'},
-    c3:{members:'168', names:['周末足球局'], members9:['#33427A','#4E3F7C','#27547F','#245B58','#414682','#33603D','#5A4A6B','#3E4C63','#8A93A3'], notice:'⚽ 每周六下午 2 点，老地方五人制，报名在群接龙。\n🏃 迟到超过 15 分钟请提前在群里说一声。', keep:'7天'},
-    c4:{members:'875', names:['球迷福利一群'], members9:['#33427A','#4E3F7C','#27547F','#245B58','#414682','#33603D'], notice:'🎁 群内不定期发放球票与周边抽奖，中奖名单在群公告同步。', keep:'永久'},
-    c5:{members:'1090', names:['球迷福利二群'], members9:['#33427A','#4E3F7C','#27547F','#245B58','#414682','#33603D'], notice:'🎁 福利活动与一群同步，抽奖以群公告发布为准。', keep:'永久'},
-    c6:{members:'4723', names:['足球赛事讨论群'], members9:['#33427A','#4E3F7C','#27547F','#245B58','#414682','#33603D','#5A4A6B','#3E4C63','#8A93A3'], notice:'📢 赛前赛后讨论集中在本群，禁止发布投注推广与外部链接。', keep:'7天'},
-    c7:{members:'236', names:['羽毛球活动群'], members9:['#33427A','#4E3F7C','#27547F','#245B58','#414682'], notice:'🏸 每周六上午 10 点，场地在城东体育馆 3 号场，费用 AA。', keep:'7天'},
-    c8:{members:'512', names:['足球装备交流群'], members9:['#33427A','#4E3F7C','#27547F','#245B58'], notice:'👟 二手装备交易请走群内担保，私下交易风险自担。', keep:'7天'}
+    c1:{members:'39046', names:['足球交流频道（停用）'], members9:['#33427A','#2F5A78','#27547F','#245B58','#35507F','#33603D','#3D5A5A','#3E4C63','#8A93A3'], notice:'🍀 本群为球迷交流频道，禁止发布广告及任何违规内容。\n⚠️ 群内请文明发言、理性讨论，互相尊重。\n🍀 群内活动福利可直接咨询群管理员了解登记参与。', keep:'7天'},
+    c3:{members:'168', names:['周末足球局'], members9:['#33427A','#2F5A78','#27547F','#245B58','#35507F','#33603D','#3D5A5A','#3E4C63','#8A93A3'], notice:'⚽ 每周六下午 2 点，老地方五人制，报名在群接龙。\n🏃 迟到超过 15 分钟请提前在群里说一声。', keep:'7天'},
+    c4:{members:'875', names:['球迷福利一群'], members9:['#33427A','#2F5A78','#27547F','#245B58','#35507F','#33603D'], notice:'🎁 群内不定期发放球票与周边抽奖，中奖名单在群公告同步。', keep:'永久'},
+    c5:{members:'1090', names:['球迷福利二群'], members9:['#33427A','#2F5A78','#27547F','#245B58','#35507F','#33603D'], notice:'🎁 福利活动与一群同步，抽奖以群公告发布为准。', keep:'永久'},
+    c6:{members:'4723', names:['足球赛事讨论群'], members9:['#33427A','#2F5A78','#27547F','#245B58','#35507F','#33603D','#3D5A5A','#3E4C63','#8A93A3'], notice:'📢 赛前赛后讨论集中在本群，禁止发布投注推广与外部链接。', keep:'7天'},
+    c7:{members:'236', names:['羽毛球活动群'], members9:['#33427A','#2F5A78','#27547F','#245B58','#35507F'], notice:'🏸 每周六上午 10 点，场地在城东体育馆 3 号场，费用 AA。', keep:'7天'},
+    c8:{members:'512', names:['足球装备交流群'], members9:['#33427A','#2F5A78','#27547F','#245B58'], notice:'👟 二手装备交易请走群内担保，私下交易风险自担。', keep:'7天'}
   },
   posts:[
     {id:'p1',ch:'ball',title:'观赛竞猜玩法讲解',author:'球迷俱乐部',time:'2025-10-12 00:42:44',views:'7.6w',cover:'fans'},
@@ -809,7 +809,7 @@ PAGES.community = () => `
 PAGES.mine = () => `
   <div class="profile-hd">
     <div style="display:flex;align-items:center;gap:14px;flex:1;cursor:pointer" data-go="profile">
-      ${av('F',{c:'#4E3F7C',round:true,html:S.avatarEmoji})}
+      ${av('F',{c:'#2F5A78',round:true,html:S.avatarEmoji})}
       <div><div class="nm">${S.nick||D.me.name}</div>
         <div class="id">用户ID：${D.me.id} <span data-act="copyid" style="opacity:.9">${ic('copy',13)}</span></div></div>
     </div>
@@ -1010,13 +1010,13 @@ PAGES.lang = () => {
 };
 
 PAGES.appearance = () => {
-  const cols=[['#3B82F6','蓝'],['#6D9BF5','浅蓝'],['#111111','黑'],['#1E90FF','亮蓝'],['#22C55E','绿'],['#F04438','红'],['#F79009','橙'],['#7C5CD6','紫'],['#6EE7C4','薄荷绿']];
+  const cols=[['#3B82F6','蓝'],['#6D9BF5','浅蓝'],['#111111','黑'],['#1E90FF','亮蓝'],['#22C55E','绿'],['#F04438','红'],['#F79009','橙'],['#35507F','紫'],['#6EE7C4','薄荷绿']];
   const used = S.theme==='dark' ? '#1C1D22' : '#F6F7F9';
   return `${nav('外观','<span class="nav-act" data-act="savebeauty">保存</span>')}
   <div class="pbody">
     <div class="preview">
       <div class="pv-inner">
-        <div class="pv-msg">${av('张娜娜',{c:'#4E3F7C',size:'xs',html:S.avatarEmoji})}<div><div style="font-size:11px;color:var(--text2);margin-bottom:3px">张娜娜</div>
+        <div class="pv-msg">${av('张娜娜',{c:'#2F5A78',size:'xs',html:S.avatarEmoji})}<div><div style="font-size:11px;color:var(--text2);margin-bottom:3px">张娜娜</div>
           <div class="b" style="background:${(document.body.dataset.theme==='dark'?'#2A2C33':'#F2F4F8')}">你好，收到及时回复</div></div></div>
         <div class="pv-msg me"><div class="b">好的，收到了</div></div>
         <div class="pv-input">${ic('mic',15)}<span>Message</span><span style="margin-left:auto;display:flex;gap:8px">${ic('smile',15)}${ic('plus',15)}</span></div>
@@ -1053,7 +1053,7 @@ PAGES.font = () => `
   <div class="pbody">
     <div class="preview">
       <div class="pv-inner">
-        <div class="pv-msg">${av('张娜娜',{c:'#4E3F7C',size:'xs',html:S.avatarEmoji})}
+        <div class="pv-msg">${av('张娜娜',{c:'#2F5A78',size:'xs',html:S.avatarEmoji})}
           <div><div style="font-size:11px;color:var(--text2);margin-bottom:3px">张娜娜</div>
           <div class="b" style="font-size:${S.font}px;background:${(document.body.dataset.theme==='dark'?'#2A2C33':'#F2F4F8')}">预览字体大小，拖动下面的滑块，可设置字体大小。设置后，会改变应用内所有文本的字体大小。</div></div></div>
         <div class="pv-msg me"><div class="b" style="font-size:${S.font}px">好的，收到了</div></div>
@@ -1488,7 +1488,7 @@ PAGES.groupMembers = (p) => {
 PAGES.memberInfo = (p) => `${nav('')}
   <div class="pbody">
     <div style="display:flex;gap:14px;align-items:center;padding:12px 18px">
-      ${av(p.name||'管理员小优',{c:'#4E3F7C',round:true})}
+      ${av(p.name||'管理员小优',{c:'#2F5A78',round:true})}
       <div><div style="font-size:18px;font-weight:500;display:flex;align-items:center;gap:6px">${p.name||'管理员小优'}<span style="color:var(--text3)">${ic('copy',14)}</span></div>
         ${p.role==='1'?'<span class="adm" style="display:inline-block;margin-top:6px">管理员</span>':''}</div>
     </div>
