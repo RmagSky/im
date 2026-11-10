@@ -226,7 +226,7 @@ if(window.self!==window.top)document.documentElement.classList.add('is-embedded'
           <tbody>
             <tr>
               <td>v1.0.2</td><td class="num">2026-11-10</td><td>内容变更</td>
-              <td>字体规范收为一套：原型页 <span class="mono">proto.html</span> 的字体栈由 iOS 系统栈改为 Outfit 加中文字体回退，与框架页、基线文档共用同一份 <span class="mono">_fonts/outfit.css</span>；3.2 的字体栈表由三层改为「正文 / 代码与键名」两行，七档字号与等宽边界不变。原型全部字号收进七档：原先 32 个不同字号（13.5、12.5、14.5、16.5、10.5 等）归并为 24／18／16／14／13／12／11，会话名加重到 600 与预览拉开层级，气泡默认字号由 15px 改为 14px，头像内微标固定 9px 作装饰例外。原型交互未变。</td>
+              <td>字体规范收为一套：原型页 <span class="mono">proto.html</span> 的字体栈由 iOS 系统栈改为 Outfit 加中文字体回退，与框架页、基线文档共用同一份 <span class="mono">_fonts/outfit.css</span>；3.2 的字体栈表由三层改为「正文 / 代码与键名」两行，七档字号与等宽边界不变。原型全部字号收进七档：原先 32 个不同字号（13.5、12.5、14.5、16.5、10.5 等）归并为 24／18／16／14／13／12／11，会话名加重到 600 与预览拉开层级，气泡默认字号由 15px 改为 13px，行高由 1.58 收到 1.5，内边距 10/13 收到 9/12，头像内微标固定 9px 作装饰例外。原型交互未变。</td>
             </tr>
             <tr>
               <td>v1.0.1</td><td class="num">2026-11-10</td><td>内容变更</td>
@@ -742,12 +742,12 @@ proto.html#p=chat&id=c2&t=dark&kbd=1</pre>
             <tr><td>页面标题</td><td class="num">18px / 600</td><td>文档每节标题、原型二级页导航标题、好友与群名称</td></tr>
             <tr><td>区块标题</td><td class="num">16px / 600</td><td>卡片标题、设置项分组标题</td></tr>
             <tr><td>正文</td><td class="num">14px / 400</td><td>正文段落、列表名称、左侧导航</td></tr>
-            <tr><td>表格</td><td class="num">13px / 400</td><td>表格内容、按钮文案、流程说明、会话预览</td></tr>
+            <tr><td>表格</td><td class="num">13px / 400</td><td>表格内容、按钮文案、流程说明、会话预览、消息气泡</td></tr>
             <tr><td>辅助说明</td><td class="num">12px / 400</td><td>字段说明、面包屑、空态文案</td></tr>
             <tr><td>标签文字</td><td class="num">11px / 500</td><td>优先级标签、未读角标、状态标记</td></tr>
           </tbody>
         </table>
-        <div class="note">原型屏内的气泡字号受「我的 → 字体」控制，范围 12–22px 步长 1，默认 14px 记作标准；该设置只改气泡文本，不改本节档位。头像内「停用 / 换群」一类微标固定 9px，属装饰标记，不参与档位收口。</div>
+        <div class="note">原型屏内的气泡字号受「我的 → 字体」控制，范围 12–22px 步长 1，默认 13px 记作标准；该设置只改气泡文本，不改本节档位。头像内「停用 / 换群」一类微标固定 9px，属装饰标记，不参与档位收口。</div>
       </div>
 
       <div class="card">
