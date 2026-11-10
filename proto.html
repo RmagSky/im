@@ -120,13 +120,13 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:17px;heigh
 .sw.on::after{transform:translateX(20px)}
 
 /* avatar */
-.av{width:50px;height:50px;border-radius:25px;display:flex;align-items:center;justify-content:center;color:#fff;
-  font-weight:500;font-size:18px;position:relative;flex:0 0 auto;overflow:hidden;text-align:center;line-height:1.1}
+.av{width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;
+  font-weight:500;font-size:18px;position:relative;flex:0 0 auto;text-align:center;line-height:1.1}
 .av.round{border-radius:50%}
-.av.sm{width:36px;height:36px;border-radius:10px;font-size:14px}
+.av.sm{width:36px;height:36px;border-radius:50%;font-size:14px}
 .av.lg{width:58px;height:58px;border-radius:50%;font-size:22px}
-.av.xs{width:28px;height:28px;border-radius:8px;font-size:12px}
-.av .dot{position:absolute;left:-3px;top:-3px;width:11px;height:11px;border-radius:50%;background:#22C55E;border:2px solid var(--card);box-sizing:content-box}
+.av.xs{width:28px;height:28px;border-radius:50%;font-size:12px}
+.av .dot{position:absolute;right:-1px;bottom:-1px;width:11px;height:11px;border-radius:50%;background:#22C55E;border:2px solid var(--card);box-sizing:content-box}
 .av .tiny{font-size:8.5px;font-weight:500;letter-spacing:-.2px}
 
 /* chat list */
@@ -261,7 +261,7 @@ body[data-theme="dark"] .kbd-bar .kico{color:#B9BBC2}
 /* mine */
 .profile-hd{background:linear-gradient(160deg,#1B1C22,#0E0F13);color:#fff;padding:14px 20px 26px;display:flex;align-items:center;gap:14px;position:relative;overflow:hidden}
 .profile-hd::after{content:'';position:absolute;right:-30px;top:-40px;width:180px;height:180px;border-radius:50%;border:1px solid rgba(255,255,255,.06)}
-.profile-hd .av{width:58px;height:58px;background:#4A4D57;border-radius:50%;font-size:22px}
+.profile-hd .av{width:58px;height:58px;background:#5B4BB0;border-radius:50%;font-size:22px}
 .profile-hd .nm{font-size:18px;font-weight:500}
 .profile-hd .id{font-size:12px;opacity:.62;margin-top:5px;display:flex;align-items:center;gap:6px}
 .profile-hd .qr-btn{position:absolute;right:18px;top:24px;opacity:.85;cursor:pointer}
@@ -559,13 +559,18 @@ const ic = (n,s=22,sw=1.7)=>`<svg viewBox="0 0 24 24" width="${s}" height="${s}"
 
 /* ---------- helpers ---------- */
 const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-const AVCOL = ['#3B6EF6','#E23A2E','#1E1E22','#C89A3C','#7C5CD6','#22A06B','#D9622B','#2E9AA8'];
+const AVCOL = ['#4C5BD4','#6D5BD0','#3F5A8C','#2F7E8C','#7A4E8C','#5566A8','#3E6E8C','#5B4BB0'];
 function av(name, opt={}){
   const ch = opt.t || (name||'').slice(0,1);
   const bg = opt.c || AVCOL[(name||'x').charCodeAt(0)%AVCOL.length];
   const cls = ['av', opt.round?'round':'', opt.size||''].join(' ');
-  const fs = opt.t && opt.t.length>2 ? 'font-size:11px;line-height:1.15' : '';
-  return `<div class="${cls}" style="background:${bg};${opt.grad?`background-image:${opt.grad};`:''}${fs}">${opt.html||esc(ch)}${opt.online?'<i class="dot"></i>':''}</div>`;
+  const n = (ch||'').length;
+  const base = opt.size === 'xs' ? 12 : (opt.size === 'sm' ? 15 : 20);
+  const fs = n <= 1 ? `font-size:${base}px`
+    : (n === 2 ? `font-size:${Math.round(base*0.75)}px`
+    : `font-size:${Math.round(base*0.6)}px;line-height:1.2`);
+  const html = opt.html || esc(ch).replace(/\n/g,'');
+  return `<div class="${cls}" style="background:${bg};${opt.grad?`background-image:${opt.grad};`:''}${fs}">${html}${opt.online?'<i class="dot"></i>':''}</div>`;
 }
 function swRow(label,key,val){ return `<div class="row noarrow"><div class="li-l"><span class="li-t">${label}</span></div>
   <div class="li-r"><span class="sw ${val?'on':''}" data-toggle="${key}"></span></div></div>`; }
@@ -693,23 +698,23 @@ function sheet(items, opt={}){
 const D = {
   me:{name:'FvzZGbxf', id:'8651091197'},
   chats:[
-    {id:'c1',name:'足球交流频道（停用）',type:'group',c:'#D8342A',lab:'停用\n换群',preview:'本群已停用，请退出后联系管理员加入新群',time:'10:39',gray:true},
-    {id:'c2',name:'老周',type:'p2p',c:'#1B1B1F',lab:'周',preview:'本周观赛活动开始报名啦，私聊我登记～',time:'昨天 19:19',online:true},
-    {id:'c3',name:'周末足球局',type:'group',c:'#2B3A5A',lab:'周末',preview:'周六下午 2 点老地方，还差两个人',time:'昨天 15:20'},
-    {id:'c4',name:'球迷福利一群',type:'group',c:'#C8A24A',lab:'福利',preview:'新赛季球票抽奖已开始，群内登记',time:'昨天 09:12'},
-    {id:'c5',name:'球迷福利二群',type:'group',c:'#B58A2E',lab:'福利',preview:'群规更新，详情看群公告',time:'周一'},
-    {id:'c6',name:'足球赛事讨论群',type:'group',c:'#2B2F3A',lab:'讨论',preview:'欧冠抽签结果出来了，来聊聊',time:'周一'},
-    {id:'c7',name:'羽毛球活动群',type:'group',c:'#C0392B',lab:'羽球',preview:'场地已订好，周六上午 10 点集合',time:'11-08'},
-    {id:'c8',name:'足球装备交流群',type:'group',c:'#1F2937',lab:'装备',preview:'新到的球鞋有人拼单吗',time:'11-07'}
+    {id:'c1',name:'足球交流频道（停用）',type:'group',c:'#9AA0AA',lab:'停用',preview:'本群已停用，请退出后联系管理员加入新群',time:'10:39',gray:true},
+    {id:'c2',name:'老周',type:'p2p',c:'#333A48',lab:'周',preview:'本周观赛活动开始报名啦，私聊我登记～',time:'昨天 19:19',online:true},
+    {id:'c3',name:'周末足球局',type:'group',c:'#4C5BD4',lab:'周末',preview:'周六下午 2 点老地方，还差两个人',time:'昨天 15:20'},
+    {id:'c4',name:'球迷福利一群',type:'group',c:'#6D5BD0',lab:'福利',preview:'新赛季球票抽奖已开始，群内登记',time:'昨天 09:12'},
+    {id:'c5',name:'球迷福利二群',type:'group',c:'#7A4E8C',lab:'福利',preview:'群规更新，详情看群公告',time:'周一'},
+    {id:'c6',name:'足球赛事讨论群',type:'group',c:'#3F5A8C',lab:'讨论',preview:'欧冠抽签结果出来了，来聊聊',time:'周一'},
+    {id:'c7',name:'羽毛球活动群',type:'group',c:'#2F7E8C',lab:'羽球',preview:'场地已订好，周六上午 10 点集合',time:'11-08'},
+    {id:'c8',name:'足球装备交流群',type:'group',c:'#5566A8',lab:'装备',preview:'新到的球鞋有人拼单吗',time:'11-07'}
   ],
   groups:{
-    c1:{members:'39046', names:['足球交流频道（停用）'], members9:['#C0392B','#7C5CD6','#C8A24A','#3B6EF6','#22A06B','#D9622B','#8B5CF6','#2E9AA8','#E23A2E'], notice:'🍀 本群为球迷交流频道，禁止发布广告及任何违规内容。\n⚠️ 群内请文明发言、理性讨论，互相尊重。\n🍀 群内活动福利可直接咨询群管理员了解登记参与。', keep:'7天'},
-    c3:{members:'168', names:['周末足球局'], members9:['#2B3A5A','#1B1B1F','#C0392B','#7C5CD6','#C8A24A','#3B6EF6','#22A06B','#D9622B','#8B5CF6'], notice:'⚽ 每周六下午 2 点，老地方五人制，报名在群接龙。\n🏃 迟到超过 15 分钟请提前在群里说一声。', keep:'7天'},
-    c4:{members:'875', names:['球迷福利一群'], members9:['#1B1B1F','#C0392B','#7C5CD6','#C8A24A','#3B6EF6','#22A06B'], notice:'🎁 群内不定期发放球票与周边抽奖，中奖名单在群公告同步。', keep:'永久'},
-    c5:{members:'1090', names:['球迷福利二群'], members9:['#1B1B1F','#C0392B','#7C5CD6','#C8A24A','#3B6EF6','#22A06B'], notice:'🎁 福利活动与一群同步，抽奖以群公告发布为准。', keep:'永久'},
-    c6:{members:'4723', names:['足球赛事讨论群'], members9:['#1B1B1F','#C0392B','#7C5CD6','#C8A24A','#3B6EF6','#22A06B','#D9622B','#8B5CF6','#2E9AA8'], notice:'📢 赛前赛后讨论集中在本群，禁止发布投注推广与外部链接。', keep:'7天'},
-    c7:{members:'236', names:['羽毛球活动群'], members9:['#C0392B','#1B1B1F','#7C5CD6','#C8A24A','#3B6EF6'], notice:'🏸 每周六上午 10 点，场地在城东体育馆 3 号场，费用 AA。', keep:'7天'},
-    c8:{members:'512', names:['足球装备交流群'], members9:['#1F2937','#C0392B','#7C5CD6','#C8A24A'], notice:'👟 二手装备交易请走群内担保，私下交易风险自担。', keep:'7天'}
+    c1:{members:'39046', names:['足球交流频道（停用）'], members9:['#4C5BD4','#6D5BD0','#3F5A8C','#2F7E8C','#7A4E8C','#5566A8','#3E6E8C','#5B4BB0','#4A5568'], notice:'🍀 本群为球迷交流频道，禁止发布广告及任何违规内容。\n⚠️ 群内请文明发言、理性讨论，互相尊重。\n🍀 群内活动福利可直接咨询群管理员了解登记参与。', keep:'7天'},
+    c3:{members:'168', names:['周末足球局'], members9:['#4C5BD4','#6D5BD0','#3F5A8C','#2F7E8C','#7A4E8C','#5566A8','#3E6E8C','#5B4BB0','#4A5568'], notice:'⚽ 每周六下午 2 点，老地方五人制，报名在群接龙。\n🏃 迟到超过 15 分钟请提前在群里说一声。', keep:'7天'},
+    c4:{members:'875', names:['球迷福利一群'], members9:['#4C5BD4','#6D5BD0','#3F5A8C','#2F7E8C','#7A4E8C','#5566A8'], notice:'🎁 群内不定期发放球票与周边抽奖，中奖名单在群公告同步。', keep:'永久'},
+    c5:{members:'1090', names:['球迷福利二群'], members9:['#4C5BD4','#6D5BD0','#3F5A8C','#2F7E8C','#7A4E8C','#5566A8'], notice:'🎁 福利活动与一群同步，抽奖以群公告发布为准。', keep:'永久'},
+    c6:{members:'4723', names:['足球赛事讨论群'], members9:['#4C5BD4','#6D5BD0','#3F5A8C','#2F7E8C','#7A4E8C','#5566A8','#3E6E8C','#5B4BB0','#4A5568'], notice:'📢 赛前赛后讨论集中在本群，禁止发布投注推广与外部链接。', keep:'7天'},
+    c7:{members:'236', names:['羽毛球活动群'], members9:['#4C5BD4','#6D5BD0','#3F5A8C','#2F7E8C','#7A4E8C'], notice:'🏸 每周六上午 10 点，场地在城东体育馆 3 号场，费用 AA。', keep:'7天'},
+    c8:{members:'512', names:['足球装备交流群'], members9:['#4C5BD4','#6D5BD0','#3F5A8C','#2F7E8C'], notice:'👟 二手装备交易请走群内担保，私下交易风险自担。', keep:'7天'}
   },
   posts:[
     {id:'p1',ch:'ball',title:'观赛竞猜玩法讲解',author:'球迷俱乐部',time:'2025-10-12 00:42:44',views:'7.6w',cover:'fans'},
@@ -730,10 +735,10 @@ PAGES.chats = () => `
   <div class="pbody" style="padding-bottom:6px">
     ${D.chats.map(c=>`
       <div class="li" data-act="openchat" data-id="${c.id}">
-        ${av(c.name,{c:c.c,t:c.lab,online:c.online,html:`<span class="tiny" style="white-space:pre-line">${c.lab}</span>`})}
+        ${av(c.name,{c:c.c,t:c.lab,online:c.online})}
         <div class="mid">
           <div class="nm ${c.gray?'gray':''}">
-            ${c.type==='group'?`<span class="gicon">${ic('users',15)}</span>`:''}${esc(c.name)}
+            ${esc(c.name)}
           </div>
           ${c.preview?`<div class="pv">${esc(c.preview)}</div>`:'<div class="pv"> </div>'}
         </div>
@@ -795,7 +800,7 @@ PAGES.community = () => `
 PAGES.mine = () => `
   <div class="profile-hd">
     <div style="display:flex;align-items:center;gap:14px;flex:1;cursor:pointer" data-go="profile">
-      ${av('F',{c:'#4A4D57',round:true,html:S.avatarEmoji})}
+      ${av('F',{c:'#5B4BB0',round:true,html:S.avatarEmoji})}
       <div><div class="nm">${S.nick||D.me.name}</div>
         <div class="id">用户ID：${D.me.id} <span data-act="copyid" style="opacity:.9">${ic('copy',13)}</span></div></div>
     </div>
@@ -1002,7 +1007,7 @@ PAGES.appearance = () => {
   <div class="pbody">
     <div class="preview">
       <div class="pv-inner">
-        <div class="pv-msg">${av('张娜娜',{c:'#C58B6A',size:'xs',html:S.avatarEmoji})}<div><div style="font-size:11px;color:var(--text2);margin-bottom:3px">张娜娜</div>
+        <div class="pv-msg">${av('张娜娜',{c:'#7A4E8C',size:'xs',html:S.avatarEmoji})}<div><div style="font-size:11px;color:var(--text2);margin-bottom:3px">张娜娜</div>
           <div class="b" style="background:${(document.body.dataset.theme==='dark'?'#2A2C33':'#F2F4F8')}">你好，收到及时回复</div></div></div>
         <div class="pv-msg me"><div class="b">好的，收到了</div></div>
         <div class="pv-input">${ic('mic',15)}<span>Message</span><span style="margin-left:auto;display:flex;gap:8px">${ic('smile',15)}${ic('plus',15)}</span></div>
@@ -1039,7 +1044,7 @@ PAGES.font = () => `
   <div class="pbody">
     <div class="preview">
       <div class="pv-inner">
-        <div class="pv-msg">${av('张娜娜',{c:'#C58B6A',size:'xs',html:S.avatarEmoji})}
+        <div class="pv-msg">${av('张娜娜',{c:'#7A4E8C',size:'xs',html:S.avatarEmoji})}
           <div><div style="font-size:11px;color:var(--text2);margin-bottom:3px">张娜娜</div>
           <div class="b" style="font-size:${S.font}px;background:${(document.body.dataset.theme==='dark'?'#2A2C33':'#F2F4F8')}">预览字体大小，拖动下面的滑块，可设置字体大小。设置后，会改变应用内所有文本的字体大小。</div></div></div>
         <div class="pv-msg me"><div class="b" style="font-size:${S.font}px">好的，收到了</div></div>
@@ -1389,7 +1394,7 @@ PAGES.tagPicker = (p) => {
 PAGES.friend = () => `${nav('')}
   <div class="pbody">
     <div style="display:flex;gap:14px;padding:8px 18px 6px;align-items:center">
-      ${av('老周',{c:'#1B1B1F',t:'周',round:true,html:'<span style="font-size:20px">🧑</span>'})}
+      ${av('老周',{c:'#333A48',t:'周',round:true})}
       <div><div style="font-size:18px;font-weight:500;display:flex;align-items:center;gap:6px">老周 <span data-act="toast" data-m="ID 已复制" style="color:var(--text3)">${ic('copy',14)}</span></div>
         <div style="font-size:12px;color:var(--text2);margin-top:6px">添加于 2024-02-01</div></div>
     </div>
@@ -1406,10 +1411,11 @@ PAGES.friend = () => `${nav('')}
 /* =========================================================
    群聊
    ========================================================= */
+const MEMNAME = ['张','李','王','刘','陈','杨','赵','周','吴','徐'];
 function groupAvatars(id){
   const g = D.groups[id]; if(!g) return '';
   return `<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px 8px">${g.members9.map((c,i)=>
-    av('m'+i,{c,round:true,size:'sm',html:`<span style="font-size:12px">${['🧑','👩','🧕','👨','🧑‍🦱','👩‍🦰','🧑‍🦳','👩‍🦱','🧑‍🎤'][i%9]}</span>`})).join('')}</div>`;
+    av(MEMNAME[i%MEMNAME.length],{c,round:true,size:'sm'})).join('')}</div>`;
 }
 
 PAGES.groupInfo = (p) => {
@@ -1457,15 +1463,15 @@ PAGES.groupMembers = (p) => {
   <div class="search" style="margin-top:2px"><span>${ic('search',18)}</span><input placeholder="搜索"></div>
   <div class="pbody">
     <div class="mem" data-act="toast" data-m="群主：老张（球迷会长）">
-      ${av('张',{c:'#2B2F3A',round:true,size:'sm',html:'<span style="font-size:13px">🧑</span>'})}
+      ${av('张',{c:'#3F5A8C',round:true,size:'sm'})}
       <div class="nm"><span class="ow">群主</span>老张（球迷会长）</div>
     </div>
-    ${admins.map(n=>`<div class="mem" data-act="member" data-name="${n}" data-role="1">
-      ${av(n,{c:'#8B5E4A',round:true,size:'sm',html:'<span style="font-size:13px">👩</span>'})}
+    ${admins.map((n,i)=>`<div class="mem" data-act="member" data-name="${n}" data-role="1">
+      ${av(n.replace(/（[^）]*）/g,'').slice(-1),{c:['#6D5BD0','#2F7E8C','#7A4E8C','#5566A8'][i%4],round:true,size:'sm'})}
       <div class="nm"><span class="adm">管理员</span>${n}</div></div>`).join('')}
     <div style="height:8px"></div>
     ${['管理员程程','侃球老林','阿泰','老K'].map(n=>`<div class="mem" data-act="member" data-name="${n}" data-role="0">
-      ${av(n,{c:'#3A3F4C',round:true,size:'sm',html:'<span style="font-size:13px">🧑</span>'})}
+      ${av(n.replace(/（[^）]*）/g,'').slice(-1),{c:'#4C5BD4',round:true,size:'sm'})}
       <div class="nm">${n}</div></div>`).join('')}
   </div>`;
 };
