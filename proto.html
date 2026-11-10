@@ -153,6 +153,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:17px;heigh
 
 /* chat page */
 .chat-h{display:flex;align-items:center;gap:10px;padding:6px 10px 8px;flex:0 0 auto}
+.chat-h .mid{margin-left:2px}
 .chat-h .mid{flex:1;min-width:0}
 .chat-h .nm{font-size:15px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .chat-h .sub{font-size:11px;color:var(--text2);margin-top:1px}
@@ -160,7 +161,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:17px;heigh
 .noticebar .close{margin-left:auto;color:var(--text3);display:grid;place-items:center}
 .msgs{flex:1;min-height:0;overflow-y:auto;padding:10px 0 14px;background-attachment:local}
 
-.msg{display:flex;gap:8px;padding:8px 12px 8px 60px;align-items:flex-start;position:relative}
+.msg{display:flex;gap:8px;padding:8px 12px;align-items:flex-start;position:relative}
 .msg.me{flex-direction:row-reverse;padding-left:12px}
 .msg .bub{max-width:72%;padding:10px 13px;border-radius:16px;background:var(--card);font-size:var(--fs);line-height:1.4;
   word-break:break-word;white-space:pre-wrap;box-shadow:0 1px 1px rgba(16,20,32,.03)}
@@ -1629,7 +1630,6 @@ PAGES.chat = (p) => {
   return `
   <div class="chat-h">
     <div class="nav-btn" data-back>${ic('back')}</div>
-    ${av(c.name,{c:c.c,t:c.lab,round:true,size:'sm'})}
     <div class="mid">
       <div class="nm">${esc(c.name)}</div>
       ${g?`<div class="sub">共${g.members}人</div>`:'<div class="sub">在线</div>'}
