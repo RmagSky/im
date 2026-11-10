@@ -262,7 +262,7 @@ body[data-theme="dark"] .kbd-bar .kico{color:#B9BBC2}
 /* mine */
 .profile-hd{background:linear-gradient(160deg,#1B1C22,#0E0F13);color:#fff;padding:14px 20px 26px;display:flex;align-items:center;gap:14px;position:relative;overflow:hidden}
 .profile-hd::after{content:'';position:absolute;right:-30px;top:-40px;width:180px;height:180px;border-radius:50%;border:1px solid rgba(255,255,255,.06)}
-.profile-hd .av{width:58px;height:58px;color:#8A46B8;background:#F0E9FF;border-radius:50%;font-size:22px}
+.profile-hd .av{width:58px;height:58px;color:#8A46B8;background:#E5D6EF;border-radius:50%;font-size:22px}
 .profile-hd .nm{font-size:18px;font-weight:500}
 .profile-hd .id{font-size:12px;opacity:.62;margin-top:5px;display:flex;align-items:center;gap:6px}
 .profile-hd .qr-btn{position:absolute;right:18px;top:24px;opacity:.85;cursor:pointer}
@@ -561,9 +561,9 @@ const ic = (n,s=22,sw=1.7)=>`<svg viewBox="0 0 24 24" width="${s}" height="${s}"
 /* ---------- helpers ---------- */
 const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 const AVPAIR = [
-  ['#5548C8','#E9E6FF'], ['#8A46B8','#F0E9FF'], ['#2A6FB0','#E3F3FF'], ['#1B7F63','#DFF5EC'],
-  ['#B23B7A','#FDE7F3'], ['#3F7A2E','#EAF7E3'], ['#A4631B','#FFF1DA'], ['#4A5AA8','#E7ECFF'],
-  ['#8A93A3','#F0F1F4']
+  ['#5548C8','#DAD7F3'], ['#8A46B8','#E5D6EF'], ['#2A6FB0','#D0DFEE'], ['#1B7F63','#CDE3DD'],
+  ['#B23B7A','#EED4E2'], ['#3F7A2E','#D5E2D1'], ['#A4631B','#EBDDCD'], ['#4A5AA8','#D7DBEC'],
+  ['#8A93A3','#E5E7EB']
 ];
 const AVMAP = {}; AVPAIR.forEach(p=>{ AVMAP[p[0]] = p[1]; });
 const AVCOL = AVPAIR.map(p=>p[0]);
