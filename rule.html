@@ -32,7 +32,7 @@ html,body{height:100%}
 body{
   display:flex;overflow:hidden;
   font-family:Outfit,"Noto Sans SC","Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
-  background:var(--bg);color:var(--text);font-size:15px;line-height:1.6;
+  background:var(--bg);color:var(--text);font-size:14px;line-height:1.6;
   -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;
 }
 
@@ -70,7 +70,7 @@ section{display:none}
 section.active{display:block}
 .crumb{font-size:12px;color:var(--text-disabled);margin-bottom:6px}
 h1{font-size:18px;font-weight:600;color:var(--text);margin-bottom:10px;letter-spacing:-.2px}
-.lead{font-size:15px;color:var(--text-sub);line-height:1.6;margin-bottom:16px;max-width:820px}
+.lead{font-size:14px;color:var(--text-sub);line-height:1.6;margin-bottom:16px;max-width:820px}
 
 /* 卡片 */
 .card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:20px;margin-bottom:16px;box-shadow:var(--shadow)}
@@ -105,7 +105,7 @@ pre .c{color:var(--text-disabled)}
 /* 声明带 */
 .band{background:var(--primary-light);border-radius:8px;padding:16px 20px;margin-bottom:16px}
 .band .bd-k{font-size:11px;font-weight:500;color:var(--primary);margin-bottom:4px}
-.band .bd-t{font-size:15px;color:var(--text);line-height:1.6}
+.band .bd-t{font-size:14px;color:var(--text);line-height:1.6}
 .band .bd-t b{font-weight:600}
 
 /* 优先级标签 */
@@ -128,7 +128,7 @@ pre .c{color:var(--text-disabled)}
   font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1;
 }
 .step .bd{flex:1;min-width:0}
-.step .tt{font-size:15px;font-weight:600;color:var(--text);margin-bottom:4px}
+.step .tt{font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px}
 .step .ds{font-size:13px;color:var(--text-sub);line-height:1.6;margin-bottom:10px}
 
 /* 色块 */
@@ -226,7 +226,7 @@ if(window.self!==window.top)document.documentElement.classList.add('is-embedded'
           <tbody>
             <tr>
               <td>v1.0.2</td><td class="num">2026-11-10</td><td>内容变更</td>
-              <td>字体规范收为一套：原型页 <span class="mono">proto.html</span> 的字体栈由 iOS 系统栈改为 Outfit 加中文字体回退，与框架页、基线文档共用同一份 <span class="mono">_fonts/outfit.css</span>；3.2 的字体栈表由三层改为「正文 / 代码与键名」两行，七档字号与等宽边界不变。原型全部字号收进七档：原先 32 个不同字号（13.5、12.5、14.5、16.5、10.5 等）归并为 24／18／16／14／13／12／11，会话名加重到 600 与预览拉开层级，气泡正文定为 15px、行高 1.4、内边距 10/13、圆角 16px，输入条改 38px 胶囊形；正文档位由 14px 调为 15px，全站随之，头像内微标固定 9px 作装饰例外。原型交互未变。</td>
+              <td>字体规范收为一套：原型页 <span class="mono">proto.html</span> 的字体栈由 iOS 系统栈改为 Outfit 加中文字体回退，与框架页、基线文档共用同一份 <span class="mono">_fonts/outfit.css</span>；3.2 的字体栈表由三层改为「正文 / 代码与键名」两行，七档字号与等宽边界不变。原型全部字号收进七档：原先 32 个不同字号（13.5、12.5、14.5、16.5、10.5 等）归并为 24／18／16／14／13／12／11，会话名加重到 600 与预览拉开层级，气泡正文 14px、行高 1.4、内边距 10/13、圆角 16px，输入条 38px 胶囊形；全站字重收口到 400 与 500 两档，取消 600 及以上，头像内微标固定 9px 作装饰例外。原型交互未变。</td>
             </tr>
             <tr>
               <td>v1.0.1</td><td class="num">2026-11-10</td><td>内容变更</td>
@@ -741,13 +741,14 @@ proto.html#p=chat&id=c2&t=dark&kbd=1</pre>
             <tr><td>统计大数值</td><td class="num">24px / 600</td><td>原型 Tab 页大标题、设备详情页头、页面索引计数</td></tr>
             <tr><td>页面标题</td><td class="num">18px / 600</td><td>文档每节标题、原型二级页导航标题、好友与群名称</td></tr>
             <tr><td>区块标题</td><td class="num">16px / 600</td><td>卡片标题、设置项分组标题</td></tr>
-            <tr><td>正文</td><td class="num">15px / 400</td><td>文档正文、消息气泡、列表名称与设置项</td></tr>
+            <tr><td>正文</td><td class="num">14px / 400</td><td>文档正文、消息气泡、会话预览、设置项</td></tr>
             <tr><td>表格</td><td class="num">13px / 400</td><td>表格内容、按钮文案、流程说明、会话预览</td></tr>
             <tr><td>辅助说明</td><td class="num">12px / 400</td><td>字段说明、面包屑、空态文案</td></tr>
             <tr><td>标签文字</td><td class="num">11px / 500</td><td>优先级标签、未读角标、状态标记</td></tr>
           </tbody>
         </table>
-        <div class="note">原型屏内的气泡字号受「我的 → 字体」控制，范围 12–22px 步长 1，默认 15px 记作标准；该设置只改气泡文本，不改本节档位。头像内「停用 / 换群」一类微标固定 9px，属装饰标记，不参与档位收口。</div>
+        <div class="note">字重只用两档：正文与说明 400，名称、标签、按钮 500。原型内不出现 600 及以上字重，层级由字号与颜色承担，不靠加粗。</div>
+        <div class="note">原型屏内的气泡字号受「我的 → 字体」控制，范围 12–22px 步长 1，默认 14px 记作标准；该设置只改气泡文本，不改本节档位。头像内「停用 / 换群」一类微标固定 9px，属装饰标记，不参与档位收口。</div>
       </div>
 
       <div class="card">
@@ -807,7 +808,7 @@ proto.html#p=chat&id=c2&t=dark&kbd=1</pre>
             <tr><td>屏幕</td><td class="num">44px</td><td>内层内容区</td></tr>
             <tr><td>对话框</td><td class="num">15px</td><td>268px 宽居中弹窗</td></tr>
             <tr><td>列表分组卡片</td><td class="num">14px</td><td>白底卡片与动作面板</td></tr>
-            <tr><td>消息气泡</td><td class="num">16px</td><td>最大宽度 72%，内边距 10/13px，行高 1.4</td></tr>
+            <tr><td>消息气泡</td><td class="num">16px</td><td>最大宽度 72%，内边距 10/13px，行高 1.4，字号 14px</td></tr>
             <tr><td>菜单与按钮</td><td class="num">12px</td><td>长按菜单、图标按钮</td></tr>
             <tr><td>标签与角标</td><td class="num">4–7px</td><td>未读角标、版本胶囊</td></tr>
           </tbody>
