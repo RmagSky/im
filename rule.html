@@ -1,7 +1,7 @@
 <!doctype html>
 <!--
   球帝带 · 产品基线
-  版本：v1.0.1 ｜ 入口：index.html ｜ 原型：proto.html
+  版本：v1.0.2 ｜ 入口：index.html ｜ 原型：proto.html
   本文档为规则的唯一权威载体：产品口径、交互规范、团队协作条款以本文件为准。
   版式：左导航单屏单节，不采用长页锚点跳转。
 -->
@@ -10,7 +10,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="color-scheme" content="only light">
-<title>产品基线 · 球帝带 v1.0.1</title>
+<title>产品基线 · 球帝带 v1.0.2</title>
 <link rel="icon" href="data:,">
 <link rel="stylesheet" href="_fonts/outfit.css">
 <style>
@@ -171,7 +171,7 @@ if(window.self!==window.top)document.documentElement.classList.add('is-embedded'
 </head>
 <body>
   <nav class="side" id="side">
-    <div class="brand"><span class="dot"></span><span class="nm">产品基线</span><span class="vd">v1.0.1</span></div>
+    <div class="brand"><span class="dot"></span><span class="nm">产品基线</span><span class="vd">v1.0.2</span></div>
       <div class="group">基线总览</div>
       <a class="link" data-sec="version">1.1 版本与变更记录</a>
       <a class="link" data-sec="structure">1.2 产品信息结构 <span class="cnt">52</span></a>
@@ -210,11 +210,11 @@ if(window.self!==window.top)document.documentElement.classList.add('is-embedded'
         <table>
           <thead><tr><th style="width:210px">位置</th><th style="width:180px">文件</th><th>形态</th></tr></thead>
           <tbody>
-            <tr><td>入口页顶部徽标</td><td><span class="mono">index.html</span></td><td>等宽文本 <span class="mono">v1.0.1</span>，紧邻品牌名，与品牌名同基线</td></tr>
-            <tr><td>原型顶部条纹条</td><td><span class="mono">proto.html</span></td><td>机身内部黑条右侧 <span class="mono">v1.0.1</span></td></tr>
-            <tr><td>原型评审侧栏</td><td><span class="mono">proto.html</span></td><td>「版本 v1.0.1 · 构建 2026-11-10」行</td></tr>
+            <tr><td>入口页顶部徽标</td><td><span class="mono">index.html</span></td><td>等宽文本 <span class="mono">v1.0.2</span>，紧邻品牌名，与品牌名同基线</td></tr>
+            <tr><td>原型顶部条纹条</td><td><span class="mono">proto.html</span></td><td>机身内部黑条右侧 <span class="mono">v1.0.2</span></td></tr>
+            <tr><td>原型评审侧栏</td><td><span class="mono">proto.html</span></td><td>「版本 v1.0.2 · 构建 2026-11-10」行</td></tr>
             <tr><td>文档标题行</td><td><span class="mono">rule.html</span></td><td>页头与侧栏徽标，以及本表首行</td></tr>
-            <tr><td>脚本常量</td><td><span class="mono">proto.html</span></td><td><span class="mono">const V = 'v1.0.1'</span>，系统通知页引用</td></tr>
+            <tr><td>脚本常量</td><td><span class="mono">proto.html</span></td><td><span class="mono">const V = 'v1.0.2'</span>，系统通知页引用</td></tr>
           </tbody>
         </table>
       </div>
@@ -224,6 +224,10 @@ if(window.self!==window.top)document.documentElement.classList.add('is-embedded'
         <table>
           <thead><tr><th style="width:88px">版本</th><th style="width:104px">日期</th><th style="width:96px">类型</th><th>摘要</th></tr></thead>
           <tbody>
+            <tr>
+              <td>v1.0.2</td><td class="num">2026-11-10</td><td>内容变更</td>
+              <td>字体规范收为一套：原型页 <span class="mono">proto.html</span> 的字体栈由 iOS 系统栈改为 Outfit 加中文字体回退，与框架页、基线文档共用同一份 <span class="mono">_fonts/outfit.css</span>；3.2 的字体栈表由三层改为「正文 / 代码与键名」两行，七档字号与等宽边界不变。原型全部字号收进七档：原先 32 个不同字号（13.5、12.5、14.5、16.5、10.5 等）归并为 24／18／16／14／13／12／11，会话名加重到 600 与预览拉开层级，气泡默认字号由 15px 改为 14px，头像内微标固定 9px 作装饰例外。原型交互未变。</td>
+            </tr>
             <tr>
               <td>v1.0.1</td><td class="num">2026-11-10</td><td>内容变更</td>
               <td>原型拆分为三文件：<span class="mono">index.html</span> 框架页承载切换，<span class="mono">proto.html</span> 承载原型本体，<span class="mono">rule.html</span> 承载本产品基线与协作条款；框架页解析旧深链 <span class="mono">#p=…</span> 并转发给原型页，历史评审链接保持可用。新增规范文档：基线总览、全局规范、组件与规范、团队协作四部分。版式沿用中台原型产品基线页的做法：左侧导航切换、单屏单节，不采用长页锚点跳转；字体改用 Outfit 加中文字体回退并随仓库内置六档字重，字号收进七档；区块为卡片式，圆角 8px、卡片内边距 20px；1.2 增页面索引带。原型界面与交互未变。</td>
@@ -243,7 +247,7 @@ if(window.self!==window.top)document.documentElement.classList.add('is-embedded'
           <thead><tr><th style="width:120px">改动性质</th><th style="width:150px">版本号变动</th><th>判定标准</th></tr></thead>
           <tbody>
             <tr><td>功能变更</td><td><span class="pri">中间位 +1</span></td><td>增删页面、增删功能单元、增删章节或分组；尾数归零。例：v1.0.3 → v1.1.0</td></tr>
-            <tr><td>内容变更</td><td><span class="pri">尾数 +1</span></td><td>规则口径、交互流程、字段集合、页面名单、术语定义、优先级调整。例：v1.0.1 → v1.0.2</td></tr>
+            <tr><td>内容变更</td><td><span class="pri">尾数 +1</span></td><td>规则口径、交互流程、字段集合、页面名单、术语定义、优先级调整。例：v1.0.2 → v1.0.2</td></tr>
             <tr><td>样式微调</td><td><span class="pri">版本号不变</span></td><td>文案措辞、错别字、字号配色、元素位置、注释整理。照常交付，不写变更记录行</td></tr>
           </tbody>
         </table>
@@ -714,19 +718,18 @@ proto.html#p=chat&id=c2&t=dark&kbd=1</pre>
     <section id="sec-type">
       <div class="crumb">产品基线 / 组件与规范 / 字体与字号</div>
       <h1>3.2 字体与字号</h1>
-      <p class="lead">两层各有字体栈，不混用：原型屏内跟系统字体，基线文档与框架页走 Outfit 加中文字体回退。字号只取七档，不设中间值。</p>
+      <p class="lead">全站一套字体栈：Outfit 负责西文与数字，中文按栈序回退到系统字体，六档字重随仓库内置。字号只取七档，不设中间值。</p>
 
       <div class="card">
         <h3>字体栈</h3>
         <table>
-          <thead><tr><th style="width:130px">层</th><th style="width:150px">字族</th><th>字体栈与用途</th></tr></thead>
+          <thead><tr><th style="width:130px">用途</th><th style="width:110px">字族</th><th>字体栈</th></tr></thead>
           <tbody>
-            <tr><td>原型屏内</td><td>系统字体</td><td><span class="mono">-apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif</span> — 手机界面按 iOS 系统字体还原，不加载网络字体</td></tr>
-            <tr><td>文档层</td><td>Outfit</td><td><span class="mono">Outfit, "Noto Sans SC", "Helvetica Neue", Helvetica, "PingFang SC", "Microsoft YaHei", Arial, sans-serif</span> — 基线文档与框架页，西文与数字用 Outfit，中文按栈序回退</td></tr>
-            <tr><td>代码与键名</td><td>等宽</td><td><span class="mono">ui-monospace, "SFMono-Regular", Consolas, Menlo, monospace</span> — 仅用于文件名、<span class="mono">PAGES</span> 键名、命令与令牌名</td></tr>
+            <tr><td>正文</td><td>Outfit</td><td><span class="mono">Outfit, "Noto Sans SC", "Helvetica Neue", Helvetica, "PingFang SC", "Microsoft YaHei", Arial, sans-serif</span></td></tr>
+            <tr><td>代码与键名</td><td>等宽</td><td><span class="mono">ui-monospace, "SFMono-Regular", Consolas, Menlo, monospace</span></td></tr>
           </tbody>
         </table>
-        <div class="note">Outfit 六档字重随仓库内置在 <span class="mono">_fonts/</span>，不依赖 CDN。版本号、日期、计数一律走文档层字体加 <span class="mono">tabular-nums</span>，不用等宽，等宽字形宽扁，与正文并列会割裂。</div>
+        <div class="note">三处入口（<span class="mono">index.html</span>、<span class="mono">proto.html</span>、<span class="mono">rule.html</span>）共用同一套栈与同一份 <span class="mono">_fonts/outfit.css</span>，不依赖 CDN。等宽只用于真正的代码场景；版本号、日期、计数走正文档加 <span class="mono">tabular-nums</span>，等宽字形宽扁，与正文并列会割裂。</div>
       </div>
 
       <div class="card">
@@ -735,16 +738,16 @@ proto.html#p=chat&id=c2&t=dark&kbd=1</pre>
         <table>
           <thead><tr><th style="width:150px">层级</th><th style="width:110px">字号 / 字重</th><th>用途</th></tr></thead>
           <tbody>
-            <tr><td>统计大数值</td><td class="num">24px / 600</td><td>页面索引计数、版本号等单独成块的数字</td></tr>
-            <tr><td>页面标题</td><td class="num">18px / 600</td><td>文档每节的标题、原型 Tab 页大标题</td></tr>
+            <tr><td>统计大数值</td><td class="num">24px / 600</td><td>原型 Tab 页大标题、设备详情页头、页面索引计数</td></tr>
+            <tr><td>页面标题</td><td class="num">18px / 600</td><td>文档每节标题、原型二级页导航标题、好友与群名称</td></tr>
             <tr><td>区块标题</td><td class="num">16px / 600</td><td>卡片标题、设置项分组标题</td></tr>
             <tr><td>正文</td><td class="num">14px / 400</td><td>正文段落、列表名称、左侧导航</td></tr>
-            <tr><td>表格</td><td class="num">13px / 400</td><td>表格内容、按钮文案、流程说明</td></tr>
+            <tr><td>表格</td><td class="num">13px / 400</td><td>表格内容、按钮文案、流程说明、会话预览</td></tr>
             <tr><td>辅助说明</td><td class="num">12px / 400</td><td>字段说明、面包屑、空态文案</td></tr>
             <tr><td>标签文字</td><td class="num">11px / 500</td><td>优先级标签、未读角标、状态标记</td></tr>
           </tbody>
         </table>
-        <div class="note">原型屏内的气泡字号受「我的 → 字体」控制（12–22px 步长 1），该设置只改气泡文本，不改本节档位。</div>
+        <div class="note">原型屏内的气泡字号受「我的 → 字体」控制，范围 12–22px 步长 1，默认 14px 记作标准；该设置只改气泡文本，不改本节档位。头像内「停用 / 换群」一类微标固定 9px，属装饰标记，不参与档位收口。</div>
       </div>
 
       <div class="card">

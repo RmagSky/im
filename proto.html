@@ -3,12 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>球帝带 · 交互原型 v1.0.1</title>
+<title>球帝带 · 交互原型 v1.0.2</title>
+<link rel="stylesheet" href="_fonts/outfit.css">
 <style>
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 :root{
   --blue:#3B82F6; --bg:#F6F7F9; --card:#FFFFFF; --text:#101114; --text2:#8A8F99; --text3:#B7BBC3;
-  --line:#EFF0F3; --input:#EFF1F5; --red:#FF4D4F; --bubble:#3B82F6; --fs:15px;
+  --line:#EFF0F3; --input:#EFF1F5; --red:#FF4D4F; --bubble:#3B82F6; --fs:14px;
   --tab-h:58px;
 }
 body[data-theme="dark"]{
@@ -16,7 +17,7 @@ body[data-theme="dark"]{
   --line:#282A31; --input:#26282F; --card2:#1C1D22;
 }
 html,body{height:100%}
-body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+body{margin:0;font-family:Outfit,"Noto Sans SC","Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
   background:#EBEEF3;display:flex;align-items:center;justify-content:center;color:var(--text);
   -webkit-font-smoothing:antialiased;transition:background .25s}
 body[data-theme="dark"]{background:#07080A}
@@ -24,7 +25,7 @@ body[data-theme="dark"]{background:#07080A}
 
 /* ---------- side meta ---------- */
 .meta{width:258px;color:#5A6070;font-size:13px;line-height:1.75}
-.meta h1{font-size:19px;color:#141519;margin:10px 0 4px;letter-spacing:-.3px}
+.meta h1{font-size:18px;color:#141519;margin:10px 0 4px;letter-spacing:-.3px}
 .meta .ver{font-size:12px;color:#8A8F99;margin-bottom:10px;font-variant-numeric:tabular-nums}
 .badge{display:inline-block;background:#141519;color:#fff;border-radius:7px;padding:4px 10px;font-size:11px;letter-spacing:.8px;font-weight:600}
 .meta p{margin:0 0 10px}
@@ -46,7 +47,7 @@ body[data-theme="dark"]{background:#07080A}
 
 /* status bar */
 .statusbar{height:50px;flex:0 0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 24px 0 28px;position:relative}
-.sb-l{font-size:15px;font-weight:650;font-variant-numeric:tabular-nums;letter-spacing:.2px}
+.sb-l{font-size:14px;font-weight:650;font-variant-numeric:tabular-nums;letter-spacing:.2px}
 .sb-r{display:flex;align-items:center;gap:6px;color:var(--text)}
 .sig{display:flex;align-items:flex-end;gap:2px;height:11px}
 .sig i{width:3px;background:currentColor;border-radius:1px}
@@ -73,23 +74,23 @@ body[data-theme="dark"]{background:#07080A}
 
 /* nav */
 .nav{height:46px;flex:0 0 auto;display:flex;align-items:center;padding:0 6px;gap:2px}
-.nav .t{flex:1;text-align:center;font-size:17px;font-weight:600;letter-spacing:-.2px}
-.nav-btn{width:40px;height:40px;display:grid;place-items:center;border-radius:12px;color:var(--text);cursor:pointer;font-size:15px}
+.nav .t{flex:1;text-align:center;font-size:18px;font-weight:600;letter-spacing:-.2px}
+.nav-btn{width:40px;height:40px;display:grid;place-items:center;border-radius:12px;color:var(--text);cursor:pointer;font-size:14px}
 .nav-btn:active{background:rgba(140,150,170,.16)}
-.nav-act{color:var(--blue);font-size:15px;font-weight:500;padding:0 10px;min-width:56px;text-align:right}
+.nav-act{color:var(--blue);font-size:14px;font-weight:500;padding:0 10px;min-width:56px;text-align:right}
 .nav-r{min-width:56px;display:flex;justify-content:flex-end;align-items:center;padding-right:6px}
 .nav-r .nav-btn{width:36px;height:36px}
 input[type=range]{-webkit-appearance:none;height:3px;background:var(--input);border-radius:2px}
 input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:17px;height:17px;border-radius:50%;background:#fff;border:1.5px solid #C9CDD6;box-shadow:0 1px 3px rgba(0,0,0,.18)}
 .nav-act.dim{color:var(--text3)}
 .hbig{display:flex;align-items:center;justify-content:space-between;padding:8px 16px 14px}
-.hbig h1{font-size:26px;margin:0;font-weight:700;letter-spacing:-.6px}
+.hbig h1{font-size:24px;margin:0;font-weight:700;letter-spacing:-.6px}
 .hbig .iconbtn{width:38px;height:38px;display:grid;place-items:center;border-radius:12px;cursor:pointer}
 
 /* search */
 .search{display:flex;align-items:center;gap:7px;margin:0 16px 10px;height:40px;background:var(--input);
   border-radius:10px;padding:0 12px;color:var(--text3);flex:0 0 auto}
-.search input{border:0;background:transparent;outline:none;flex:1;font-size:15px;color:var(--text);font-family:inherit}
+.search input{border:0;background:transparent;outline:none;flex:1;font-size:14px;color:var(--text);font-family:inherit}
 .search input::placeholder{color:var(--text3)}
 
 /* list group */
@@ -103,9 +104,9 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:17px;heigh
 .row .li-l{display:flex;align-items:center;gap:12px;font-size:16px;min-width:0}
 .row .ico{width:22px;height:22px;display:grid;place-items:center;color:var(--text);flex:0 0 auto}
 .row .li-t{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.row .li-r{display:flex;align-items:center;gap:6px;font-size:15px;color:var(--text2);flex:0 0 auto}
-.chev{color:var(--text3);font-size:17px;font-weight:300;margin-left:2px;line-height:1}
-.val{font-size:15px;color:var(--text2)}
+.row .li-r{display:flex;align-items:center;gap:6px;font-size:14px;color:var(--text2);flex:0 0 auto}
+.chev{color:var(--text3);font-size:18px;font-weight:300;margin-left:2px;line-height:1}
+.val{font-size:14px;color:var(--text2)}
 .val.warn{color:var(--text3)}
 
 /* switch */
@@ -129,28 +130,28 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:17px;heigh
 .li{display:flex;gap:12px;padding:10px 16px;align-items:center;cursor:pointer;position:relative}
 .li:active{background:rgba(140,150,170,.09)}
 .li .mid{flex:1;min-width:0}
-.li .nm{display:flex;align-items:center;gap:5px;font-size:16px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.li .nm{display:flex;align-items:center;gap:5px;font-size:16px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .li .nm.gray{color:var(--text2)}
-.li .pv{font-size:13.5px;color:var(--text2);margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.li .pv{font-size:13px;color:var(--text2);margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .li .rt{display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex:0 0 auto;align-self:flex-start;padding-top:3px}
-.li .tm{font-size:12px;color:var(--text3)}
+.li .tm{font-size:12px;color:var(--text3);font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
 .gicon{color:var(--text3);display:grid;place-items:center}
 
 /* tabbar */
 .tabbar{height:var(--tab-h);flex:0 0 auto;display:flex;background:var(--card);border-top:1px solid var(--line);padding-bottom:2px}
-.tab{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-size:10px;color:var(--text2);cursor:pointer;position:relative}
+.tab{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-size:11px;color:var(--text2);cursor:pointer;position:relative}
 .tab.active{color:var(--text);font-weight:600}
 .tab.active .tico{color:var(--text)}
 .tab .tico{color:var(--text2);opacity:.92}
 .tab .bdg{position:absolute;top:6px;right:calc(50% - 20px);min-width:16px;height:16px;background:var(--red);color:#fff;border-radius:9px;
-  font-size:10px;display:grid;place-items:center;padding:0 4px;font-weight:600}
+  font-size:11px;display:grid;place-items:center;padding:0 4px;font-weight:600}
 
 /* chat page */
 .chat-h{display:flex;align-items:center;gap:10px;padding:6px 10px 8px;flex:0 0 auto}
 .chat-h .mid{flex:1;min-width:0}
-.chat-h .nm{font-size:16.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.chat-h .sub{font-size:11.5px;color:var(--text2);margin-top:1px}
-.noticebar{display:flex;align-items:center;gap:8px;padding:9px 14px;background:rgba(59,130,246,.08);font-size:12.5px;color:var(--text2);flex:0 0 auto}
+.chat-h .nm{font-size:16px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.chat-h .sub{font-size:11px;color:var(--text2);margin-top:1px}
+.noticebar{display:flex;align-items:center;gap:8px;padding:9px 14px;background:rgba(59,130,246,.08);font-size:12px;color:var(--text2);flex:0 0 auto}
 .noticebar .close{margin-left:auto;color:var(--text3);display:grid;place-items:center}
 .msgs{flex:1;min-height:0;overflow-y:auto;padding:6px 0 10px;background-attachment:local}
 
@@ -159,7 +160,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:17px;heigh
 .msg .bub{max-width:76%;padding:10px 13px;border-radius:12px;background:var(--card);font-size:var(--fs);line-height:1.58;
   word-break:break-word;white-space:pre-wrap;box-shadow:0 1px 1px rgba(16,20,32,.03)}
 .msg.me .bub{background:var(--bubble);color:#fff}
-.msg .tm{font-size:10.5px;color:var(--text3);align-self:flex-end;padding-bottom:3px;margin:0 2px}
+.msg .tm{font-size:11px;color:var(--text3);align-self:flex-end;padding-bottom:3px;margin:0 2px}
 .msg.picked .box{opacity:1;transform:scale(1)}
 .msg .box{width:22px;height:22px;border-radius:50%;border:1.5px solid #C7CBD3;background:var(--card);flex:0 0 auto;align-self:center;
   display:grid;place-items:center;opacity:0;transform:scale(.6);transition:.15s;margin-top:16px}
@@ -172,7 +173,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:17px;heigh
 .poster{width:172px;border-radius:10px;overflow:hidden;background:linear-gradient(150deg,#5FE0A8,#22B573 55%,#0E8C57);padding:10px;color:#0B3B26;white-space:normal}
 .poster *{white-space:normal}
 .bub>div{white-space:normal}
-.poster .pt{font-size:19px;font-weight:900;letter-spacing:-.5px;line-height:1.05;color:#0E5C36}
+.poster .pt{font-size:18px;font-weight:900;letter-spacing:-.5px;line-height:1.05;color:#0E5C36}
 .poster .red{color:#E02B1D}
 .poster .prow{display:flex;justify-content:space-between;font-size:8px;border-bottom:1px solid rgba(0,0,0,.15);padding:2.5px 0}
 .poster .badge2{display:inline-block;background:#F5D33C;color:#5A3B00;font-size:8px;padding:2px 6px;border-radius:9px;font-weight:700;margin:6px 0 4px}
@@ -180,7 +181,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:17px;heigh
 
 .inputbar{flex:0 0 auto;display:flex;align-items:center;gap:8px;padding:8px 12px;border-top:1px solid var(--line);background:var(--bg)}
 .inputbar .ic{width:32px;height:32px;display:grid;place-items:center;color:var(--text);flex:0 0 auto;cursor:pointer}
-.inputbar .field{flex:1;height:37px;border-radius:9px;background:var(--input);border:0;outline:none;padding:0 12px;font-size:15px;font-family:inherit;color:var(--text)}
+.inputbar .field{flex:1;height:37px;border-radius:9px;background:var(--input);border:0;outline:none;padding:0 12px;font-size:14px;font-family:inherit;color:var(--text)}
 .inputbar .field::placeholder{color:var(--text3)}
 .muted-bar{flex:0 0 auto;display:flex;align-items:center;justify-content:center;gap:6px;padding:13px;margin:8px 12px 12px;
   background:var(--card);border-radius:10px;color:var(--text3);font-size:14px}
@@ -188,14 +189,14 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:17px;heigh
 .panels{flex:0 0 auto;background:var(--card);border-top:1px solid var(--line);display:none}
 .panels.show{display:block}
 .plus-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:18px 14px 22px}
-.plus-item{display:flex;flex-direction:column;align-items:center;gap:8px;font-size:11.5px;color:var(--text2);cursor:pointer}
+.plus-item{display:flex;flex-direction:column;align-items:center;gap:8px;font-size:11px;color:var(--text2);cursor:pointer}
 .plus-item .sq{width:58px;height:58px;border-radius:14px;background:var(--input);display:grid;place-items:center;color:var(--text)}
 .emoji-tabs{display:flex;gap:14px;align-items:center;padding:10px 14px 4px;color:var(--text3);border-bottom:1px solid var(--line)}
 .emoji-tabs .e{width:22px;height:22px;display:grid;place-items:center}
 .emoji-tabs .e.on{color:var(--text);border-bottom:2px solid var(--blue);padding-bottom:6px;margin-bottom:-5px}
 .emoji-grid{display:grid;grid-template-columns:repeat(8,1fr);gap:6px;padding:12px 14px 20px;max-height:190px;overflow-y:auto}
 .emoji-grid span{font-size:23px;text-align:center;cursor:pointer;line-height:1.3}
-.quote-bar{display:flex;align-items:center;gap:8px;margin:6px 12px 0;padding:8px 10px;background:var(--input);border-radius:8px;font-size:12.5px;color:var(--text2)}
+.quote-bar{display:flex;align-items:center;gap:8px;margin:6px 12px 0;padding:8px 10px;background:var(--input);border-radius:8px;font-size:12px;color:var(--text2)}
 .quote-bar .qt{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;border-left:2px solid var(--blue);padding-left:8px}
 .quote-bar .x{color:var(--text3);cursor:pointer}
 
@@ -238,16 +239,16 @@ body[data-theme="dark"] .kbd-bar .kico{color:#B9BBC2}
 .signin .tag{background:#FFF1E6;color:#E2761B;font-size:11px;padding:2px 6px;border-radius:5px;font-weight:600}
 .feed{margin:0 12px 12px;background:var(--card);border-radius:14px;overflow:hidden;cursor:pointer}
 .cover{height:190px;position:relative;display:flex;align-items:center;justify-content:center;color:#fff;overflow:hidden}
-.cover .big{font-size:27px;font-weight:900;line-height:1.1;letter-spacing:-.8px}
+.cover .big{font-size:24px;font-weight:900;line-height:1.1;letter-spacing:-.8px}
 .cover .sub2{font-size:11px;opacity:.92;margin-top:6px}
 .feed .ft{padding:12px 13px 14px}
-.feed .ft .h{font-size:15.5px;font-weight:600;line-height:1.4}
+.feed .ft .h{font-size:16px;font-weight:600;line-height:1.4}
 .feed .ft .meta{display:flex;align-items:center;gap:8px;margin-top:9px;font-size:12px;color:var(--text2)}
 .art{padding:0 0 20px}
-.art .h1{font-size:19px;font-weight:700;line-height:1.4;padding:14px 16px 6px}
-.art .am{display:flex;align-items:center;gap:8px;padding:4px 16px 12px;font-size:12.5px;color:var(--text2)}
+.art .h1{font-size:18px;font-weight:700;line-height:1.4;padding:14px 16px 6px}
+.art .am{display:flex;align-items:center;gap:8px;padding:4px 16px 12px;font-size:12px;color:var(--text2)}
 .art .am .n{color:var(--text);font-weight:500}
-.art .body{padding:0 16px;font-size:14.5px;line-height:1.85;color:var(--text)}
+.art .body{padding:0 16px;font-size:14px;line-height:1.85;color:var(--text)}
 .art .body p{margin:0 0 14px}
 .art .body .em{color:#E02B1D}
 .cta{display:block;margin:18px 16px 0;height:50px;border-radius:26px;border:1.5px solid var(--text);background:transparent;
@@ -258,26 +259,26 @@ body[data-theme="dark"] .kbd-bar .kico{color:#B9BBC2}
 .profile-hd{background:linear-gradient(160deg,#1B1C22,#0E0F13);color:#fff;padding:14px 20px 26px;display:flex;align-items:center;gap:14px;position:relative;overflow:hidden}
 .profile-hd::after{content:'';position:absolute;right:-30px;top:-40px;width:180px;height:180px;border-radius:50%;border:1px solid rgba(255,255,255,.06)}
 .profile-hd .av{width:58px;height:58px;background:#4A4D57;border-radius:50%;font-size:22px}
-.profile-hd .nm{font-size:19px;font-weight:650}
+.profile-hd .nm{font-size:18px;font-weight:650}
 .profile-hd .id{font-size:12px;opacity:.62;margin-top:5px;display:flex;align-items:center;gap:6px}
 .profile-hd .qr-btn{position:absolute;right:18px;top:24px;opacity:.85;cursor:pointer}
-.sigline{color:rgba(255,255,255,.5);font-size:12.5px;padding:0 20px 26px;background:linear-gradient(180deg,#121317,#101114);margin-top:-1px}
+.sigline{color:rgba(255,255,255,.5);font-size:12px;padding:0 20px 26px;background:linear-gradient(180deg,#121317,#101114);margin-top:-1px}
 .sigline span{opacity:.8}
 
 /* empty */
-.empty{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:70px 30px;color:var(--text2);font-size:13.5px;gap:16px}
+.empty{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:70px 30px;color:var(--text2);font-size:13px;gap:16px}
 .box-ill{width:104px;height:84px;position:relative}
 .box-ill .b1{position:absolute;left:10px;bottom:0;width:56px;height:40px;background:#7FA8E8;border-radius:4px;transform:skewY(-4deg)}
 .box-ill .b2{position:absolute;right:8px;bottom:0;width:38px;height:34px;background:#C6DAF6;border-radius:4px}
 .box-ill .lid{position:absolute;left:8px;top:14px;width:46px;height:12px;background:#5B8DEF;border-radius:3px;transform:rotate(-18deg)}
 .box-ill .star{position:absolute;right:12px;top:2px;font-size:14px;color:#F5C542}
-.empty .t2{font-size:12.5px;color:var(--text3)}
+.empty .t2{font-size:12px;color:var(--text3)}
 
 /* forms */
 .form{padding:8px 16px}
 .fieldset{margin-bottom:18px}
-.fieldset label{display:block;font-size:14.5px;font-weight:600;margin-bottom:10px}
-.input{width:100%;height:46px;border-radius:10px;background:var(--input);border:0;outline:none;padding:0 13px;font-size:15px;color:var(--text);font-family:inherit}
+.fieldset label{display:block;font-size:14px;font-weight:600;margin-bottom:10px}
+.input{width:100%;height:46px;border-radius:10px;background:var(--input);border:0;outline:none;padding:0 13px;font-size:14px;color:var(--text);font-family:inherit}
 .input::placeholder{color:var(--text3)}
 .hint{font-size:12px;color:var(--text3);margin-top:9px;line-height:1.5}
 .btn{height:48px;border-radius:10px;border:0;width:100%;font-size:16px;font-weight:600;font-family:inherit;cursor:pointer}
@@ -293,12 +294,12 @@ body[data-theme="dark"] .kbd-bar .kico{color:#B9BBC2}
 .pv-bg{position:absolute;inset:0;background-size:cover;opacity:.5}
 .pv-inner{position:relative}
 .pv-msg{display:flex;gap:8px;margin-bottom:9px;align-items:flex-start}
-.pv-msg .b{max-width:74%;padding:9px 12px;border-radius:11px;background:var(--bg);font-size:13.5px;line-height:1.5}
+.pv-msg .b{max-width:74%;padding:9px 12px;border-radius:11px;background:var(--bg);font-size:13px;line-height:1.5}
 .pv-msg.me{flex-direction:row-reverse}
 .pv-msg.me .b{background:var(--bubble);color:#fff}
-.pv-input{display:flex;align-items:center;gap:8px;margin-top:4px;padding:7px 10px;border-radius:9px;background:var(--input);color:var(--text3);font-size:12.5px}
+.pv-input{display:flex;align-items:center;gap:8px;margin-top:4px;padding:7px 10px;border-radius:9px;background:var(--input);color:var(--text3);font-size:12px}
 .seg{display:flex;background:var(--input);border-radius:18px;padding:3px;gap:2px}
-.seg .s{flex:1;height:33px;border-radius:15px;display:grid;place-items:center;font-size:12.5px;color:var(--text2);cursor:pointer}
+.seg .s{flex:1;height:33px;border-radius:15px;display:grid;place-items:center;font-size:12px;color:var(--text2);cursor:pointer}
 .seg .s.on{background:var(--blue);color:#fff}
 .swatches{display:flex;gap:12px;overflow-x:auto;padding:4px 16px 8px;margin:0 -16px}
 .sw-dot{width:36px;height:36px;border-radius:50%;flex:0 0 auto;cursor:pointer;position:relative;border:2px solid transparent;background-clip:padding-box}
@@ -320,7 +321,7 @@ body[data-theme="dark"] .kbd-bar .kico{color:#B9BBC2}
 .legend b{display:inline-block;width:6px;height:6px;border-radius:50%;margin-right:4px}
 .cleans{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:0 16px}
 .clean{background:var(--card);border-radius:13px;padding:14px 8px;text-align:center;cursor:pointer}
-.clean .n{font-size:13.5px;font-weight:500;margin-top:8px}
+.clean .n{font-size:13px;font-weight:500;margin-top:8px}
 .clean .s{font-size:11px;color:var(--text3);margin-top:3px}
 
 /* gauges */
@@ -329,7 +330,7 @@ body[data-theme="dark"] .kbd-bar .kico{color:#B9BBC2}
 .ring{width:74px;height:74px;border-radius:50%;margin:0 auto 8px;display:grid;place-items:center;position:relative;
   background:conic-gradient(var(--blue) 0 40%,var(--input) 40% 100%)}
 .ring::after{content:'';position:absolute;inset:7px;border-radius:50%;background:var(--card)}
-.ring b{position:relative;z-index:1;font-size:17px;font-weight:650}
+.ring b{position:relative;z-index:1;font-size:18px;font-weight:650}
 .ring b i{font-size:9px;font-style:normal;font-weight:400;color:var(--text2);margin-left:1px}
 .gauge .gl{font-size:11px;color:var(--text2)}
 .latency{display:flex;gap:10px;margin:0 16px 12px;background:var(--card);border-radius:13px;padding:14px 12px;align-items:flex-end;justify-content:space-between}
@@ -346,13 +347,13 @@ body[data-theme="dark"] .kbd-bar .kico{color:#B9BBC2}
 .dev-item{padding:14px 16px;cursor:pointer;position:relative}
 .dev-item+.dev-item::before{content:'';position:absolute;left:16px;right:0;top:0;height:1px;background:var(--line)}
 .dev-item .n{font-size:16px;font-weight:500;display:flex;align-items:center;gap:8px}
-.dev-item .d{font-size:12.5px;color:var(--text2);margin-top:6px;font-variant-numeric:tabular-nums;word-break:break-all}
-.pill{background:#141519;color:#fff;font-size:10px;padding:2px 7px;border-radius:5px;font-weight:500}
+.dev-item .d{font-size:12px;color:var(--text2);margin-top:6px;font-variant-numeric:tabular-nums;word-break:break-all}
+.pill{background:#141519;color:#fff;font-size:11px;padding:2px 7px;border-radius:5px;font-weight:500}
 body[data-theme="dark"] .pill{background:#3A3D46}
 .log{padding:14px 16px;display:flex;gap:12px}
 .log .ic{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;color:var(--text2)}
-.log .n{font-size:15px;font-weight:500}
-.log .l{font-size:12.5px;color:var(--text2);margin-top:6px;line-height:1.7}
+.log .n{font-size:14px;font-weight:500}
+.log .l{font-size:12px;color:var(--text2);margin-top:6px;line-height:1.7}
 
 /* unlock cards */
 .unlocks{display:flex;gap:14px;padding:24px 20px}
@@ -370,9 +371,9 @@ body[data-theme="dark"] .pill{background:#3A3D46}
 
 /* members */
 .mem{display:flex;align-items:center;gap:12px;padding:11px 16px;cursor:pointer}
-.mem .nm{font-size:15px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
-.mem .nm .adm{background:#EAF1FE;color:#2F6FE0;font-size:10px;padding:1.5px 6px;border-radius:4px;font-weight:600}
-.mem .nm .ow{background:#FCF0DC;color:#B4771A;font-size:10px;padding:1.5px 6px;border-radius:4px;font-weight:600}
+.mem .nm{font-size:14px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.mem .nm .adm{background:#EAF1FE;color:#2F6FE0;font-size:11px;padding:1.5px 6px;border-radius:4px;font-weight:600}
+.mem .nm .ow{background:#FCF0DC;color:#B4771A;font-size:11px;padding:1.5px 6px;border-radius:4px;font-weight:600}
 body[data-theme="dark"] .mem .nm .adm{background:#1D2B44}
 body[data-theme="dark"] .mem .nm .ow{background:#33280F}
 
@@ -388,10 +389,10 @@ body[data-theme="dark"] .mem .nm .ow{background:#33280F}
 .mask-bg{position:absolute;inset:0;background:rgba(0,0,0,.42);z-index:60;display:flex;animation:fade .16s}
 .dialog{width:268px;background:var(--card);border-radius:15px;overflow:hidden;margin:auto;text-align:center;animation:pop .2s}
 @keyframes pop{from{transform:scale(.94);opacity:0}to{transform:scale(1);opacity:1}}
-.dialog .dt{font-size:16.5px;font-weight:650;padding:22px 20px 0}
-.dialog .dm{font-size:13.5px;color:var(--text2);line-height:1.55;padding:10px 22px 20px}
+.dialog .dt{font-size:16px;font-weight:650;padding:22px 20px 0}
+.dialog .dm{font-size:13px;color:var(--text2);line-height:1.55;padding:10px 22px 20px}
 .dialog .da{display:flex;flex-direction:column;border-top:1px solid var(--line)}
-.dialog .da button{height:49px;border:0;background:transparent;font-size:16.5px;color:var(--blue);font-family:inherit;cursor:pointer}
+.dialog .da button{height:49px;border:0;background:transparent;font-size:16px;color:var(--blue);font-family:inherit;cursor:pointer}
 .dialog .da button+button{border-top:1px solid var(--line)}
 .dialog .da button.cancel{color:var(--text);font-weight:500}
 .dialog .da button.danger{color:var(--red)}
@@ -402,20 +403,20 @@ body[data-theme="dark"] .mem .nm .ow{background:#33280F}
 .sheet{position:absolute;left:8px;right:8px;bottom:8px;z-index:61;animation:slideUp .22s cubic-bezier(.32,.72,0,1)}
 @keyframes slideUp{from{transform:translateY(105%)}to{transform:translateY(0)}}
 .sheet .sg{background:var(--card);border-radius:14px;overflow:hidden;margin-bottom:8px}
-.sheet button{display:block;width:100%;height:56px;border:0;background:transparent;font-size:16.5px;color:var(--text);font-family:inherit;cursor:pointer;border-bottom:1px solid var(--line)}
+.sheet button{display:block;width:100%;height:56px;border:0;background:transparent;font-size:16px;color:var(--text);font-family:inherit;cursor:pointer;border-bottom:1px solid var(--line)}
 .sheet button:last-child{border-bottom:0}
 .sheet button.cancel{font-weight:500;background:var(--card);border-radius:14px;height:54px}
 /* 日期滚轮选择器 */
 .picker{position:absolute;left:0;right:0;bottom:0;z-index:61;background:var(--card);border-radius:16px 16px 0 0;animation:slideUp .22s cubic-bezier(.32,.72,0,1)}
-.picker .ptop{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;font-size:15.5px}
+.picker .ptop{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;font-size:16px}
 .picker .ptop span{cursor:pointer}
 .wheels{display:flex;gap:8px;padding:0 16px 24px;position:relative}
 .wcol{flex:1;height:200px;overflow-y:auto;scroll-snap-type:y mandatory;text-align:center;scrollbar-width:none;padding:78px 0}
 .wcol::-webkit-scrollbar{display:none}
-.witem{height:44px;line-height:44px;font-size:17px;scroll-snap-align:center;color:var(--text3);white-space:nowrap;position:relative}
+.witem{height:44px;line-height:44px;font-size:18px;scroll-snap-align:center;color:var(--text3);white-space:nowrap;position:relative}
 .witem.sel{color:var(--text);font-weight:650}
 .wheel-mid{position:absolute;left:16px;right:16px;top:100px;height:44px;transform:translateY(-50%);background:rgba(180,190,208,.32);border-radius:8px;pointer-events:none}
-.sheet button .sm{display:block;font-size:11.5px;color:var(--text3);margin-top:2px}
+.sheet button .sm{display:block;font-size:11px;color:var(--text3);margin-top:2px}
 .sheet .st{font-size:12px;color:var(--text2);text-align:center;padding:12px 0 14px;background:var(--card);border-bottom:1px solid var(--line)}
 
 /* toast */
@@ -432,13 +433,13 @@ body[data-theme="dark"] .mem .nm .ow{background:#33280F}
 /* popover */
 .pop{position:absolute;right:12px;top:96px;width:150px;background:var(--card);border-radius:13px;z-index:65;
   box-shadow:0 14px 40px rgba(10,14,24,.2);overflow:hidden;animation:pop .16s}
-.pop .pi{display:flex;align-items:center;gap:10px;padding:14px 16px;font-size:15px;cursor:pointer}
+.pop .pi{display:flex;align-items:center;gap:10px;padding:14px 16px;font-size:14px;cursor:pointer}
 .pop .pi:active{background:rgba(140,150,170,.12)}
 .pop::before{content:'';position:absolute;right:20px;top:-6px;width:12px;height:12px;background:var(--card);transform:rotate(45deg);border-radius:2px}
 
 /* index bar */
 .idx{position:absolute;right:3px;top:150px;bottom:70px;display:flex;flex-direction:column;justify-content:center;gap:0;
-  font-size:10.5px;color:var(--text2);width:16px;text-align:center;z-index:5}
+  font-size:11px;color:var(--text2);width:16px;text-align:center;z-index:5}
 .idx span{line-height:1.45}
 
 .fadein{animation:fade .2s}
@@ -462,7 +463,7 @@ if(window.self!==window.top)document.documentElement.classList.add('is-embedded'
   <aside class="meta">
     <div class="badge">原型设计 · PROTOTYPE</div>
     <h1>球帝带 · 高保真交互原型</h1>
-    <div class="ver">版本 v1.0.1 · 构建 2026-11-10</div>
+    <div class="ver">版本 v1.0.2 · 构建 2026-11-10</div>
     <p>基于 94 张产品截图复现：4 个一级 Tab、40+ 二级页面、弹窗与完整消息操作链路。</p>
     <ul>
       <li>点击列表项进入二级页面，左上角返回</li>
@@ -475,7 +476,7 @@ if(window.self!==window.top)document.documentElement.classList.add('is-embedded'
   </aside>
   <div class="device">
     <div class="screen" id="screen">
-      <div class="protobar"><span>原型设计 · PROTOTYPE</span><b>v1.0.1</b></div>
+      <div class="protobar"><span>原型设计 · PROTOTYPE</span><b>v1.0.2</b></div>
       <div class="statusbar">
         <div class="sb-l" id="clock">15:51</div>
         <div class="island"><i class="cam"></i></div>
@@ -492,14 +493,14 @@ if(window.self!==window.top)document.documentElement.classList.add('is-embedded'
 
 <script>
 /* =========================================================
-   球帝带 交互原型  v1.0.1
+   球帝带 交互原型  v1.0.2
    ========================================================= */
-const V = 'v1.0.1';
+const V = 'v1.0.2';
 const screenEl = document.getElementById('screen');
 const stackEl  = document.getElementById('stack');
 
 const S = {
-  theme:'auto', bubble:'#3B82F6', bg:0, pure:false, font:15, lang:'跟随系统',
+  theme:'auto', bubble:'#3B82F6', bg:0, pure:false, font:14, lang:'跟随系统',
   unlock:'none', chatBg:'default',
   sw:{dnd:false,snd:true,vib:true,read:true,ephemeral:false,block:false,pinChat:false,pinGroup:false,muteGroup:false,keep7:false},
   chatState:{}, // id -> 'normal' | 'exited' | 'muted'
@@ -560,7 +561,7 @@ function av(name, opt={}){
   const ch = opt.t || (name||'').slice(0,1);
   const bg = opt.c || AVCOL[(name||'x').charCodeAt(0)%AVCOL.length];
   const cls = ['av', opt.round?'round':'', opt.size||''].join(' ');
-  const fs = opt.t && opt.t.length>2 ? 'font-size:10px;line-height:1.15' : '';
+  const fs = opt.t && opt.t.length>2 ? 'font-size:11px;line-height:1.15' : '';
   return `<div class="${cls}" style="background:${bg};${opt.grad?`background-image:${opt.grad};`:''}${fs}">${opt.html||esc(ch)}${opt.online?'<i class="dot"></i>':''}</div>`;
 }
 function swRow(label,key,val){ return `<div class="row noarrow"><div class="li-l"><span class="li-t">${label}</span></div>
@@ -808,7 +809,7 @@ PAGES.mine = () => `
       ${row({icon:'net',label:'网络诊断',go:'network'})}
       ${row({icon:'info',label:'关于',go:'about'})}
     </div>
-    <div style="text-align:center;font-size:10.5px;color:var(--text3);padding:16px 0 4px">
+    <div style="text-align:center;font-size:11px;color:var(--text3);padding:16px 0 4px">
       原型设计 ${V} · 仅供产品评审
     </div>
   </div>
@@ -840,7 +841,7 @@ PAGES.security = () => `
 PAGES.devices = () => `
   ${nav('设备列表')}
   <div class="pbody">
-    <div style="padding:8px 16px 4px"><div style="font-size:22px;font-weight:700;letter-spacing:-.4px">登录设备管理</div>
+    <div style="padding:8px 16px 4px"><div style="font-size:24px;font-weight:700;letter-spacing:-.4px">登录设备管理</div>
       <div style="font-size:13px;color:var(--text2);margin-top:8px;line-height:1.55">以下是您的全部登录设备，点击进入详情，查看该设备的登录记录</div></div>
     <div class="group" style="margin-top:14px">
       ${[['Unknown iPhone','L_******************************A040','当前设备',true],
@@ -913,7 +914,7 @@ PAGES.phone = () => `
     <div class="form">
       <div class="fieldset"><label>手机号</label>
         <div style="display:flex;gap:10px">
-          <div class="input" style="width:86px;display:flex;align-items:center;justify-content:center;gap:3px" data-go="country">+86 <span style="color:var(--text3);font-size:10px">▼</span></div>
+          <div class="input" style="width:86px;display:flex;align-items:center;justify-content:center;gap:3px" data-go="country">+86 <span style="color:var(--text3);font-size:11px">▼</span></div>
           <input class="input" placeholder="请输入手机号" style="flex:1">
         </div>
       </div>
@@ -935,7 +936,7 @@ PAGES.country = () => {
     <div class="glabel" style="padding:12px 22px 6px;background:var(--bg)">A</div>
     <div class="group" style="margin-top:0">
       ${list.map(([n,c])=>`<div class="row" data-act="pickcountry" data-v="${n}">
-        <div class="li-l"><span class="li-t" style="font-size:15px">${n}</span></div>
+        <div class="li-l"><span class="li-t" style="font-size:14px">${n}</span></div>
         <div class="li-r"><span class="val" style="color:var(--text)">${c}</span></div></div>`).join('')}
     </div>
   </div>
@@ -961,7 +962,7 @@ PAGES.storage = () => `
   ${nav('数据与存储')}
   <div class="pbody">
     <div class="usage">
-      <div class="top"><span style="color:var(--text);font-size:15px">存储使用情况</span><span>99.14 MB / 511.34 GB</span></div>
+      <div class="top"><span style="color:var(--text);font-size:14px">存储使用情况</span><span>99.14 MB / 511.34 GB</span></div>
       <div class="bar"><i style="width:14%;background:#3B82F6"></i><i style="width:5%;background:#22C55E"></i></div>
       <div class="legend"><span><b style="background:#3B82F6"></b>视频 (188.76 KB)</span><span><b style="background:#22C55E"></b>图片 (98.95 MB)</span><span><b style="background:#F59E0B"></b>文本 (0.00 B)</span></div>
     </div>
@@ -997,7 +998,7 @@ PAGES.appearance = () => {
   <div class="pbody">
     <div class="preview">
       <div class="pv-inner">
-        <div class="pv-msg">${av('张娜娜',{c:'#C58B6A',size:'xs',html:S.avatarEmoji})}<div><div style="font-size:10px;color:var(--text2);margin-bottom:3px">张娜娜</div>
+        <div class="pv-msg">${av('张娜娜',{c:'#C58B6A',size:'xs',html:S.avatarEmoji})}<div><div style="font-size:11px;color:var(--text2);margin-bottom:3px">张娜娜</div>
           <div class="b" style="background:${(document.body.dataset.theme==='dark'?'#2A2C33':'#F2F4F8')}">你好，收到及时回复</div></div></div>
         <div class="pv-msg me"><div class="b">好的，收到了</div></div>
         <div class="pv-input">${ic('mic',15)}<span>Message</span><span style="margin-left:auto;display:flex;gap:8px">${ic('smile',15)}${ic('plus',15)}</span></div>
@@ -1006,7 +1007,7 @@ PAGES.appearance = () => {
     <div style="padding:4px 16px 16px">
       <div style="font-size:13px;font-weight:600;margin-bottom:10px">全局</div>
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px">
-        <span style="font-size:15px">日夜模式</span>
+        <span style="font-size:14px">日夜模式</span>
         <div class="seg" style="width:170px">
           <div class="s ${S.theme==='light'?'on':''}" data-act="settheme" data-v="light">☀</div>
           <div class="s ${S.theme==='dark'?'on':''}" data-act="settheme" data-v="dark">🌙</div>
@@ -1024,7 +1025,7 @@ PAGES.appearance = () => {
       </div>
       <div style="font-size:13px;font-weight:600;margin:20px 0 6px">更多设置</div>
       ${swRow('纯净模式','pure',S.pure)}
-      <div style="font-size:11.5px;color:var(--text3);padding:4px 0 0">开启后不显示外观效果（聊天背景与自定义气泡）</div>
+      <div style="font-size:11px;color:var(--text3);padding:4px 0 0">开启后不显示外观效果（聊天背景与自定义气泡）</div>
     </div>
   </div>`;
 };
@@ -1035,7 +1036,7 @@ PAGES.font = () => `
     <div class="preview">
       <div class="pv-inner">
         <div class="pv-msg">${av('张娜娜',{c:'#C58B6A',size:'xs',html:S.avatarEmoji})}
-          <div><div style="font-size:10px;color:var(--text2);margin-bottom:3px">张娜娜</div>
+          <div><div style="font-size:11px;color:var(--text2);margin-bottom:3px">张娜娜</div>
           <div class="b" style="font-size:${S.font}px;background:${(document.body.dataset.theme==='dark'?'#2A2C33':'#F2F4F8')}">预览字体大小，拖动下面的滑块，可设置字体大小。设置后，会改变应用内所有文本的字体大小。</div></div></div>
         <div class="pv-msg me"><div class="b" style="font-size:${S.font}px">好的，收到了</div></div>
         <div class="pv-input">${ic('mic',15)}<span>Message</span><span style="margin-left:auto;display:flex;gap:8px">${ic('smile',15)}${ic('plus',15)}</span></div>
@@ -1043,7 +1044,7 @@ PAGES.font = () => `
     </div>
     <div style="padding:6px 22px 10px">
       <div style="font-size:13px;font-weight:600;margin-bottom:4px">全局字体大小</div>
-      <div style="text-align:center;font-size:12px;color:var(--text2);margin:14px 0 10px">${S.font===15?'标准':(S.font<15?'较小':'较大')}</div>
+      <div style="text-align:center;font-size:12px;color:var(--text2);margin:14px 0 10px">${S.font===14?'标准':(S.font<14?'较小':'较大')}</div>
       <div style="display:flex;align-items:center;gap:12px">
         <span style="font-size:12px">A</span>
         <input type="range" min="12" max="22" step="1" value="${S.font}" data-act="fontrange" style="flex:1;accent-color:var(--blue)">
@@ -1070,7 +1071,7 @@ PAGES.network = () => {
       <div class="gauge"><div class="ring"><b>0<i>ms</i></b></div><div class="gl">图片延迟</div></div>
     </div>
     <div class="group" style="margin:14px 16px 10px;background:var(--card)">
-      <div class="row noarrow" style="min-height:44px"><div class="li-l"><span class="ico">${ic('net',20)}</span><span class="li-t" style="font-size:14.5px">网络线路</span></div></div>
+      <div class="row noarrow" style="min-height:44px"><div class="li-l"><span class="ico">${ic('net',20)}</span><span class="li-t" style="font-size:14px">网络线路</span></div></div>
       <div style="padding:0 12px 12px"><div class="lines">
         ${[1,2,3,4,5].map(i=>`<div class="line ${S.lines===i?'on':''}" data-act="setline" data-v="${i}">
           <span>线路${i}</span><span class="ms" style="${i===3?'color:#22C55E':''}">${i===3?'755ms':'--'}</span></div>`).join('')}
@@ -1086,9 +1087,9 @@ PAGES.about = () => `
   <div class="pbody">
     <div style="display:flex;flex-direction:column;align-items:center;padding:26px 0 18px">
       <div class="av round" style="width:74px;height:74px;background:#111;font-size:26px">${ic('chat',34)}</div>
-      <div style="font-size:17px;font-weight:600;margin-top:12px">球帝带</div>
+      <div style="font-size:18px;font-weight:600;margin-top:12px">球帝带</div>
       <div style="font-size:12px;color:var(--text3);margin-top:5px">v 4.71(2609071846)</div>
-      <div style="margin-top:10px;font-size:10.5px;color:#fff;background:#141519;padding:3px 9px;border-radius:6px;letter-spacing:.5px">原型设计 ${V}</div>
+      <div style="margin-top:10px;font-size:11px;color:#fff;background:#141519;padding:3px 9px;border-radius:6px;letter-spacing:.5px">原型设计 ${V}</div>
     </div>
     <div class="group">
       ${row({label:'检查更新',value:'',act:'toast',msg:'当前为最新版本（原型）'})}
@@ -1173,7 +1174,7 @@ PAGES.avatarEdit = () => `${nav('更换头像','<span class="nav-btn" data-go="a
   <div class="pbody">
     <div style="display:flex;flex-direction:column;align-items:center;padding:18px 0 6px">
       <div class="av round" style="width:132px;height:132px;background:#6E7178;font-size:46px">{S.avatarEmoji}</div>
-      <div style="display:flex;gap:26px;margin-top:18px;font-size:15px">
+      <div style="display:flex;gap:26px;margin-top:18px;font-size:14px">
         <span data-act="avtab" data-t="0" style="${S.avtab!==1?'font-weight:600;border-bottom:2px solid var(--blue);padding-bottom:5px':'color:var(--text2)'};cursor:pointer">自定义</span>
         <span data-act="avtab" data-t="1" style="${S.avtab===1?'font-weight:600;border-bottom:2px solid var(--blue);padding-bottom:5px':'color:var(--text2)'};cursor:pointer">抖音热门</span>
       </div>
@@ -1195,7 +1196,7 @@ PAGES.applylog = () => {
   const cur=S.applytab||0;
   return `${nav('申请记录')}
   <div style="display:flex;border-bottom:1px solid var(--line)">
-    ${tabs.map((t,i)=>`<div data-act="applytab" data-t="${i}" style="flex:1;text-align:center;padding:13px 0;font-size:15px;cursor:pointer;${cur===i?'color:var(--text);font-weight:600;border-bottom:2px solid var(--blue)':'color:var(--text3)'}">${t}</div>`).join('')}
+    ${tabs.map((t,i)=>`<div data-act="applytab" data-t="${i}" style="flex:1;text-align:center;padding:13px 0;font-size:14px;cursor:pointer;${cur===i?'color:var(--text);font-weight:600;border-bottom:2px solid var(--blue)':'color:var(--text3)'}">${t}</div>`).join('')}
   </div>
   <div class="pbody"><div class="empty" style="padding-top:120px">
     <div class="box-ill"><div class="b1"></div><div class="b2"></div><div class="lid"></div><div class="star">✦</div></div>
@@ -1209,11 +1210,11 @@ PAGES.addfriend = () => `${nav('添加好友')}
     <div style="display:flex;margin-top:38px">
       <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:10px;cursor:pointer" data-act="toast" data-m="已打开扫一扫（原型演示）">
         <span style="color:var(--text)">${ic('scan',30)}</span>
-        <span style="font-size:14.5px">扫一扫</span>
+        <span style="font-size:14px">扫一扫</span>
       </div>
       <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:10px;cursor:pointer" data-go="qrcode">
         <span style="color:var(--text)">${ic('qr',30)}</span>
-        <span style="font-size:14.5px">我的二维码</span>
+        <span style="font-size:14px">我的二维码</span>
       </div>
     </div>
   </div>`;
@@ -1244,7 +1245,7 @@ PAGES.qrcode = () => {
         <div style="margin-left:auto;width:44px;height:44px;border-radius:10px;background:#111;display:grid;place-items:center;color:#fff">${ic('chat',20)}</div>
       </div>
       <div style="text-align:center;font-size:12px;color:var(--text2);margin-top:22px;line-height:1.7">此二维码 50 次有效<br>有效期至 2026-11-10 16:00</div>
-      <div style="font-size:12.5px;color:var(--blue);margin-top:10px" data-act="toast" data-m="二维码已刷新">↻ 点击刷新</div>
+      <div style="font-size:12px;color:var(--blue);margin-top:10px" data-act="toast" data-m="二维码已刷新">↻ 点击刷新</div>
     </div>
     <div class="qr-acts">
       <div class="qr-act" data-act="toast" data-m="已打开扫一扫（原型演示）"><span>${ic('scan',24)}</span>扫一扫</div>
@@ -1265,9 +1266,9 @@ PAGES.appeal = () => `${nav('账户申诉')}
     </div>
     <div style="padding:0 18px;font-size:14px;line-height:1.75">为了您的账户安全，我们可能会使用您的联系信息向您核对信息的准确性校验，请确保您的信息真实有效。</div>
     <div style="padding:16px 18px 0">
-      <div style="font-size:14.5px;font-weight:600">账户申诉</div>
+      <div style="font-size:14px;font-weight:600">账户申诉</div>
       <div style="font-size:12px;color:var(--text2);margin-top:8px;line-height:1.7">适用范围：账户无法正常登录、手机停用、邮箱停用等场景。</div>
-      <div style="font-size:13.5px;line-height:2.1;margin-top:12px">1、确保您是账户所有者；<br>2、校验账户现有信息；<br>3、提交申诉，等待平台审核；</div>
+      <div style="font-size:13px;line-height:2.1;margin-top:12px">1、确保您是账户所有者；<br>2、校验账户现有信息；<br>3、提交申诉，等待平台审核；</div>
     </div>
     <div style="padding:34px 18px"><button class="btn dark" data-act="toast" data-m="已进入下一步（原型演示）">下一步</button></div>
   </div>`;
@@ -1282,9 +1283,9 @@ PAGES.newfriends = () => `${nav('新的朋友')}
       <div class="row" data-go="friendVerify" data-params='{"id":"c2"}'>
         ${av('老周',{c:'#1B1B1F',t:'周',size:'sm'})}
         <div class="li-l" style="flex-direction:column;align-items:flex-start;gap:3px;margin-left:0">
-          <span class="li-t" style="font-size:15px">👋 老周</span>
-          <span style="font-size:12.5px;color:var(--text2)">我是👋老周</span></div>
-        <div class="li-r" style="margin-left:auto"><span style="font-size:13.5px;color:var(--text2)">已同意</span></div>
+          <span class="li-t" style="font-size:14px">👋 老周</span>
+          <span style="font-size:12px;color:var(--text2)">我是👋老周</span></div>
+        <div class="li-r" style="margin-left:auto"><span style="font-size:13px;color:var(--text2)">已同意</span></div>
       </div>
     </div>
   </div>`;
@@ -1298,13 +1299,13 @@ PAGES.friendVerify = (p) => {
     <div style="display:flex;align-items:center;gap:14px;padding:18px 16px 6px">
       ${av(c.name,{c:c.c,t:c.lab,round:true,size:'lg'})}
       <div>
-        <div style="font-size:19px;font-weight:600;display:flex;align-items:center;gap:6px">${esc(c.name)} <span data-act="toast" data-m="ID 已复制" style="color:var(--text3)">${ic('copy',14)}</span></div>
-        <div style="font-size:12.5px;color:var(--text3);margin-top:4px">ID：8651091201</div>
+        <div style="font-size:18px;font-weight:600;display:flex;align-items:center;gap:6px">${esc(c.name)} <span data-act="toast" data-m="ID 已复制" style="color:var(--text3)">${ic('copy',14)}</span></div>
+        <div style="font-size:12px;color:var(--text3);margin-top:4px">ID：8651091201</div>
       </div>
     </div>
     <div class="glabel" style="margin-top:14px">备注</div>
-    <div style="margin:6px 16px 0;background:var(--input);border-radius:12px;padding:14px 14px 40px;font-size:15px;color:var(--text)">${esc(msg)}</div>
-    <div style="text-align:center;font-size:13.5px;color:var(--text3);margin:22px 0 18px">已同意</div>
+    <div style="margin:6px 16px 0;background:var(--input);border-radius:12px;padding:14px 14px 40px;font-size:14px;color:var(--text)">${esc(msg)}</div>
+    <div style="text-align:center;font-size:13px;color:var(--text3);margin:22px 0 18px">已同意</div>
     <div style="padding:0 16px"><button class="btn dark" data-go="chat" data-params='{"id":"${c.id}"}' style="border-radius:26px">发送消息</button></div>
   </div>`;
 }
@@ -1324,7 +1325,7 @@ PAGES.groupTags = () => `${nav('好友分组', `<span class="nav-btn" data-act="
     ${S.tagGroups.length? `<div class="group" style="margin-top:4px">
       ${S.tagGroups.map(g=>`
         <div class="row" data-go="groupTagDetail" data-params='{"id":"${g.id}"}'>
-          <span class="li-t" style="font-size:15.5px">${esc(g.name)}</span>
+          <span class="li-t" style="font-size:16px">${esc(g.name)}</span>
           <div class="li-r" style="margin-left:auto;gap:4px"><span style="font-size:14px;color:var(--text3)">${g.members.length}</span><span class="chev">›</span></div>
         </div>`).join('')}
     </div>` : `
@@ -1385,14 +1386,14 @@ PAGES.friend = () => `${nav('')}
   <div class="pbody">
     <div style="display:flex;gap:14px;padding:8px 18px 6px;align-items:center">
       ${av('老周',{c:'#1B1B1F',t:'周',round:true,html:'<span style="font-size:20px">🧑</span>'})}
-      <div><div style="font-size:19px;font-weight:600;display:flex;align-items:center;gap:6px">老周 <span data-act="toast" data-m="ID 已复制" style="color:var(--text3)">${ic('copy',14)}</span></div>
+      <div><div style="font-size:18px;font-weight:600;display:flex;align-items:center;gap:6px">老周 <span data-act="toast" data-m="ID 已复制" style="color:var(--text3)">${ic('copy',14)}</span></div>
         <div style="font-size:12px;color:var(--text2);margin-top:6px">添加于 2024-02-01</div></div>
     </div>
     <div style="display:flex;gap:8px;padding:6px 18px 12px">
       <span style="background:var(--input);border-radius:12px;font-size:12px;padding:3px 10px;color:var(--text2)">♂ 男</span>
       <span style="background:var(--input);border-radius:12px;font-size:12px;padding:3px 10px;color:var(--text2)">2岁</span>
     </div>
-    <div style="padding:0 18px;font-size:13.5px;color:var(--text2)">✎ 这个用户很懒，暂无签名~</div>
+    <div style="padding:0 18px;font-size:13px;color:var(--text2)">✎ 这个用户很懒，暂无签名~</div>
     <div style="padding:14px 18px;font-size:14px;color:var(--text2)" data-act="remark">备注：未设置 ✎</div>
     <div style="padding:6px 18px 10px"><button class="btn dark" data-act="openchat" data-id="c2">发送消息</button></div>
     <div style="padding:0 18px"><button class="btn ghost" data-act="delfriend">删除好友</button></div>
@@ -1413,17 +1414,17 @@ PAGES.groupInfo = (p) => {
   if(exited) return `${nav('群详情')}
     <div class="pbody">
       <div style="display:flex;gap:12px;align-items:center;padding:14px 16px">${av(c.name,{c:c.c,t:c.lab,html:`<span class="tiny" style="white-space:pre-line">${c.lab}</span>`})}
-        <div style="font-size:16.5px;font-weight:500">${esc(c.name)}</div></div>
-      <div style="text-align:center;padding:30px;color:var(--red);font-size:15px" data-act="delchat">删除</div>
+        <div style="font-size:16px;font-weight:500">${esc(c.name)}</div></div>
+      <div style="text-align:center;padding:30px;color:var(--red);font-size:14px" data-act="delchat">删除</div>
     </div>`;
   return `${nav('群详情')}
   <div class="pbody" style="padding-bottom:6px">
     <div style="display:flex;gap:12px;align-items:center;padding:4px 16px 14px">
       ${av(c.name,{c:c.c,t:c.lab,html:`<span class="tiny" style="white-space:pre-line">${c.lab}</span>`})}
-      <div style="font-size:16.5px;font-weight:500;min-width:0">${esc(c.name)}</div></div>
+      <div style="font-size:16px;font-weight:500;min-width:0">${esc(c.name)}</div></div>
     <div style="background:var(--card);margin:0 12px 10px;border-radius:14px;padding:16px">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
-        <span style="font-size:14.5px">群成员</span>
+        <span style="font-size:14px">群成员</span>
         <span style="font-size:13px;color:var(--text2);display:flex;align-items:center;gap:4px" data-go="groupMembers" data-params='{"id":"${id}"}'>共${g.members}人 <span class="chev">›</span></span>
       </div>
       ${groupAvatars(id)}
@@ -1431,7 +1432,7 @@ PAGES.groupInfo = (p) => {
     <div class="group" style="margin-top:0">
       ${row({label:'群公告',go:'notice',params:{id}})}
       <div style="padding:0 16px 14px;margin-top:-14px" data-go="notice" data-params='{"id":"${id}"}'>
-        <div style="font-size:12.5px;color:var(--text2);line-height:1.6">${esc((g.notice||'暂无群公告').slice(0,44))}</div>
+        <div style="font-size:12px;color:var(--text2);line-height:1.6">${esc((g.notice||'暂无群公告').slice(0,44))}</div>
       </div>
       ${row({label:'群聊面具',value:'设置本群昵称和头像',go:'mask',params:{id}})}
       ${row({label:'查找聊天记录',go:'gsearch',params:{id}})}
@@ -1439,10 +1440,10 @@ PAGES.groupInfo = (p) => {
       ${swRow('消息免打扰','muteGroup',S.sw.muteGroup)}
       <div class="row noarrow"><div class="li-l"><span class="li-t">聊天记录保留时间</span></div>
         <div class="li-r"><span class="val">${g.keep||'7天'}</span></div></div>
-      <div style="padding:0 16px 14px;margin-top:-20px;font-size:11.5px;color:var(--text3)">自动清除超过时效的聊天记录</div>
+      <div style="padding:0 16px 14px;margin-top:-20px;font-size:11px;color:var(--text3)">自动清除超过时效的聊天记录</div>
       ${row({label:'删除聊天记录',act:'clearhistory'})}
     </div>
-    <div style="text-align:center;padding:18px;color:var(--red);font-size:15px" data-act="exitgroup" data-id="${id}">退出群聊</div>
+    <div style="text-align:center;padding:18px;color:var(--red);font-size:14px" data-act="exitgroup" data-id="${id}">退出群聊</div>
   </div>`;
 };
 
@@ -1469,10 +1470,10 @@ PAGES.memberInfo = (p) => `${nav('')}
   <div class="pbody">
     <div style="display:flex;gap:14px;align-items:center;padding:12px 18px">
       ${av(p.name||'管理员小优',{c:'#8B5E4A',round:true})}
-      <div><div style="font-size:17px;font-weight:600;display:flex;align-items:center;gap:6px">${p.name||'管理员小优'}<span style="color:var(--text3)">${ic('copy',14)}</span></div>
+      <div><div style="font-size:18px;font-weight:600;display:flex;align-items:center;gap:6px">${p.name||'管理员小优'}<span style="color:var(--text3)">${ic('copy',14)}</span></div>
         ${p.role==='1'?'<span class="adm" style="display:inline-block;margin-top:6px">管理员</span>':''}</div>
     </div>
-    <div style="padding:14px 18px;font-size:13.5px;color:var(--text2)">群昵称：${p.name||'管理员小优'}</div>
+    <div style="padding:14px 18px;font-size:13px;color:var(--text2)">群昵称：${p.name||'管理员小优'}</div>
     <div style="padding:6px 18px"><button class="btn ghost" data-act="openchat" data-id="c2">发消息</button></div>
   </div>`;
 
@@ -1480,7 +1481,7 @@ PAGES.notice = (p) => {
   const g = D.groups[p.id]||D.groups.c1;
   const txt = (g.notice||'') + '\n\n本群为球迷交流群，请大家文明交流、理性看球。\n每周组织观赛活动，欢迎在群内报名参加。⚽\n\n足球交流群管理组';
   return `${nav('群公告')}
-  <div class="pbody"><div class="art"><div class="body" style="padding:16px;font-size:12.5px;line-height:1.9;color:var(--text2)">
+  <div class="pbody"><div class="art"><div class="body" style="padding:16px;font-size:12px;line-height:1.9;color:var(--text2)">
     ${esc(txt).split('\n').map(l=>l.trim()?`<p style="margin:0 0 10px">${l}</p>`:'<div style="height:6px"></div>').join('')}
   </div></div></div>`;
 };
@@ -1490,7 +1491,7 @@ PAGES.mask = (p) => `${nav('群聊面具')}
     ${group(
       `<div class="mask-row" data-go="gname" data-params='{"id":"${p.id||'c1'}"}'>
         <span style="font-size:16px">我的本群昵称</span>
-        <div style="display:flex;align-items:center;gap:6px;color:var(--text2);font-size:15px">${S.nick||D.me.name}<span class="chev">›</span></div></div>
+        <div style="display:flex;align-items:center;gap:6px;color:var(--text2);font-size:14px">${S.nick||D.me.name}<span class="chev">›</span></div></div>
        <div class="mask-row" data-go="avatarEdit">
         <span style="font-size:16px">我的本群头像</span>
         <div style="display:flex;align-items:center;gap:6px">${av('F',{c:'#6D9BF5',round:true,size:'sm',html:'F'})}<span class="chev">›</span></div></div>`)}
@@ -1499,7 +1500,7 @@ PAGES.mask = (p) => `${nav('群聊面具')}
 
 PAGES.gname = () => `${nav('编辑群昵称','<span class="nav-act" data-act="savenick">保存</span>')}
   <div class="pbody"><div class="form" style="padding-top:16px">
-    <input class="input" value="${S.nick||D.me.name}" data-nickinput maxlength="15" style="background:transparent;padding-left:0;font-size:17px">
+    <input class="input" value="${S.nick||D.me.name}" data-nickinput maxlength="15" style="background:transparent;padding-left:0;font-size:18px">
     <div class="hint">请设置 1-15 个字符</div>
   </div></div>`;
 
@@ -1623,7 +1624,7 @@ PAGES.chat = (p) => {
   </div>
   ${g&&g.notice?`<div class="noticebar"><span>${ic('chat',15)}</span><span>群公告：</span><span class="close" data-act="closenotice">${ic('close',14)}</span></div>`:''}
   <div class="msgs" id="msgs" style="${bg}">
-    ${msgs.length?msgs.map((m,i)=>msgHtml(m,i,ctx)).join(''):`<div class="empty" style="padding-top:120px"><div style="font-size:12.5px;color:var(--text3)">暂无更多消息</div></div>`}
+    ${msgs.length?msgs.map((m,i)=>msgHtml(m,i,ctx)).join(''):`<div class="empty" style="padding-top:120px"><div style="font-size:12px;color:var(--text3)">暂无更多消息</div></div>`}
   </div>
   ${S.multi?`
     <div style="display:flex;justify-content:space-around;padding:12px 60px;background:var(--card);border-top:1px solid var(--line)">
@@ -1674,7 +1675,7 @@ PAGES.chatset = (p) => {
     )}
     <div class="group">
       <div class="row noarrow"><div class="li-l"><span class="li-t">聊天记录保留时间</span></div><div class="li-r"><span class="val">永久</span><span class="chev">›</span></div></div>
-      <div style="padding:0 16px 14px;margin-top:-16px;font-size:11.5px;color:var(--text3)">自动清除超过时效的聊天记录</div>
+      <div style="padding:0 16px 14px;margin-top:-16px;font-size:11px;color:var(--text3)">自动清除超过时效的聊天记录</div>
       ${row({label:'清空聊天记录',act:'clearhistory'})}
     </div>
   </div>`;
@@ -1742,7 +1743,7 @@ PAGES.xxpay = () => `${nav('XXPay','')}
     ${D.posts.filter(p=>p.ch==='pay').map(p=>`
       <div class="feed" data-go="post" data-params='{"id":"${p.id}"}'>
         <div class="cover" style="height:170px;background:linear-gradient(160deg,${p.cover==='pay'?'#0B3C9E,#1E63C8':'#123C7A,#2C63C8'})">
-          <div style="text-align:center"><div style="font-size:10px;letter-spacing:2px;opacity:.85">XXPay</div>
+          <div style="text-align:center"><div style="font-size:11px;letter-spacing:2px;opacity:.85">XXPay</div>
             <div class="big" style="font-size:22px">${p.cover==='pay'?'高息来袭':'反诈小贴士'}</div>
             <div class="sub2">${p.cover==='pay'?'余额宝收益升级，年利率高达 18%':'官方渠道 · 谨防诈骗'}</div></div>
         </div>
@@ -1914,7 +1915,7 @@ ACT.newtag = ()=>{
   const wrap=document.createElement('div'); wrap.className='mask-bg';
   wrap.innerHTML=`<div class="dialog"><div class="dt">新建分组</div>
     <div style="padding:14px 18px 16px;position:relative">
-      <input placeholder="请输入分组名称" maxlength="20" style="width:100%;height:44px;border:0;outline:none;background:var(--input);border-radius:9px;padding:0 34px 0 12px;font-family:inherit;font-size:14.5px;color:var(--text)">
+      <input placeholder="请输入分组名称" maxlength="20" style="width:100%;height:44px;border:0;outline:none;background:var(--input);border-radius:9px;padding:0 34px 0 12px;font-family:inherit;font-size:14px;color:var(--text)">
       <span class="ntclear" style="position:absolute;right:26px;top:26px;width:18px;height:18px;border-radius:50%;background:rgba(140,150,170,.45);color:#fff;display:none;place-items:center;cursor:pointer;font-size:11px;line-height:1">✕</span>
     </div>
     <div class="da horiz"><button class="cancel" data-c>取消</button><button data-o>确定</button></div></div>`;
