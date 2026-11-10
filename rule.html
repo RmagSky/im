@@ -1,0 +1,1021 @@
+<!doctype html>
+<!--
+  球帝带 · 产品基线
+  版本：v1.1.0 ｜ 入口：index.html ｜ 原型：proto.html
+  本文档为规则的唯一权威载体：产品口径、交互规范、团队协作条款以本文件为准。
+-->
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="only light">
+<title>产品基线 · 球帝带 v1.1.0</title>
+<link rel="icon" href="data:,">
+<style>
+:root{
+  --blue:#3B82F6; --blue-d:#1F6FEB; --blue-l:#EAF1FE;
+  --bg:#EBEEF3; --card:#fff; --soft:#F7F9FC;
+  --text:#101114; --text2:#4E5562; --text3:#8A8F99; --text4:#B7BBC3;
+  --line:#E8EBF1; --line2:#F1F3F7;
+  --red:#FF4D4F; --amber:#B26A00; --amber-bg:#FFF8E8; --amber-line:#FFE0A8;
+  --ease:cubic-bezier(.32,.72,0,1);
+  --mono:ui-monospace,"SFMono-Regular",Consolas,Menlo,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  background:var(--bg);color:var(--text);font-size:14px;line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+}
+.shell{display:flex;min-height:100vh}
+
+/* 侧栏 */
+.side{
+  width:244px;flex:0 0 244px;background:#FBFCFE;border-right:1px solid var(--line);
+  position:sticky;top:0;height:100vh;overflow-y:auto;padding:20px 12px 32px;
+}
+.side::-webkit-scrollbar{width:6px}
+.side::-webkit-scrollbar-thumb{background:#DDE2EA;border-radius:3px}
+.side-brand{display:flex;align-items:center;gap:8px;padding:0 10px 16px}
+.side-brand .dot{width:10px;height:10px;border-radius:3px;background:var(--blue);flex:0 0 auto}
+.side-brand .nm{font-size:14px;font-weight:600}
+.side-brand .vd{font-size:10.5px;font-weight:600;color:#fff;background:var(--blue);border-radius:4px;padding:1px 6px;font-variant-numeric:tabular-nums}
+.side-grp{font-size:11px;font-weight:600;color:var(--text4);letter-spacing:.6px;padding:0 10px;margin:16px 0 6px}
+.side-grp:first-of-type{margin-top:0}
+.side-link{
+  display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:6px;color:var(--text2);
+  font-size:13px;cursor:pointer;transition:background .15s var(--ease),color .15s var(--ease);
+}
+.side-link:hover{background:#F1F4FA;color:var(--text)}
+.side-link.on{background:var(--blue-l);color:var(--blue-d);font-weight:600}
+.side-link .n{font-size:11px;color:var(--text4);font-variant-numeric:tabular-nums;min-width:24px}
+.side-link.on .n{color:var(--blue-d)}
+.side-foot{padding:16px 10px 0;margin-top:16px;border-top:1px solid var(--line);font-size:11.5px;color:var(--text4);line-height:1.8}
+.side-foot a{color:var(--blue-d);text-decoration:none}
+
+/* 正文 */
+.doc{flex:1;min-width:0;padding:28px 36px 80px;max-width:1040px}
+.doc-hd{margin-bottom:22px}
+.doc-hd .top{display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--text4);letter-spacing:.4px}
+.doc-hd .top i{width:9px;height:9px;border-radius:3px;background:var(--blue);flex:0 0 auto}
+.doc-hd h1{font-size:22px;font-weight:700;letter-spacing:-.3px;margin:8px 0 6px}
+.doc-hd p{font-size:13px;color:var(--text3)}
+.sec{margin-bottom:26px;scroll-margin-top:18px}
+.sec-crumb{font-size:11.5px;color:var(--text4);margin-bottom:4px}
+.sec h2{font-size:18px;font-weight:600;letter-spacing:-.2px;margin-bottom:6px}
+.sec-lead{font-size:13px;color:var(--text2);margin-bottom:16px;max-width:880px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin-bottom:14px}
+.card > h3{font-size:15px;font-weight:600;margin-bottom:4px}
+.card > .sub{font-size:12px;color:var(--text3);margin-bottom:14px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:var(--soft);color:var(--text2);font-weight:500;text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:9px 12px;border-bottom:1px solid var(--line2);color:var(--text2);vertical-align:top;line-height:1.65}
+tr:last-child td{border-bottom:0}
+td:first-child{color:var(--text);font-weight:500;white-space:nowrap}
+tr.grp td{background:#FBFCFE;color:var(--text3);font-size:11.5px;font-weight:600;letter-spacing:.4px;border-bottom:1px solid var(--line)}
+tr.grp td:first-child{font-weight:600}
+.num{font-variant-numeric:tabular-nums}
+.mono{font-family:var(--mono);font-size:12px;background:var(--soft);border:1px solid var(--line);border-radius:4px;padding:1px 6px;color:var(--text2);white-space:nowrap}
+code{font-family:var(--mono);font-size:12px}
+pre{font-family:var(--mono);font-size:12px;line-height:1.95;background:var(--soft);border:1px solid var(--line);border-radius:8px;padding:12px 16px;overflow-x:auto;color:var(--text2);white-space:pre;margin:0}
+pre .c{color:var(--text4)}
+.note{display:flex;gap:9px;background:var(--amber-bg);border:1px solid var(--amber-line);border-radius:8px;padding:11px 14px;font-size:12.5px;line-height:1.7;color:var(--amber);margin-top:12px}
+.note .ic{flex:0 0 auto;margin-top:1px}
+.note.blue{background:#F2F7FF;border-color:#DBE7FF;color:var(--blue-d)}
+.note.red{background:#FEF2F2;border-color:#FBDCDC;color:#B3261E}
+strong{font-weight:600;color:var(--text)}
+.pri{display:inline-block;min-width:28px;text-align:center;padding:0 6px;height:19px;line-height:19px;border-radius:4px;font-size:11px;font-weight:600}
+.p0{background:#FDE8E8;color:#C62828}
+.p1{background:#FFF3E0;color:#B26A00}
+.p2{background:#EEF2F7;color:#5B6B7F}
+.flow{display:flex;flex-direction:column}
+.step{display:flex;gap:13px;padding:15px 0;border-bottom:1px dashed var(--line)}
+.step:first-child{padding-top:0}
+.step:last-child{border-bottom:0;padding-bottom:0}
+.step .no{flex:0 0 24px;height:24px;border-radius:50%;background:var(--blue-l);color:var(--blue-d);font-size:11.5px;font-weight:600;display:flex;align-items:center;justify-content:center;font-variant-numeric:tabular-nums}
+.step .bd{flex:1;min-width:0}
+.step .tt{font-size:13.5px;font-weight:600;margin-bottom:5px}
+.step .ds{font-size:12.5px;color:var(--text2);line-height:1.75;margin-bottom:9px}
+.sw{display:inline-block;width:52px;height:20px;border-radius:4px;border:1px solid rgba(0,0,0,.06);vertical-align:middle;margin-right:8px}
+.tok{font-family:var(--mono);font-size:11.5px;color:var(--text3)}
+
+@media (max-width:900px){
+  .shell{flex-direction:column}
+  .side{position:static;width:auto;flex:none;height:auto;border-right:0;border-bottom:1px solid var(--line)}
+  .doc{padding:20px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="shell">
+  <aside class="side">
+    <div class="side-brand"><span class="dot"></span><span class="nm">球帝带 · 产品基线</span><span class="vd">v1.1.0</span></div>
+    <div class="side-grp">基线总览</div>
+    <a class="side-link" href="#version"><span class="n">1.1</span>版本与变更记录</a>
+    <a class="side-link" href="#structure"><span class="n">1.2</span>产品信息结构</a>
+    <a class="side-link" href="#req"><span class="n">1.3</span>功能清单</a>
+    <div class="side-grp">全局规范</div>
+    <a class="side-link" href="#nav"><span class="n">2.1</span>页面栈与导航</a>
+    <a class="side-link" href="#overlay"><span class="n">2.2</span>浮层与反馈</a>
+    <a class="side-link" href="#theme"><span class="n">2.3</span>主题与外观</a>
+    <a class="side-link" href="#msg"><span class="n">2.4</span>消息操作链路</a>
+    <a class="side-link" href="#kbd"><span class="n">2.5</span>软键盘</a>
+    <a class="side-link" href="#empty"><span class="n">2.6</span>空态与异常</a>
+    <div class="side-grp">组件与规范</div>
+    <a class="side-link" href="#color"><span class="n">3.1</span>配色</a>
+    <a class="side-link" href="#type"><span class="n">3.2</span>字体与字号</a>
+    <a class="side-link" href="#size"><span class="n">3.3</span>圆角与尺寸</a>
+    <a class="side-link" href="#motion"><span class="n">3.4</span>动效</a>
+    <div class="side-grp">团队协作</div>
+    <a class="side-link" href="#team-scope"><span class="n">4.1</span>条款生效范围</a>
+    <a class="side-link" href="#repo"><span class="n">4.2</span>仓库与入口</a>
+    <a class="side-link" href="#flow"><span class="n">4.3</span>五步流程</a>
+    <a class="side-link" href="#conflict"><span class="n">4.4</span>冲突处理规则</a>
+    <a class="side-link" href="#commit"><span class="n">4.5</span>提交信息格式</a>
+    <a class="side-link" href="#checklist"><span class="n">4.6</span>上传前检查清单</a>
+    <a class="side-link" href="#forbid"><span class="n">4.7</span>禁止事项</a>
+    <div class="side-foot">
+      原型：<a href="proto.html" target="_top">proto.html</a><br>
+      入口：<a href="index.html" target="_top">index.html</a>
+    </div>
+  </aside>
+
+  <main class="doc">
+    <div class="doc-hd">
+      <div class="top"><i></i>球帝带 · 产品基线 · 规范文档</div>
+      <h1>产品基线与协作条款</h1>
+      <p>版本 v1.1.0 · 构建 2026-11-10 · 与原型同源升版</p>
+    </div>
+
+    <!-- 1.1 -->
+    <section class="sec" id="version">
+      <div class="sec-crumb">产品基线 / 基线总览 / 版本与变更记录</div>
+      <h2>1.1 版本与变更记录</h2>
+      <p class="sec-lead">原型与本文档共用同一个版本号。版本号在以下五处展示，五处同源，改一处即视为五处都要改。</p>
+
+      <div class="card">
+        <h3>版本展示位</h3>
+        <p class="sub">以下位置在升版时同步替换，缺一即为未完成升版。</p>
+        <table>
+          <thead><tr><th style="width:210px">位置</th><th style="width:180px">文件</th><th>形态</th></tr></thead>
+          <tbody>
+            <tr><td>入口页顶部徽标</td><td><span class="mono">index.html</span></td><td>蓝色胶囊 <span class="mono">v1.1.0</span>，紧邻品牌名</td></tr>
+            <tr><td>原型顶部条纹条</td><td><span class="mono">proto.html</span></td><td>机身内部黑条右侧 <span class="mono">v1.1.0</span></td></tr>
+            <tr><td>原型评审侧栏</td><td><span class="mono">proto.html</span></td><td>「版本 v1.1.0 · 构建 2026-11-10」行</td></tr>
+            <tr><td>文档标题行</td><td><span class="mono">rule.html</span></td><td>页头与侧栏徽标，以及本表首行</td></tr>
+            <tr><td>脚本常量</td><td><span class="mono">proto.html</span></td><td><span class="mono">const V = 'v1.1.0'</span>，系统通知页引用</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3>变更记录</h3>
+        <p class="sub">按版本倒序排列，首行为当前生效版本。</p>
+        <table>
+          <thead><tr><th style="width:88px">版本</th><th style="width:104px">日期</th><th style="width:96px">类型</th><th>摘要</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>v1.1.0</td><td class="num">2026-11-10</td><td>功能新增</td>
+              <td>原型拆分为三文件：<span class="mono">index.html</span> 框架页承载切换，<span class="mono">proto.html</span> 承载原型本体，<span class="mono">rule.html</span> 承载本产品基线与协作条款。框架页解析旧深链 <span class="mono">#p=…</span> 并转发给 <span class="mono">proto.html</span>，历史评审链接保持可用。原型新增嵌入态样式，被框架页以 iframe 载入时整页可滚动，机身不被裁切。新增本规范文档：基线总览、全局规范、组件与规范、团队协作四部分。</td>
+            </tr>
+            <tr>
+              <td>v1.0.0</td><td class="num">2026-11-10</td><td>首次发布</td>
+              <td>基于 94 张产品截图复现 IM 原型：4 个一级 Tab、48 个二级页面，桌面端手机外框加评审侧栏，宽度 ≤900px 时全屏。含长按消息菜单、多选与转发链路、好友分组、iOS 软键盘、深浅色主题与字号调节。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3>升版规则</h3>
+        <p class="sub">提交前按改动性质判定改哪一位，判定不清时按高一级处理。</p>
+        <table>
+          <thead><tr><th style="width:120px">改动性质</th><th style="width:150px">版本号变动</th><th>判定标准</th></tr></thead>
+          <tbody>
+            <tr><td>功能变更</td><td><span class="pri p0">中间位 +1</span></td><td>增删页面、增删功能单元、增删章节或分组；尾数归零。例：v1.1.3 → v1.2.0</td></tr>
+            <tr><td>内容变更</td><td><span class="pri p1">尾数 +1</span></td><td>规则口径、交互流程、字段集合、页面名单、术语定义、优先级调整。例：v1.1.0 → v1.1.1</td></tr>
+            <tr><td>样式微调</td><td><span class="pri p2">版本号不变</span></td><td>文案措辞、错别字、字号配色、元素位置、注释整理。照常交付，不写变更记录行</td></tr>
+          </tbody>
+        </table>
+        <div class="note">
+          <span class="ic">▲</span>
+          <span>升版只替换当前版本展示位与本表首行，历史行保持原样。<strong>禁止全局替换版本号字符串</strong>，该操作会连带改写历史记录行。</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>多人同时升版的处理顺序</h3>
+        <p class="sub">两人各自动手升版时，版本区与记录表必然冲突。按以下顺序收口，不并行处理。</p>
+        <div class="flow">
+          <div class="step"><div class="no">1</div><div class="bd">
+            <div class="tt">先合功能，版本区不动</div>
+            <div class="ds">合并冲突时保留双方功能改动，版本展示位与记录表暂不修改。功能全部合入后再统一收口。</div>
+          </div></div>
+          <div class="step"><div class="no">2</div><div class="bd">
+            <div class="tt">以合入后的版本为基数升版</div>
+            <div class="ds">取合入后的最新版本号作为基数，按本次改动性质加一位。自己分支上原有的版本号作废，两个版本号不并存。</div>
+            <pre><span class="c"># 合入后版本为 v1.1.3，本次为功能变更</span>
+v1.1.3  →  v1.2.0</pre>
+          </div></div>
+          <div class="step"><div class="no">3</div><div class="bd">
+            <div class="tt">记录表只加自己的一行</div>
+            <div class="ds">保留上游全部历史行，只在自己新版本对应的首行写入本次内容。上游已发布的行不改写、不删除。</div>
+          </div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 1.2 -->
+    <section class="sec" id="structure">
+      <div class="sec-crumb">产品基线 / 基线总览 / 产品信息结构</div>
+      <h2>1.2 产品信息结构</h2>
+      <p class="sec-lead">一级 Tab 4 个，二级页面 48 个，页面总数 52。页面名与页面 ID 同 <span class="mono">proto.html</span> 的 <span class="mono">PAGES</span> 键名一一对应，改键名即视为破坏深链，需同步改本节。</p>
+
+      <div class="card">
+        <h3>一级 Tab</h3>
+        <table>
+          <thead><tr><th style="width:110px">Tab</th><th style="width:130px">页面 ID</th><th style="width:96px">二级页面</th><th>承载内容</th></tr></thead>
+          <tbody>
+            <tr><td>对话</td><td><span class="mono">chats</span></td><td class="num">8</td><td>会话列表、聊天页、搜索、转发、聊天设置、媒体与文件</td></tr>
+            <tr><td>联系人</td><td><span class="mono">contacts</span></td><td class="num">15</td><td>好友、群聊、好友分组、标签、二维码、群详情与群设置</td></tr>
+            <tr><td>社区</td><td><span class="mono">community</span></td><td class="num">2</td><td>频道入口、每日签到、图文流、文章详情</td></tr>
+            <tr><td>我的</td><td><span class="mono">mine</span></td><td class="num">23</td><td>个人资料、消息通知、安全、数据与存储、语言、外观、字体、网络诊断、关于</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3>对话</h3>
+        <table>
+          <thead><tr><th style="width:150px">页面</th><th style="width:130px">页面 ID</th><th>承载内容</th></tr></thead>
+          <tbody>
+            <tr><td>聊天页</td><td><span class="mono">chat</span></td><td>消息流、气泡、长按菜单、多选、引用、软键盘、禁言与已退群横幅</td></tr>
+            <tr><td>搜索</td><td><span class="mono">search</span></td><td>全局搜索入口与结果</td></tr>
+            <tr><td>群内搜索</td><td><span class="mono">gsearch</span></td><td>按聊天记录检索群消息</td></tr>
+            <tr><td>转发</td><td><span class="mono">forward</span></td><td>转发目标选择，支持多选目标与搜索</td></tr>
+            <tr><td>选择目标</td><td><span class="mono">choose</span></td><td>按联系人、群聊、分组三类进入二级选择</td></tr>
+            <tr><td>聊天设置</td><td><span class="mono">chatset</span></td><td>会话级设置项</td></tr>
+            <tr><td>媒体</td><td><span class="mono">media</span></td><td>会话内的图片与视频入口</td></tr>
+            <tr><td>文件</td><td><span class="mono">files</span></td><td>会话内的文件列表</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3>联系人</h3>
+        <table>
+          <thead><tr><th style="width:150px">页面</th><th style="width:130px">页面 ID</th><th>承载内容</th></tr></thead>
+          <tbody>
+            <tr><td>新的朋友</td><td><span class="mono">newfriends</span></td><td>好友申请列表与处理入口</td></tr>
+            <tr><td>添加好友</td><td><span class="mono">addfriend</span></td><td>按用户 ID 检索，回车弹发送申请二次确认</td></tr>
+            <tr><td>我的二维码</td><td><span class="mono">qrcode</span></td><td>个人二维码名片</td></tr>
+            <tr><td>好友资料</td><td><span class="mono">friend</span></td><td>对方资料页与操作入口</td></tr>
+            <tr><td>好友申请</td><td><span class="mono">friendVerify</span></td><td>验证信息填写与发送</td></tr>
+            <tr><td>我的群聊</td><td><span class="mono">groups</span></td><td>已加入群列表</td></tr>
+            <tr><td>群详情</td><td><span class="mono">groupInfo</span></td><td>群成员九宫格、群公告、群聊面具、查找记录、置顶与免打扰开关、记录保留时长、退出群聊</td></tr>
+            <tr><td>群成员</td><td><span class="mono">groupMembers</span></td><td>成员列表，含管理员分组</td></tr>
+            <tr><td>成员资料</td><td><span class="mono">memberInfo</span></td><td>群内成员资料</td></tr>
+            <tr><td>群公告</td><td><span class="mono">notice</span></td><td>公告全文与编辑入口</td></tr>
+            <tr><td>群聊面具</td><td><span class="mono">mask</span></td><td>本群内昵称与头像</td></tr>
+            <tr><td>编辑群昵称</td><td><span class="mono">gname</span></td><td>群内昵称编辑，右上保存</td></tr>
+            <tr><td>好友分组</td><td><span class="mono">groupTags</span></td><td>分组列表与新建分组</td></tr>
+            <tr><td>分组详情</td><td><span class="mono">groupTagDetail</span></td><td>分组内成员与移除</td></tr>
+            <tr><td>标签选择</td><td><span class="mono">tagPicker</span></td><td>为好友指派分组，支持多选</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3>社区</h3>
+        <table>
+          <thead><tr><th style="width:150px">页面</th><th style="width:130px">页面 ID</th><th>承载内容</th></tr></thead>
+          <tbody>
+            <tr><td>文章详情</td><td><span class="mono">post</span></td><td>标题、作者、时间、浏览量、正文</td></tr>
+            <tr><td>XXPay 频道</td><td><span class="mono">xxpay</span></td><td>频道主页与内容流</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3>我的</h3>
+        <table>
+          <thead><tr><th style="width:150px">页面</th><th style="width:130px">页面 ID</th><th>承载内容</th></tr></thead>
+          <tbody>
+            <tr><td>个人资料</td><td><span class="mono">profile</span></td><td>头像、昵称、签名、用户 ID、二维码入口</td></tr>
+            <tr><td>用户昵称</td><td><span class="mono">nickname</span></td><td>昵称编辑，右上保存</td></tr>
+            <tr><td>个性签名</td><td><span class="mono">sign</span></td><td>签名编辑，限 50 字并实时计数</td></tr>
+            <tr><td>更换头像</td><td><span class="mono">avatarEdit</span></td><td>表情头像选择与提交</td></tr>
+            <tr><td>头像审核记录</td><td><span class="mono">applylog</span></td><td>头像申请与审核状态</td></tr>
+            <tr><td>消息通知</td><td><span class="mono">notify</span></td><td>免打扰、声音、振动、已读回执等开关</td></tr>
+            <tr><td>系统通知</td><td><span class="mono">sysnotify</span></td><td>系统消息列表，无数据时为空态</td></tr>
+            <tr><td>可信设备</td><td><span class="mono">devices</span></td><td>登录设备列表，当前设备打标</td></tr>
+            <tr><td>设备详情</td><td><span class="mono">device</span></td><td>单台设备信息与登录记录</td></tr>
+            <tr><td>安全</td><td><span class="mono">security</span></td><td>登录密码、支付密码、手机号、邮箱、第三方绑定、注销、解锁设置、可信设备、账户申诉、退出登录</td></tr>
+            <tr><td>解锁设置</td><td><span class="mono">unlock</span></td><td>启动保护方式</td></tr>
+            <tr><td>修改密码</td><td><span class="mono">pwd</span></td><td>原密码校验与新密码设置</td></tr>
+            <tr><td>手机号</td><td><span class="mono">phone</span></td><td>绑定与更换手机号</td></tr>
+            <tr><td>国家 / 地区</td><td><span class="mono">country</span></td><td>区号与地区选择</td></tr>
+            <tr><td>邮箱</td><td><span class="mono">email</span></td><td>绑定与更换邮箱</td></tr>
+            <tr><td>账户申诉</td><td><span class="mono">appeal</span></td><td>申诉表单与提交</td></tr>
+            <tr><td>数据与存储</td><td><span class="mono">storage</span></td><td>占用统计与清理入口</td></tr>
+            <tr><td>语言</td><td><span class="mono">lang</span></td><td>跟随系统与语言列表</td></tr>
+            <tr><td>外观</td><td><span class="mono">appearance</span></td><td>日夜模式三态、气泡 9 色、聊天背景 3 套</td></tr>
+            <tr><td>字体</td><td><span class="mono">font</span></td><td>全局字号滑杆，12–22px，实时预览</td></tr>
+            <tr><td>网络诊断</td><td><span class="mono">network</span></td><td>逐行检测动画与结果</td></tr>
+            <tr><td>关于</td><td><span class="mono">about</span></td><td>版本信息与协议入口</td></tr>
+            <tr><td>法律条款</td><td><span class="mono">legal</span></td><td>用户协议与隐私政策</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3>深链协议</h3>
+        <p class="sub">评审链接统一走 <span class="mono">#p=</span> 前缀。经入口页中转与直达原型页两种写法同时有效。</p>
+        <table>
+          <thead><tr><th style="width:120px">参数</th><th style="width:220px">取值</th><th>作用</th></tr></thead>
+          <tbody>
+            <tr><td><span class="mono">p</span></td><td>页面 ID，见上表</td><td>直达指定二级页面，栈内保留一级列表作为返回落点</td></tr>
+            <tr><td><span class="mono">id</span></td><td><span class="mono">c1</span>–<span class="mono">c8</span>（会话）、<span class="mono">p1</span>–<span class="mono">p4</span>（文章）</td><td>指定会话或文章</td></tr>
+            <tr><td><span class="mono">t</span></td><td><span class="mono">light</span> / <span class="mono">dark</span></td><td>强制主题，缺省为跟随系统</td></tr>
+            <tr><td><span class="mono">kbd</span></td><td><span class="mono">1</span></td><td>聊天页直接展开软键盘，用于截图与走查</td></tr>
+            <tr><td><span class="mono">debug</span></td><td><span class="mono">1</span></td><td>顶部条纹条输出视口与布局宽度，用于排查溢出</td></tr>
+          </tbody>
+        </table>
+        <pre style="margin-top:12px"><span class="c"># 经入口页中转，旧链接格式保持可用</span>
+index.html#p=chat&id=c2
+
+<span class="c"># 直达原型页</span>
+proto.html#p=groupInfo&id=c1
+
+<span class="c"># 带主题与软键盘</span>
+proto.html#p=chat&id=c2&t=dark&kbd=1</pre>
+      </div>
+
+      <div class="card">
+        <h3>演示数据</h3>
+        <p class="sub">原型数据为 mock，全部定义在 <span class="mono">proto.html</span> 的 <span class="mono">D</span> 对象内，不含接口调用。</p>
+        <table>
+          <thead><tr><th style="width:150px">数据集</th><th style="width:90px">条数</th><th>内容</th></tr></thead>
+          <tbody>
+            <tr><td>会话</td><td class="num">8</td><td>含群聊与单聊，覆盖停用、换群、已退群、新群四类标记</td></tr>
+            <tr><td>群资料</td><td class="num">7</td><td>成员数、成员头像色、群公告、记录保留时长</td></tr>
+            <tr><td>社区文章</td><td class="num">4</td><td>足篮频道 2 篇、XXPay 频道 2 篇</td></tr>
+            <tr><td>消息</td><td>按会话</td><td><span class="mono">D.msgs</span> 以会话 ID 为键，发送与删除会写入内存</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 1.3 -->
+    <section class="sec" id="req">
+      <div class="sec-crumb">产品基线 / 基线总览 / 功能清单</div>
+      <h2>1.3 功能清单</h2>
+      <p class="sec-lead">清单以当前原型已实现的能力为准。新增功能先加行再改原型，避免原型跑在清单之外。</p>
+
+      <div class="card">
+        <h3>优先级定义</h3>
+        <table>
+          <thead><tr><th style="width:90px">级别</th><th>判定</th></tr></thead>
+          <tbody>
+            <tr><td><span class="pri p0">P0</span></td><td>主链路必经环节，缺失即流程中断：会话进入、消息收发、长按操作、资料与设置入口</td></tr>
+            <tr><td><span class="pri p1">P1</span></td><td>支撑型能力，缺失影响完整度但不阻断主链路</td></tr>
+            <tr><td><span class="pri p2">P2</span></td><td>说明性页面与静态内容，用于评审对齐</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3>功能明细</h3>
+        <table>
+          <thead><tr><th style="width:70px">编号</th><th style="width:120px">模块</th><th>功能</th><th style="width:66px">优先级</th></tr></thead>
+          <tbody>
+            <tr class="grp"><td colspan="4">对话</td></tr>
+            <tr><td>F-01</td><td>会话列表</td><td>8 条会话，停用、换群、已退群、新群四类标记与灰化处理</td><td><span class="pri p0">P0</span></td></tr>
+            <tr><td>F-02</td><td>会话列表</td><td>对话 Tab 未读角标</td><td><span class="pri p1">P1</span></td></tr>
+            <tr><td>F-03</td><td>聊天页</td><td>消息流渲染：文本、图片、系统提示三类气泡，我方与对方分列</td><td><span class="pri p0">P0</span></td></tr>
+            <tr><td>F-04</td><td>聊天页</td><td>输入区四入口：按住说话、输入框、表情面板、更多面板</td><td><span class="pri p0">P0</span></td></tr>
+            <tr><td>F-05</td><td>聊天页</td><td>回车发送，发送后消息即时入列并滚到底部</td><td><span class="pri p0">P0</span></td></tr>
+            <tr><td>F-06</td><td>聊天页</td><td>禁言群显示「本群已禁言」横条，已退群显示退群横条并收起输入区</td><td><span class="pri p0">P0</span></td></tr>
+            <tr><td>F-07</td><td>消息菜单</td><td>长按 460ms 唤出菜单：置顶、引用、转发、多选、复制、删除</td><td><span class="pri p0">P0</span></td></tr>
+            <tr><td>F-08</td><td>消息菜单</td><td>菜单纵向锚定气泡，越界时收入 96–470px 区间</td><td><span class="pri p1">P1</span></td></tr>
+            <tr><td>F-09</td><td>引用</td><td>引用条进入输入区上方，发送后生成引用气泡</td><td><span class="pri p0">P0</span></td></tr>
+            <tr><td>F-10</td><td>多选</td><td>多选态右上「取消」，底栏转发与删除；删除需二次确认并即时移除</td><td><span class="pri p0">P0</span></td></tr>
+            <tr><td>F-11</td><td>转发</td><td>转发页单选直达，多选后确定，提示「已转发给 N 个会话」</td><td><span class="pri p1">P1</span></td></tr>
+            <tr><td>F-12</td><td>复制</td><td>复制消息文本到剪贴板，失败时静默降级</td><td><span class="pri p1">P1</span></td></tr>
+            <tr><td>F-13</td><td>搜索</td><td>全局搜索与群内搜索两个入口</td><td><span class="pri p1">P1</span></td></tr>
+            <tr><td>F-14</td><td>软键盘</td><td>聚焦输入框弹出，字母与数字两层，shift 一次性生效，键盘操作不夺焦点</td><td><span class="pri p0">P0</span></td></tr>
+            <tr><td>F-15</td><td>聊天设置</td><td>会话级设置项与媒体、文件入口</td><td><span class="pri p1">P1</span></td></tr>
+            <tr class="grp"><td colspan="4">联系人</td></tr>
+            <tr><td>F-16</td><td>联系人列表</td><td>新的朋友、我的群聊、好友分组三入口，字母索引与分组标签</td><td><span class="pri p0">P0</span></td></tr>
+            <tr><td>F-17</td><td>新的朋友</td><td>好友申请列表与同意、拒绝处理</td><td><span class="pri p1">P1</span></td></tr>
+            <tr><td>F-18</td><td>添加好友</td><td>按用户 ID 检索，回车弹发送申请二次确认</td><td><span class="pri p1">P1</span></td></tr>
+            <tr><td>F-19</td><td>二维码</td><td>个人二维码名片</td><td><span class="pri p1">P1</span></td></tr>
+            <tr><td>F-20</td><td>好友资料</td><td>对方资料页，含发消息与资料入口</td><td><span class="pri p1">P1</span></td></tr>
+            <tr><td>F-21</td><td>好友分组</td><td>分组列表、新建分组、分组详情、成员移除</td><td><span class="pri p1">P1</span></td></tr>
+            <tr><td>F-22</td><td>标签选择</td><td>为好友指派分组，支持多选</td><td><span class="pri p1">P1</span></td></tr>
+            <tr class="grp"><td colspan="4">群聊</td></tr>
+            <tr><td>F-23</td><td>我的群聊</td><td>已加入群列表</td><td><span class="pri p0">P0</span></td></tr>
+            <tr><td>F-24</td><td>群详情</td><td>成员九宫格与总人数、群公告摘要、群聊面具、查找记录</td><td><span class="pri p0">P0</span></td></tr>
+            <tr><td>F-25</td><td>群详情</td><td>置顶与消息免打扰开关，状态实时切换</td><td><span class="pri p0">P0</span></td></tr>
+            <tr><td>F-26</td><td>群详情</td><td>记录保留时长展示、删除聊天记录、退出群聊</td><td><span class="pri p1">P1</span></td></tr>
+            <tr><td>F-27</td><td>群成员</td><td>成员列表，管理员与普通成员分组</td><td><span class="pri p1">P1</span></td></tr>
+            <tr><td>F-28</td><td>群公告</td><td>公告全文展示与编辑</td><td><span class="pri p1">P1</span></td></tr>
+            <tr><td>F-29</td><td>群聊面具</td><td>本群内昵称与头像设置</td><td><span class="pri p1">P1</span></td></tr>
+            <tr><td>F-30</td><td>编辑群昵称</td><td>群昵称编辑，右上保存并回写</td><td><span class="pri p1">P1</span></td></tr>
+            <tr class="grp"><td colspan="4">社区</td></tr>
+            <tr><td>F-31</td><td>社区首页</td><td>双频道入口、每日签到条、图文信息流</td><td><span class="pri p0">P0</span></td></tr>
+            <tr><td>F-32</td><td>文章详情</td><td>标题、作者、时间、浏览量、正文</td><td><span class="pri p1">P1</span></td></tr>
+            <tr><td>F-33</td><td>XXPay 频道</td><td>频道主页与内容流</td><td><span class="pri p1">P1</span></td></tr>
+            <tr class="grp"><td colspan="4">我的</td></tr>
+            <tr><td>F-34</td><td>我的首页</td><td>资料头区、用户 ID 复制、二维码入口、八个设置分组</td><td><span class="pri p0">P0</span></td></tr>
+            <tr><td>F-35</td><td>个人资料</td><td>头像、昵称、签名、ID 展示与编辑入口</td><td><span class="pri p0">P0</span></td></tr>
+            <tr><td>F-36</td><td>昵称与签名</td><td>昵称编辑、签名编辑，签名限 50 字并实时计数</td><td><span class="pri p1">P1</span></td></tr>
+            <tr><td>F-37</td><td>更换头像</td><td>表情头像选择、提交与审核记录</td><td><span class="pri p1">P1</span></td></tr>
+            <tr><td>F-38</td><td>消息通知</td><td>免打扰、声音、振动、已读回执等开关组</td><td><span class="pri p1">P1</span></td></tr>
+            <tr><td>F-39</td><td>系统通知</td><td>系统消息列表，无数据时展示空态</td><td><span class="pri p1">P1</span></td></tr>
+            <tr><td>F-40</td><td>安全</td><td>登录密码、支付密码、手机号、邮箱、第三方绑定、注销、解锁设置、可信设备、账户申诉、退出登录</td><td><span class="pri p0">P0</span></td></tr>
+            <tr><td>F-41</td><td>可信设备</td><td>设备列表与单台设备详情，当前设备打标</td><td><span class="pri p1">P1</span></td></tr>
+            <tr><td>F-42</td><td>数据与存储</td><td>占用统计与清理入口</td><td><span class="pri p1">P1</span></td></tr>
+            <tr><td>F-43</td><td>语言</td><td>跟随系统开关与语言列表</td><td><span class="pri p1">P1</span></td></tr>
+            <tr><td>F-44</td><td>外观</td><td>日夜模式三态、气泡 9 色、聊天背景 3 套，保存后全站生效</td><td><span class="pri p0">P0</span></td></tr>
+            <tr><td>F-45</td><td>字体</td><td>全局字号 12–22px 滑杆，预览区实时联动</td><td><span class="pri p0">P0</span></td></tr>
+            <tr><td>F-46</td><td>网络诊断</td><td>逐行检测动画与结果输出</td><td><span class="pri p1">P1</span></td></tr>
+            <tr><td>F-47</td><td>关于与法律条款</td><td>版本信息、用户协议、隐私政策入口</td><td><span class="pri p2">P2</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 2.1 -->
+    <section class="sec" id="nav">
+      <div class="sec-crumb">产品基线 / 全局规范 / 页面栈与导航</div>
+      <h2>2.1 页面栈与导航</h2>
+      <p class="sec-lead">页面以栈结构管理，进入即入栈，返回即出栈。一级 Tab 切换重置栈。</p>
+
+      <div class="card">
+        <h3>栈规则</h3>
+        <table>
+          <thead><tr><th style="width:150px">规则项</th><th>约定</th></tr></thead>
+          <tbody>
+            <tr><td>进入二级页</td><td>当前页压入栈，新页自右向左推入，入场动画见 3.4</td></tr>
+            <tr><td>返回</td><td>栈深 ≥2 时生效，顶层页向右滑出并卸载；栈深为 1 时返回按钮无响应</td></tr>
+            <tr><td>一级 Tab 切换</td><td>清空栈并重建，Tab 之间不保留返回关系</td></tr>
+            <tr><td>深链进入</td><td>栈固定为「对话列表 → 目标页」两级，返回落回对话列表</td></tr>
+            <tr><td>滚动位置</td><td>入栈时记录当前页滚动位置，返回后恢复</td></tr>
+            <tr><td>页面标题</td><td>导航栏居中，17px / 600；右侧动作位宽 56px，左侧返回位同宽以保持标题居中</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 2.2 -->
+    <section class="sec" id="overlay">
+      <div class="sec-crumb">产品基线 / 全局规范 / 浮层与反馈</div>
+      <h2>2.2 浮层与反馈</h2>
+      <p class="sec-lead">浮层四类，同时只存在一个。任一新浮层打开前先关闭既有浮层。</p>
+
+      <div class="card">
+        <table>
+          <thead><tr><th style="width:110px">类型</th><th style="width:180px">形态</th><th>关闭方式</th></tr></thead>
+          <tbody>
+            <tr><td>对话框</td><td>宽 268px，圆角 15px，居中；标题 17px 加粗，说明 13px</td><td>点遮罩关闭；按钮按顺序横排，取消居左，危险动作标红</td></tr>
+            <tr><td>动作面板</td><td>底部上滑，圆角 14px，条目 17px 居中，末项「取消」独立成块</td><td>点遮罩、点取消关闭</td></tr>
+            <tr><td>长按菜单</td><td>附于气泡左侧，圆角 12px，条目含文字与图标，最大 6 项</td><td>点菜单外任意区域关闭；打开后 60ms 起监听外部点击，避免同一次长按立即关闭</td></tr>
+            <tr><td>轻提示</td><td>底部 96px 居中，深色胶囊，白字 13px</td><td>1600ms 自动消失；新提示替换旧提示，不叠层</td></tr>
+          </tbody>
+        </table>
+        <div class="note blue">
+          <span class="ic">●</span>
+          <span>破坏性操作一律二次确认，按钮文案用动作本身（删除、退出、注销），不使用「确定」这类无指向文案。</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2.3 -->
+    <section class="sec" id="theme">
+      <div class="sec-crumb">产品基线 / 全局规范 / 主题与外观</div>
+      <h2>2.3 主题与外观</h2>
+      <p class="sec-lead">外观设置即时生效并写入内存状态，刷新页面后回到默认值。原型不落本地存储。</p>
+
+      <div class="card">
+        <h3>日夜模式</h3>
+        <table>
+          <thead><tr><th style="width:110px">取值</th><th>行为</th></tr></thead>
+          <tbody>
+            <tr><td>浅色</td><td>固定浅色，外部画布 #EBEEF3，屏内底色 #F6F7F9</td></tr>
+            <tr><td>深色</td><td>固定深色，外部画布 #07080A，屏内底色 #131418</td></tr>
+            <tr><td>跟随系统</td><td>读 <span class="mono">prefers-color-scheme</span>，系统切换时同步；默认值</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3>气泡颜色</h3>
+        <p class="sub">九色固定，不新增色值。深色主题下选黑色气泡时自动映射为 #4A4D57，保证与深色底可分辨。</p>
+        <table>
+          <thead><tr><th style="width:110px">名称</th><th style="width:120px">色值</th><th>说明</th></tr></thead>
+          <tbody>
+            <tr><td>蓝</td><td><span class="sw" style="background:#3B82F6"></span><span class="tok">#3B82F6</span></td><td>默认值</td></tr>
+            <tr><td>浅蓝</td><td><span class="sw" style="background:#6D9BF5"></span><span class="tok">#6D9BF5</span></td><td>低饱和变体</td></tr>
+            <tr><td>黑</td><td><span class="sw" style="background:#111111"></span><span class="tok">#111111</span></td><td>深色主题下映射 #4A4D57</td></tr>
+            <tr><td>亮蓝</td><td><span class="sw" style="background:#1E90FF"></span><span class="tok">#1E90FF</span></td><td>高亮变体</td></tr>
+            <tr><td>绿</td><td><span class="sw" style="background:#22C55E"></span><span class="tok">#22C55E</span></td><td>—</td></tr>
+            <tr><td>红</td><td><span class="sw" style="background:#F04438"></span><span class="tok">#F04438</span></td><td>—</td></tr>
+            <tr><td>橙</td><td><span class="sw" style="background:#F79009"></span><span class="tok">#F79009</span></td><td>—</td></tr>
+            <tr><td>紫</td><td><span class="sw" style="background:#7C5CD6"></span><span class="tok">#7C5CD6</span></td><td>—</td></tr>
+            <tr><td>薄荷绿</td><td><span class="sw" style="background:#6EE7C4"></span><span class="tok">#6EE7C4</span></td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3>聊天背景与字号</h3>
+        <table>
+          <thead><tr><th style="width:150px">设置项</th><th>约定</th></tr></thead>
+          <tbody>
+            <tr><td>聊天背景</td><td>三套，切换即时作用于聊天气泡区域</td></tr>
+            <tr><td>字号</td><td>12–22px，步长 1，默认 15px；拖动过程中即时预览，保存后全站生效</td></tr>
+            <tr><td>字号档位文案</td><td>15px 显示「标准」，小于 15 显示「较小」，大于 15 显示「较大」</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 2.4 -->
+    <section class="sec" id="msg">
+      <div class="sec-crumb">产品基线 / 全局规范 / 消息操作链路</div>
+      <h2>2.4 消息操作链路</h2>
+      <p class="sec-lead">链路从长按开始，六项操作分三条出口：单条动作、多选动作、转发动作。</p>
+
+      <div class="card">
+        <h3>长按唤出</h3>
+        <table>
+          <thead><tr><th style="width:140px">项</th><th>约定</th></tr></thead>
+          <tbody>
+            <tr><td>触发</td><td>按住气泡 460ms；移动、抬起、取消即撤销；右键等效触发</td></tr>
+            <tr><td>失效条件</td><td>处于多选态时不响应长按</td></tr>
+            <tr><td>菜单项</td><td>置顶、引用、转发、多选、复制、删除，顺序固定</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3>三条出口</h3>
+        <div class="flow">
+          <div class="step"><div class="no">1</div><div class="bd">
+            <div class="tt">置顶、复制</div>
+            <div class="ds">置顶以轻提示确认「已置顶该消息」；复制写入剪贴板，浏览器拒绝授权时静默失败，不弹错误。</div>
+          </div></div>
+          <div class="step"><div class="no">2</div><div class="bd">
+            <div class="tt">引用</div>
+            <div class="ds">引用内容写入输入区上方引用条，可点叉取消；发送后生成引用气泡，引用条清空。</div>
+          </div></div>
+          <div class="step"><div class="no">3</div><div class="bd">
+            <div class="tt">转发与多选</div>
+            <div class="ds">转发直接进入转发页；多选进入勾选态，右上改「取消」，底栏出现转发与删除两项。</div>
+            <pre><span class="c"># 多选态</span>
+勾选消息 → 转发 → 转发页选择目标 → 确定 → 轻提示「已转发给 N 个会话」
+勾选消息 → 删除 → 二次确认「确定删除已选的 N 条消息？」 → 即时移除</pre>
+          </div></div>
+        </div>
+        <div class="note">
+          <span class="ic">▲</span>
+          <span>多选态下长按菜单失效、单条点击只切换勾选状态。<strong>未选中任一条时点转发或删除，仅提示「请先选择消息」</strong>，不进入下一步。</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2.5 -->
+    <section class="sec" id="kbd">
+      <div class="sec-crumb">产品基线 / 全局规范 / 软键盘</div>
+      <h2>2.5 软键盘</h2>
+      <p class="sec-lead">键盘为原型内置的 iOS 样式面板，非系统输入法，用于还原真实输入体验与截图口径。</p>
+
+      <div class="card">
+        <table>
+          <thead><tr><th style="width:150px">项</th><th>约定</th></tr></thead>
+          <tbody>
+            <tr><td>唤起</td><td>输入框获得焦点即弹出，消息区滚到底部</td></tr>
+            <tr><td>收起</td><td>点击键盘、输入框、更多面板以外的区域收起</td></tr>
+            <tr><td>字符层</td><td>字母层与数字层切换；shift 一次性生效，输入一个字符后自动回落</td></tr>
+            <tr><td>光标</td><td>按键操作不夺焦点，插入位置跟随真实光标；选区变化时同步光标位置</td></tr>
+            <tr><td>发送</td><td>回车发送当前草稿；草稿在页面刷新后保留</td></tr>
+            <tr><td>输入框属性</td><td>关闭自动大写、自动纠错、自动填充，<span class="mono">inputmode="none"</span> 抑制系统键盘弹出</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 2.6 -->
+    <section class="sec" id="empty">
+      <div class="sec-crumb">产品基线 / 全局规范 / 空态与异常</div>
+      <h2>2.6 空态与异常</h2>
+      <p class="sec-lead">原型内的空态与异常态覆盖三处，其余页面不设空态，避免占位图堆叠。</p>
+
+      <div class="card">
+        <table>
+          <thead><tr><th style="width:150px">场景</th><th style="width:200px">呈现</th><th>后续动作</th></tr></thead>
+          <tbody>
+            <tr><td>系统通知为空</td><td>铃铛图标 + 「暂无系统通知」+ 副说明</td><td>无操作按钮</td></tr>
+            <tr><td>尚未创建好友分组</td><td>礼盒插画 + 「您还没有创建分组」</td><td>返回上级，从分组页新建</td></tr>
+            <tr><td>群聊无更多消息</td><td>居中灰字「暂无更多消息」</td><td>无操作</td></tr>
+            <tr><td>禁言群</td><td>输入区替换为「本群已禁言」横条</td><td>不可发送</td></tr>
+            <tr><td>已退出群聊</td><td>输入区替换为「已退出群聊」横条，群详情仅保留删除入口</td><td>不可发送</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 3.1 -->
+    <section class="sec" id="color">
+      <div class="sec-crumb">产品基线 / 组件与规范 / 配色</div>
+      <h2>3.1 配色</h2>
+      <p class="sec-lead">色值由 <span class="mono">proto.html</span> 的 <span class="mono">:root</span> 与 <span class="mono">body[data-theme="dark"]</span> 提供，页面内不写死颜色。</p>
+
+      <div class="card">
+        <h3>浅色主题</h3>
+        <table>
+          <thead><tr><th style="width:130px">令牌</th><th style="width:130px">色值</th><th>用途</th></tr></thead>
+          <tbody>
+            <tr><td><span class="mono">--blue</span></td><td><span class="sw" style="background:#3B82F6"></span><span class="tok">#3B82F6</span></td><td>主色：链接文字、开关开启态、我方气泡默认色</td></tr>
+            <tr><td><span class="mono">--bg</span></td><td><span class="sw" style="background:#F6F7F9"></span><span class="tok">#F6F7F9</span></td><td>屏内底色</td></tr>
+            <tr><td><span class="mono">--card</span></td><td><span class="sw" style="background:#FFFFFF"></span><span class="tok">#FFFFFF</span></td><td>卡片、列表分组、导航栏</td></tr>
+            <tr><td><span class="mono">--text</span></td><td><span class="sw" style="background:#101114"></span><span class="tok">#101114</span></td><td>主文字</td></tr>
+            <tr><td><span class="mono">--text2</span></td><td><span class="sw" style="background:#8A8F99"></span><span class="tok">#8A8F99</span></td><td>次要文字、说明、时间</td></tr>
+            <tr><td><span class="mono">--text3</span></td><td><span class="sw" style="background:#B7BBC3"></span><span class="tok">#B7BBC3</span></td><td>占位、禁用</td></tr>
+            <tr><td><span class="mono">--line</span></td><td><span class="sw" style="background:#EFF0F3"></span><span class="tok">#EFF0F3</span></td><td>分割线</td></tr>
+            <tr><td><span class="mono">--input</span></td><td><span class="sw" style="background:#EFF1F5"></span><span class="tok">#EFF1F5</span></td><td>搜索框、输入区底色</td></tr>
+            <tr><td><span class="mono">--red</span></td><td><span class="sw" style="background:#FF4D4F"></span><span class="tok">#FF4D4F</span></td><td>危险动作：退出群聊、删除、注销</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3>深色主题</h3>
+        <table>
+          <thead><tr><th style="width:130px">令牌</th><th style="width:130px">色值</th><th>用途</th></tr></thead>
+          <tbody>
+            <tr><td><span class="mono">--bg</span></td><td><span class="sw" style="background:#131418"></span><span class="tok">#131418</span></td><td>屏内底色</td></tr>
+            <tr><td><span class="mono">--card</span></td><td><span class="sw" style="background:#1C1D22"></span><span class="tok">#1C1D22</span></td><td>卡片、列表分组</td></tr>
+            <tr><td><span class="mono">--text</span></td><td><span class="sw" style="background:#F2F3F5"></span><span class="tok">#F2F3F5</span></td><td>主文字</td></tr>
+            <tr><td><span class="mono">--text2</span></td><td><span class="sw" style="background:#8B8F99"></span><span class="tok">#8B8F99</span></td><td>次要文字</td></tr>
+            <tr><td><span class="mono">--text3</span></td><td><span class="sw" style="background:#5A5E68"></span><span class="tok">#5A5E68</span></td><td>占位、禁用</td></tr>
+            <tr><td><span class="mono">--line</span></td><td><span class="sw" style="background:#282A31"></span><span class="tok">#282A31</span></td><td>分割线</td></tr>
+            <tr><td><span class="mono">--input</span></td><td><span class="sw" style="background:#26282F"></span><span class="tok">#26282F</span></td><td>输入区底色</td></tr>
+          </tbody>
+        </table>
+        <div class="note red">
+          <span class="ic">▲</span>
+          <span>深色主题下主色 <span class="mono">--blue</span> 不替换，仍用 #3B82F6。<strong>新增颜色先加到本节表格，再落进 CSS</strong>，两步顺序不可颠倒。</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3.2 -->
+    <section class="sec" id="type">
+      <div class="sec-crumb">产品基线 / 组件与规范 / 字体与字号</div>
+      <h2>3.2 字体与字号</h2>
+
+      <div class="card">
+        <h3>字体栈</h3>
+        <pre>-apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB",
+"Microsoft YaHei", sans-serif</pre>
+        <p class="sub" style="margin-top:10px;margin-bottom:0">原型不加载外部字体文件，全部走系统字体。引入网络字体需先经评审，再写入本节。</p>
+      </div>
+
+      <div class="card">
+        <h3>字号层级</h3>
+        <table>
+          <thead><tr><th style="width:150px">层级</th><th style="width:110px">字号 / 字重</th><th>用途</th></tr></thead>
+          <tbody>
+            <tr><td>一级标题</td><td class="num">26px / 700</td><td>Tab 页大标题（对话、联系人、社区）</td></tr>
+            <tr><td>设备详情标题</td><td class="num">22px / 700</td><td>登录设备管理等强调型页头</td></tr>
+            <tr><td>页面标题</td><td class="num">17px / 600</td><td>导航栏居中标题</td></tr>
+            <tr><td>列表名称</td><td class="num">15–16.5px / 500</td><td>会话名、群名、设置项名称</td></tr>
+            <tr><td>正文</td><td class="num">15px / 400</td><td>消息气泡、表单值，受全局字号设置控制</td></tr>
+            <tr><td>辅助文字</td><td class="num">12–13px / 400</td><td>说明、时间、计数、副标题</td></tr>
+            <tr><td>微标</td><td class="num">9.5–11px / 500</td><td>原型条纹条、未读角标、版本号</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3>数字对齐</h3>
+        <p class="sub" style="margin-bottom:0">状态栏时钟、版本号、未读数、成员数等数字统一启用 <span class="mono">tabular-nums</span>，多行数值纵向对齐。</p>
+      </div>
+    </section>
+
+    <!-- 3.3 -->
+    <section class="sec" id="size">
+      <div class="sec-crumb">产品基线 / 组件与规范 / 圆角与尺寸</div>
+      <h2>3.3 圆角与尺寸</h2>
+
+      <div class="card">
+        <h3>机身与布局</h3>
+        <table>
+          <thead><tr><th style="width:150px">项</th><th style="width:130px">数值</th><th>说明</th></tr></thead>
+          <tbody>
+            <tr><td>设备画布</td><td class="num">390 × 844</td><td>iPhone 逻辑分辨率，桌面端固定尺寸展示</td></tr>
+            <tr><td>机身边框</td><td class="num">9px</td><td>机身内边距，外圈黑色，内圈圆角 44px</td></tr>
+            <tr><td>状态栏</td><td class="num">50px</td><td>左侧时钟，右侧信号、WiFi、电量，中间灵动岛</td></tr>
+            <tr><td>主页导航</td><td class="num">46px</td><td>二级页面导航栏高度</td></tr>
+            <tr><td>Tab 栏</td><td class="num">58px</td><td>四个一级 Tab，图标 24px 加文字</td></tr>
+            <tr><td>左右内边距</td><td class="num">16px</td><td>列表、分组卡片、搜索框统一取值</td></tr>
+            <tr><td>响应式断点</td><td class="num">900px</td><td>宽度 ≤900px 时隐藏评审侧栏，机身转全屏</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3>圆角</h3>
+        <table>
+          <thead><tr><th style="width:150px">部位</th><th style="width:110px">圆角</th><th>说明</th></tr></thead>
+          <tbody>
+            <tr><td>机身外框</td><td class="num">52px</td><td>外层黑色机身</td></tr>
+            <tr><td>屏幕</td><td class="num">44px</td><td>内层内容区</td></tr>
+            <tr><td>对话框</td><td class="num">15px</td><td>268px 宽居中弹窗</td></tr>
+            <tr><td>列表分组卡片</td><td class="num">14px</td><td>白底卡片与动作面板</td></tr>
+            <tr><td>消息气泡</td><td class="num">12px</td><td>最大宽度 76%，内边距 10/13px</td></tr>
+            <tr><td>菜单与按钮</td><td class="num">12px</td><td>长按菜单、图标按钮</td></tr>
+            <tr><td>标签与角标</td><td class="num">4–7px</td><td>未读角标、版本胶囊</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 3.4 -->
+    <section class="sec" id="motion">
+      <div class="sec-crumb">产品基线 / 组件与规范 / 动效</div>
+      <h2>3.4 动效</h2>
+      <p class="sec-lead">动效四组，缓动曲线写死，不引入第三方动画库。</p>
+
+      <div class="card">
+        <table>
+          <thead><tr><th style="width:150px">动效</th><th style="width:200px">参数</th><th>触发</th></tr></thead>
+          <tbody>
+            <tr><td>页面入场</td><td class="num">.28s cubic-bezier(.32,.72,0,1)</td><td>自右向左推入，位移 100% → 0</td></tr>
+            <tr><td>页面退场</td><td class="num">.22s cubic-bezier(.4,0,1,1)</td><td>向右滑出，动画结束后卸载节点</td></tr>
+            <tr><td>弹层出现</td><td class="num">.2s 缩放淡入</td><td>对话框、动作面板</td></tr>
+            <tr><td>整页淡入</td><td class="num">.2s</td><td>内容刷新类页面</td></tr>
+            <tr><td>主题切换</td><td class="num">.25s 背景与文字过渡</td><td>日夜模式切换</td></tr>
+            <tr><td>长按判定</td><td class="num">460ms</td><td>按住气泡达阈值即唤出菜单</td></tr>
+            <tr><td>轻提示</td><td class="num">1600ms</td><td>自动消失</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 4.1 -->
+    <section class="sec" id="team-scope">
+      <div class="sec-crumb">产品基线 / 团队协作 / 条款生效范围</div>
+      <h2>4.1 条款生效范围</h2>
+      <p class="sec-lead">本章为团队协作的强制约定，与原型文件同时生效。所有参与原型更新、评审、发布的人按本章执行。</p>
+
+      <div class="card">
+        <table>
+          <thead><tr><th style="width:170px">适用对象</th><th>约束内容</th></tr></thead>
+          <tbody>
+            <tr><td>文件职责划分</td><td><span class="mono">proto.html</span> 只承载界面与交互；<span class="mono">rule.html</span> 是本文件，承载规则与口径；<span class="mono">index.html</span> 只承载切换逻辑。规则文本不进原型页，原型页不放规则说明</td></tr>
+            <tr><td>改动前</td><td>拉取上游最新提交，确认本次改动范围不与上游重叠</td></tr>
+            <tr><td>改动中</td><td>按第 2、3 章规范落实现，新规则先写入本文件再改原型</td></tr>
+            <tr><td>改动后</td><td>本地逐页验证，按 4.6 清单自查，按 4.5 格式提交</td></tr>
+            <tr><td>本章变更</td><td>条款调整视为功能变更，同步升版并在 1.1 记录，不静默修改</td></tr>
+          </tbody>
+        </table>
+        <div class="note">
+          <span class="ic">▲</span>
+          <span>原型与本文档冲突时，以本文档为准。发现冲突时先改原型，再回填本节记录；<strong>不得以「原型就是这样」为由修改规则</strong>。</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4.2 -->
+    <section class="sec" id="repo">
+      <div class="sec-crumb">产品基线 / 团队协作 / 仓库与入口</div>
+      <h2>4.2 仓库与入口</h2>
+      <p class="sec-lead">Git 仓库是唯一事实来源。所有人在主线 <span class="mono">main</span> 上工作，不建个人长期分支。</p>
+
+      <div class="card">
+        <table>
+          <thead><tr><th style="width:130px">项</th><th>内容</th></tr></thead>
+          <tbody>
+            <tr><td>仓库</td><td><span class="mono">https://github.com/RmagSky/im</span></td></tr>
+            <tr><td>主入口</td><td><span class="mono">https://im.arthems.workers.dev/</span>　Cloudflare Workers，根路径返回框架页</td></tr>
+            <tr><td>备用入口</td><td><span class="mono">https://rmagsky.github.io/im/</span>　GitHub Pages，随 main 推送自动部署</td></tr>
+            <tr><td>主线分支</td><td><span class="mono">main</span>，唯一长期分支</td></tr>
+            <tr><td>文件划分</td><td><span class="mono">index.html</span> 框架页（切换与深链转发）｜<span class="mono">proto.html</span> 原型本体（单文件，CSS 与脚本内联）｜<span class="mono">rule.html</span> 产品基线</td></tr>
+            <tr><td>影响面</td><td>改 <span class="mono">proto.html</span> 只影响原型；改 <span class="mono">index.html</span> 影响入口切换与旧深链；两个文件都不含规则文本</td></tr>
+            <tr><td>发布方式</td><td>推送到 main 后两个入口同时重建：Cloudflare Workers 即时生效，GitHub Pages 构建 30–60 秒</td></tr>
+            <tr><td>缓存</td><td>Cloudflare 每次回源；GitHub Pages 的 HTML 由浏览器与 CDN 各缓存 10 分钟</td></tr>
+          </tbody>
+        </table>
+        <div class="note">
+          <span class="ic">▲</span>
+          <span>验证线上更新时分清两件事：构建延迟指推送后 Pages 尚未重建完成；缓存未过期指重建已完成但浏览器仍显示旧版。核实用 <span class="mono">Ctrl+Shift+R</span> 或隐私窗口，不以首次刷新结果判定发布失败。</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4.3 -->
+    <section class="sec" id="flow">
+      <div class="sec-crumb">产品基线 / 团队协作 / 五步流程</div>
+      <h2>4.3 五步流程</h2>
+      <p class="sec-lead">每次改动按顺序走完五步，不跳步、不并步。以下指令在仓库根目录执行。</p>
+
+      <div class="card">
+        <div class="flow">
+          <div class="step"><div class="no">1</div><div class="bd">
+            <div class="tt">拉取上游</div>
+            <div class="ds">动手改文件之前先取远端最新提交。本地有未提交改动时，先提交或暂存，再拉取。</div>
+            <pre><span class="c"># 取远端并以 rebase 方式并入本地提交</span>
+git pull --rebase origin main</pre>
+          </div></div>
+          <div class="step"><div class="no">2</div><div class="bd">
+            <div class="tt">检查新提交</div>
+            <div class="ds">确认上游改了哪些文件、是否与本次改动重叠。重叠部分先读懂对方的改法，再定自己的改法。</div>
+            <pre><span class="c"># 本地落后的提交</span>
+git log --oneline HEAD..origin/main
+
+<span class="c"># 上游改了哪些文件</span>
+git diff --stat HEAD origin/main
+
+<span class="c"># 逐行查看具体改动</span>
+git diff HEAD origin/main -- proto.html</pre>
+          </div></div>
+          <div class="step"><div class="no">3</div><div class="bd">
+            <div class="tt">合并</div>
+            <div class="ds">把上游提交并入本地，使本地同时包含双方改动。第 1 步已用 <span class="mono">--rebase</span> 时，此步只确认结果。</div>
+            <pre><span class="c"># 直接合并时执行</span>
+git merge origin/main
+
+<span class="c"># 确认只剩自己的改动</span>
+git status
+git log --oneline -8</pre>
+          </div></div>
+          <div class="step"><div class="no">4</div><div class="bd">
+            <div class="tt">处理冲突</div>
+            <div class="ds">按 4.4 逐段判定保留哪一侧，不整文件取一边。修正后标记解决并继续。</div>
+            <pre><span class="c"># 查看冲突文件</span>
+git status
+
+<span class="c"># 修正后标记为已解决</span>
+git add proto.html rule.html
+
+<span class="c"># rebase 过程继续；merge 过程改为 git commit</span>
+git rebase --continue</pre>
+            <div class="note red" style="margin-top:10px">
+              <span class="ic">▲</span>
+              <span>冲突标记 <span class="mono">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span> / <span class="mono">=======</span> / <span class="mono">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span> 须全部清除。残留标记会让整页脚本失效，页面白屏。</span>
+            </div>
+          </div></div>
+          <div class="step"><div class="no">5</div><div class="bd">
+            <div class="tt">上传更新</div>
+            <div class="ds">本地验证通过、4.6 清单逐项确认后推送，推送后核对两个入口。</div>
+            <pre><span class="c"># 暂存并提交，提交信息按 4.5 格式</span>
+git add -A
+git commit -m "feat(chat): 消息菜单增加举报入口"
+
+<span class="c"># 上传到主线</span>
+git push origin main
+
+<span class="c"># 确认本地与远端一致</span>
+git status</pre>
+          </div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4.4 -->
+    <section class="sec" id="conflict">
+      <div class="sec-crumb">产品基线 / 团队协作 / 冲突处理规则</div>
+      <h2>4.4 冲突处理规则</h2>
+      <p class="sec-lead">同一处被两人改动时按位置判定，逐段处理，不整文件取一侧。</p>
+
+      <div class="card">
+        <table>
+          <thead><tr><th style="width:190px">冲突位置</th><th>处理方式</th></tr></thead>
+          <tbody>
+            <tr><td>页面结构（<span class="mono">PAGES.*</span>）</td><td>双方新增页面全部保留，按 1.2 的 Tab 归属归位，页面 ID 不重名；重名时后者改名并同步改 1.2 清单</td></tr>
+            <tr><td>样式令牌（<span class="mono">:root</span>）</td><td>色值取上游；字号、圆角、间距取上游。新增令牌双方都保留，命名冲突时用更具体的语义名</td></tr>
+            <tr><td>交互处理（<span class="mono">ACT.*</span>、事件监听）</td><td>同一动作被两处实现时取上游版本，把另一方的行为合并进同一函数，不留两份实现</td></tr>
+            <tr><td>演示数据（<span class="mono">D</span> 对象）</td><td>保留上游数据集，自己的样例另加条目，不覆盖上游已有条目；改条数时同步改 1.2 数据表</td></tr>
+            <tr><td>规范章节（<span class="mono">rule.html</span>）</td><td>同一条款两处表述时取语义更完整的一份，另一份的内容并入，不并列两段</td></tr>
+            <tr><td>版本号与变更记录</td><td>合并阶段不处理，功能全部合入后按 1.1「多人同时升版的处理顺序」一次性收口</td></tr>
+            <tr><td>框架页（<span class="mono">index.html</span>）</td><td>切换逻辑改动取上游；新增视图（Tab）双方都保留，插入 <span class="mono">VIEWS</span> 数组并同步改深链解析</td></tr>
+          </tbody>
+        </table>
+        <div class="note">
+          <span class="ic">▲</span>
+          <span>判定不了保留哪一侧时，先问改动方，不自行删除他人提交。合并后逐页打开验证，<strong>不以「看起来没错」作为通过标准</strong>。</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4.5 -->
+    <section class="sec" id="commit">
+      <div class="sec-crumb">产品基线 / 团队协作 / 提交信息格式</div>
+      <h2>4.5 提交信息格式</h2>
+      <p class="sec-lead">一行摘要写清改了什么，类型用英文前缀，范围写页面或文件。</p>
+
+      <div class="card">
+        <pre><span class="c"># 格式：类型(范围): 摘要</span>
+feat(chat): 消息菜单增加举报入口
+fix(proto): 修复软键盘收起后输入框失焦
+style(appearance): 气泡色块尺寸对齐 8px 网格
+docs(rule): 补充冲突处理中的交互处理条款
+chore: 移除临时截图文件</pre>
+        <table style="margin-top:14px">
+          <thead><tr><th style="width:110px">类型</th><th>适用改动</th></tr></thead>
+          <tbody>
+            <tr><td><span class="mono">feat</span></td><td>新增页面、功能单元、章节、浮层</td></tr>
+            <tr><td><span class="mono">fix</span></td><td>修复错误：交互失效、样式错位、状态不同步</td></tr>
+            <tr><td><span class="mono">style</span></td><td>字号、配色、间距、位置等视觉调整，不升版</td></tr>
+            <tr><td><span class="mono">docs</span></td><td>本规范文档、README 的文字改动</td></tr>
+            <tr><td><span class="mono">chore</span></td><td>部署配置、忽略文件、清理临时文件</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 4.6 -->
+    <section class="sec" id="checklist">
+      <div class="sec-crumb">产品基线 / 团队协作 / 上传前检查清单</div>
+      <h2>4.6 上传前检查清单</h2>
+      <p class="sec-lead">六项全部通过再推送。任一项不通过则不上传。</p>
+
+      <div class="card">
+        <table>
+          <thead><tr><th style="width:52px">序</th><th style="width:200px">检查项</th><th>通过标准</th></tr></thead>
+          <tbody>
+            <tr><td class="num">1</td><td>三个文件可打开</td><td><span class="mono">index.html</span>、<span class="mono">proto.html</span>、<span class="mono">rule.html</span> 本地打开无控制台报错；入口页两个 Tab 可切换</td></tr>
+            <tr><td class="num">2</td><td>版本号一致</td><td>1.1 列出的五处展示位取值相同，变更记录首行已补本次内容</td></tr>
+            <tr><td class="num">3</td><td>深链可用</td><td>入口页与原型页两种写法各测一条，页面直达且返回落点正确</td></tr>
+            <tr><td class="num">4</td><td>主链路可走通</td><td>会话进入、发送、长按菜单六项、多选转发、删除确认逐项点过</td></tr>
+            <tr><td class="num">5</td><td>无临时文件</td><td>不含截图、备份文件、编辑器配置、<span class="mono">.DS_Store</span></td></tr>
+            <tr><td class="num">6</td><td>改动范围可控</td><td><span class="mono">git status</span> 列出的文件都是本次有意修改的</td></tr>
+          </tbody>
+        </table>
+        <div class="note blue">
+          <span class="ic">●</span>
+          <span>推送后打开两个入口核对：页面可加载、样式无错位、改动处生效、旧深链仍可直达。Pages 重建期间访问到旧版属正常。</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4.7 -->
+    <section class="sec" id="forbid">
+      <div class="sec-crumb">产品基线 / 团队协作 / 禁止事项</div>
+      <h2>4.7 禁止事项</h2>
+
+      <div class="card">
+        <table>
+          <thead><tr><th style="width:220px">禁止操作</th><th>原因与替代做法</th></tr></thead>
+          <tbody>
+            <tr><td>强制推送</td><td><span class="mono">git push --force</span> 覆盖他人提交。改用 <span class="mono">--force-with-lease</span>，且仅限自己刚推送、无人接着改的分支</td></tr>
+            <tr><td>改写已推送的提交</td><td>已推送的提交不改写、不压缩。需撤销时用新提交反向修改</td></tr>
+            <tr><td>不拉取就改共享文件</td><td><span class="mono">proto.html</span> 被全组共用，改前必拉取，改后必逐页验证</td></tr>
+            <tr><td>规则只写进原型</td><td>规则文本的唯一载体是 <span class="mono">rule.html</span>。原型内只留界面与提示文案</td></tr>
+            <tr><td>以截图为唯一依据改样式</td><td>色值、字号、圆角一律取 3.1–3.3 的令牌，不按目测取值</td></tr>
+            <tr><td>把 mock 数据当接口</td><td>原型不含后端，页面不接真实环境，演示数据只在 <span class="mono">D</span> 对象内</td></tr>
+            <tr><td>提交前不做本地验证</td><td>未通过 4.6 清单的改动不进 main</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script>
+/* 侧栏高亮：滚动到哪一节就点亮哪一条 */
+(function(){
+  const links = Array.from(document.querySelectorAll('.side-link'));
+  const map = {};
+  links.forEach(function(a){
+    const id = a.getAttribute('href').slice(1);
+    const el = document.getElementById(id);
+    if(el) map[id] = a;
+  });
+  const io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(!e.isIntersecting) return;
+      links.forEach(function(a){ a.classList.remove('on'); });
+      if(map[e.target.id]) map[e.target.id].classList.add('on');
+    });
+  }, { rootMargin:'-10% 0px -75% 0px', threshold:0 });
+
+  Object.keys(map).forEach(function(id){ io.observe(document.getElementById(id)); });
+
+  links.forEach(function(a){
+    a.addEventListener('click', function(ev){
+      ev.preventDefault();
+      const t = document.getElementById(a.getAttribute('href').slice(1));
+      if(t) t.scrollIntoView({ behavior:'smooth', block:'start' });
+      links.forEach(function(x){ x.classList.remove('on'); });
+      a.classList.add('on');
+      try{ history.replaceState(null,'',a.getAttribute('href')); }catch(e){}
+    });
+  });
+})();
+</script>
+</body>
+</html>
