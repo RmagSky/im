@@ -18,11 +18,11 @@ body[data-theme="dark"]{
   --line:#282A31; --input:#26282F; --card2:#1C1D22;
 }
 html,body{height:100%}
-body{margin:0;font-family:Outfit,"Noto Sans SC","Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+body{margin:0;align-items:flex-start;justify-content:center;overflow-y:auto;font-family:Outfit,"Noto Sans SC","Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
   background:#EBEEF3;display:flex;align-items:center;justify-content:center;color:var(--text);
   -webkit-font-smoothing:antialiased;transition:background .25s}
 body[data-theme="dark"]{background:#07080A}
-.wrap{display:flex;gap:40px;align-items:center;justify-content:center}
+.wrap{display:flex;gap:40px;align-items:center;justify-content:center;margin:auto}
 
 /* ---------- side meta ---------- */
 .meta{width:258px;color:#5A6070;font-size:13px;line-height:1.75}
@@ -453,7 +453,7 @@ body[data-theme="dark"] .mem .nm .ow{background:#33280F}
   .screen{border-radius:0}
 }
 /* 被 index.html 框架页以 iframe 载入时：视口高度不足则整页可滚动，机身不被裁切 */
-html.is-embedded body{align-items:flex-start;overflow-y:auto;padding:18px 0 24px}
+html.is-embedded body{padding:28px 0}
 html.is-embedded body::-webkit-scrollbar{width:0}
 </style>
 <script>
