@@ -64,6 +64,7 @@ body[data-theme="dark"]{background:#07080A}
 
 /* ---------- stack & pages ---------- */
 .screen ::-webkit-scrollbar{width:0;height:0}
+.stack .page{isolation:isolate}
 .stack{flex:1;min-height:0;position:relative;overflow:hidden}
 .page{position:absolute;inset:0;display:flex;flex-direction:column;background:var(--bg);overflow:hidden}
 .page.enter{animation:slideIn .28s cubic-bezier(.32,.72,0,1)}
@@ -1326,7 +1327,7 @@ PAGES.groups = () => `${nav('我的群聊')}
   <div class="pbody">
     ${D.chats.filter(c=>c.type==='group').map(c=>`
       <div class="li" data-act="openchat" data-id="${c.id}">
-        ${av(c.name,{c:c.c,t:c.lab,html:`<span class="tiny" style="white-space:pre-line">${c.lab}</span>`})}
+        ${av(c.name,{c:c.c,t:c.lab})}
         <div class="mid"><div class="nm ${c.gray?'gray':''}">${esc(c.name)}</div></div>
       </div>`).join('')}
   </div>`;
@@ -1425,14 +1426,14 @@ PAGES.groupInfo = (p) => {
   const exited = S.chatState[id]==='exited' || c.exited;
   if(exited) return `${nav('群详情')}
     <div class="pbody">
-      <div style="display:flex;gap:12px;align-items:center;padding:14px 16px">${av(c.name,{c:c.c,t:c.lab,html:`<span class="tiny" style="white-space:pre-line">${c.lab}</span>`})}
+      <div style="display:flex;gap:12px;align-items:center;padding:14px 16px">${av(c.name,{c:c.c,t:c.lab})}
         <div style="font-size:16px;font-weight:500">${esc(c.name)}</div></div>
       <div style="text-align:center;padding:30px;color:var(--red);font-size:14px" data-act="delchat">删除</div>
     </div>`;
   return `${nav('群详情')}
   <div class="pbody" style="padding-bottom:6px">
     <div style="display:flex;gap:12px;align-items:center;padding:4px 16px 14px">
-      ${av(c.name,{c:c.c,t:c.lab,html:`<span class="tiny" style="white-space:pre-line">${c.lab}</span>`})}
+      ${av(c.name,{c:c.c,t:c.lab})}
       <div style="font-size:16px;font-weight:500;min-width:0">${esc(c.name)}</div></div>
     <div style="background:var(--card);margin:0 12px 10px;border-radius:14px;padding:16px">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
@@ -1561,7 +1562,7 @@ function msgHtml(m,i,ctx){
   const picked = S.picked.has(i);
   return `<div class="msg ${m.me?'me':''} ${S.multi?'sel-mode':''} ${picked?'picked':''}" data-act="msgclick" data-i="${i}">
     <div class="box">${ic('check',13,'2.8')}</div>
-    ${m.me?'':av(ctx.name,{c:ctx.c,t:ctx.lab,round:true,size:'sm',html:`<span style="font-size:13px">${ctx.emoji}</span>`})}
+    ${m.me?'':av(ctx.name,{c:ctx.c,t:ctx.lab,round:true,size:'sm'})}
     <div class="bub">${m.img?`<div class="poster">
         <span class="ball">⚽</span>
         <div style="font-size:9px;letter-spacing:1px;color:#0B3B26">球迷俱乐部 · fansclub.cn</div>
@@ -1627,7 +1628,7 @@ PAGES.chat = (p) => {
   return `
   <div class="chat-h">
     <div class="nav-btn" data-back>${ic('back')}</div>
-    ${av(c.name,{c:c.c,t:c.lab,round:true,size:'sm',html:`<span class="tiny" style="white-space:pre-line">${c.lab}</span>`})}
+    ${av(c.name,{c:c.c,t:c.lab,round:true,size:'sm'})}
     <div class="mid">
       <div class="nm">${esc(c.name)}</div>
       ${g?`<div class="sub">共${g.members}人</div>`:'<div class="sub">在线</div>'}
@@ -1721,7 +1722,7 @@ PAGES.forward = () => `
     ${D.chats.slice(0,2).map(c=>`
       <div class="li" data-act="fwdpick" data-id="${c.id}">
         ${S.forwardMulti?`<span style="width:22px;height:22px;border-radius:50%;border:1.5px solid #C7CBD3;display:grid;place-items:center;flex:0 0 auto;${S.forwardPicked.has(c.id)?'background:var(--blue);border-color:var(--blue);color:#fff':''}">${S.forwardPicked.has(c.id)?ic('check',13,'2.8'):''}</span>`:''}
-        ${av(c.name,{c:c.c,t:c.lab,html:`<span class="tiny" style="white-space:pre-line">${c.lab}</span>`})}
+        ${av(c.name,{c:c.c,t:c.lab})}
         <div class="mid"><div class="nm ${c.gray?'gray':''}">${esc(c.name)}</div></div>
       </div>`).join('')}
   </div>`;
@@ -1736,7 +1737,7 @@ PAGES.choose = (p) => {
   <div class="pbody">
     ${kind==='contact'?'<div class="glabel" style="padding:4px 20px">L</div>':''}
     ${list.map(c=>`<div class="li" data-act="fwdto" data-id="${c.id}">
-      ${av(c.name,{c:c.c,t:c.lab,html:`<span class="tiny" style="white-space:pre-line">${c.lab}</span>`})}
+      ${av(c.name,{c:c.c,t:c.lab})}
       <div class="mid"><div class="nm ${c.gray?'gray':''}">${esc(c.name)}</div></div>
     </div>`).join('')}
   </div>
