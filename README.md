@@ -11,6 +11,7 @@ IM Prototype Designs Via: Qdd
 | `index.html` | 入口框架页 | 在「原型」与「产品基线」之间切换；解析旧深链并转发给原型页 |
 | `proto.html` | 原型 | 界面与交互本体，CSS 与脚本内联 |
 | `rule.html` | 产品基线 | 版本记录、页面清单、功能清单、交互与视觉规范、团队协作条款 |
+| `_fonts/` | 字体 | Outfit 六档字重与 `outfit.css`，本地内置，不依赖 CDN |
 
 规则文本的唯一载体是 `rule.html`。原型页只放界面与提示文案，不承载规则说明。
 
@@ -29,7 +30,7 @@ IM Prototype Designs Via: Qdd
 
 页面清单、交互口径与验收标准见 `rule.html` 第 1、2 章。
 
-`rule.html` 与 `index.html` 的版式取自 Stripe 文档系统：白色画布、冷白侧栏、深海军蓝文字、单一 indigo 强调色、发丝线分层。原型页 `proto.html` 保留产品自身的界面语言，不套用文档版式。
+`rule.html` 与 `index.html` 的版式与中台原型的产品基线页一致：左侧导航切换、单屏单节，不做长页锚点跳转；字体为 Outfit 加中文字体回退（`_fonts/` 内置六档字重），字号收进七档；区块为卡片式。原型页 `proto.html` 保留产品自身的界面语言，不套用文档版式。
 
 ## 深链评审
 

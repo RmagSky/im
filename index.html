@@ -12,19 +12,20 @@
 <meta name="color-scheme" content="only light">
 <title>球帝带 · 交互原型 v1.0.1</title>
 <link rel="icon" href="data:,">
+<link rel="stylesheet" href="_fonts/outfit.css">
 <style>
 :root{
-  --ink:#0d253d; --ink-2:#273951; --mute:#64748d;
-  --canvas:#ffffff; --soft:#f6f9fc;
-  --hair:#e3e8ee;
-  --accent:#533afd; --accent-bg:#f3f0ff;
+  --ink:#28253B; --ink-2:#554E7B; --mute:#8A8A99;
+  --canvas:#FFFFFF; --soft:#FBFCFD;
+  --hair:#E9E8F0;
+  --accent:#5266EB; --accent-bg:#EDECFB;
   --mono:ui-monospace,"SFMono-Regular",Consolas,Menlo,monospace;
   --ease:cubic-bezier(.2,.7,.3,1);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%}
 body{
-  font-family:"SF Pro Text","Inter",-apple-system,BlinkMacSystemFont,"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;
+  font-family:Outfit,"Noto Sans SC","Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
   background:var(--canvas);color:var(--ink-2);display:flex;flex-direction:column;height:100vh;overflow:hidden;
   -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
 }
@@ -37,8 +38,8 @@ header{
 .brand .name{font-size:14px;font-weight:500;color:var(--ink);letter-spacing:-.1px}
 .brand small{font-size:12px;color:var(--mute)}
 .vnum{
-  font-family:var(--mono);font-size:11px;color:var(--mute);cursor:pointer;
-  font-variant-numeric:tabular-nums;align-self:center;
+  font-size:11px;color:var(--mute);cursor:pointer;
+  font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1;align-self:center;
   border-bottom:1px solid transparent;transition:color 120ms var(--ease),border-color 120ms var(--ease);
 }
 .vnum:hover{color:var(--accent);border-color:var(--accent)}
@@ -56,7 +57,7 @@ nav::-webkit-scrollbar{height:0;display:none}
 }
 .tab.active{color:var(--accent)}
 .tab.active::after{background:var(--accent)}
-.tab .badge{font-family:var(--mono);font-size:11px;color:var(--mute);font-variant-numeric:tabular-nums}
+.tab .badge{font-size:11px;color:var(--mute);font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
 .tab.active .badge{color:var(--accent)}
 .actions{display:flex;align-items:center;gap:8px;flex:0 0 auto}
 .hint{font-size:12px;color:var(--mute);white-space:nowrap}

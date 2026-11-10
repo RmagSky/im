@@ -3,6 +3,7 @@
   球帝带 · 产品基线
   版本：v1.0.1 ｜ 入口：index.html ｜ 原型：proto.html
   本文档为规则的唯一权威载体：产品口径、交互规范、团队协作条款以本文件为准。
+  版式：左导航单屏单节，不采用长页锚点跳转。
 -->
 <html lang="zh-CN">
 <head>
@@ -11,219 +12,199 @@
 <meta name="color-scheme" content="only light">
 <title>产品基线 · 球帝带 v1.0.1</title>
 <link rel="icon" href="data:,">
+<link rel="stylesheet" href="_fonts/outfit.css">
 <style>
 /* ---------------------------------------------------------------
-   版式方向：Stripe 文档系统（design-md/stripe）
-   canvas 白 / soft 冷白 / ink 深海军蓝 / 单一 indigo accent / 发丝线分层
+   版式遵循中台原型的产品基线页：Outfit 字体体系、六档字号、卡片式区块、
+   左侧导航单屏单节。颜色取同一套中性阶与单一主色。
    --------------------------------------------------------------- */
 :root{
-  --ink:#0d253d; --ink-2:#273951; --mute:#64748d;
-  --canvas:#ffffff; --soft:#f6f9fc; --cream:#f5e9d4;
-  --hair:#e3e8ee; --hair-2:#eef2f7;
-  --accent:#533afd; --accent-bg:#f3f0ff;
-  --ruby:#ea2261;
+  --primary:#5266EB; --primary-hover:#4354D6; --primary-light:#EDECFB;
+  --bg:#FBFCFD; --card:#FFFFFF; --card-2:#FBFBFF;
+  --border:#E9E8F0; --border-strong:#D6D5E3;
+  --text:#28253B; --text-sub:#554E7B; --text-disabled:#8A8A99;
+  --danger:#E5484D;
   --mono:ui-monospace,"SFMono-Regular",Consolas,Menlo,monospace;
-  --ease:cubic-bezier(.2,.7,.3,1);
+  --shadow:0 1px 3px rgba(16,24,40,.06), 0 1px 2px rgba(16,24,40,.04);
 }
 *{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
 body{
-  font-family:"SF Pro Text","Inter",-apple-system,BlinkMacSystemFont,"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;
-  background:var(--canvas);color:var(--ink-2);font-size:14px;line-height:1.65;
-  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  display:flex;overflow:hidden;
+  font-family:Outfit,"Noto Sans SC","Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+  background:var(--bg);color:var(--text);font-size:14px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;
 }
-.shell{display:block}
 
-/* 导航：窄宽度为顶部条，宽屏改为左侧栏（见文末 min-width:1180px） */
+/* 左侧导航 */
 .side{
-  position:sticky;top:0;z-index:5;background:var(--canvas);border-bottom:1px solid var(--hair);
-  display:flex;align-items:center;gap:2px;padding:8px 16px;
-  overflow-x:auto;overflow-y:hidden;
+  width:236px;flex:0 0 236px;background:var(--card);border-right:1px solid var(--border);
+  overflow-y:auto;padding:16px 10px 40px;
 }
-.side::-webkit-scrollbar{height:0;width:0}
-.side-brand{display:flex;align-items:center;gap:8px;padding:0 12px 0 0;margin-right:6px;border-right:1px solid var(--hair);flex:0 0 auto}
-.side-brand .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);flex:0 0 auto}
-.side-brand .nm{font-size:12px;font-weight:500;color:var(--ink);white-space:nowrap}
-.side-brand .vd{display:none}
-.side-grp{display:none}
-.side-grp:first-of-type{margin-top:0}
-.side-link{
-  display:flex;align-items:baseline;gap:8px;padding:5px 8px;border-radius:6px;color:var(--ink-2);
-  font-size:13px;cursor:pointer;text-decoration:none;white-space:nowrap;flex:0 0 auto;
-  transition:background 120ms var(--ease),color 120ms var(--ease);
+.side::-webkit-scrollbar{width:6px}
+.side::-webkit-scrollbar-thumb{background:var(--border-strong);border-radius:3px}
+.brand{display:flex;align-items:center;gap:8px;padding:2px 10px 14px;margin-bottom:6px;border-bottom:1px solid var(--border)}
+.brand .dot{width:7px;height:7px;border-radius:50%;background:var(--primary);flex:0 0 auto}
+.brand .nm{font-size:14px;font-weight:600;color:var(--text)}
+.brand .vd{font-size:11px;color:var(--text-disabled);margin-left:auto;font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
+.group{font-size:11px;font-weight:500;color:var(--text-disabled);padding:0 10px;margin:18px 0 4px}
+.group:first-of-type{margin-top:0}
+.link{
+  display:flex;align-items:center;padding:7px 10px;border-radius:6px;
+  font-size:13px;color:var(--text-sub);cursor:pointer;text-decoration:none;
+  transition:background .12s ease,color .12s ease;
 }
-.side-link:hover{background:#eef3f9}
-.side-link.on{background:var(--accent-bg);color:var(--accent)}
-.side-link .n{display:none}
-.side-link.on .n{color:var(--accent)}
-.side-foot{display:none}
-.side-foot a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--hair)}
-.side-foot a:hover{color:var(--accent);border-color:var(--accent)}
+.link:hover{background:var(--bg);color:var(--text)}
+.link.active{background:var(--primary-light);color:var(--primary);font-weight:500}
+.link .cnt{margin-left:auto;font-size:11px;color:var(--text-disabled);font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
+.link.active .cnt{color:var(--primary)}
+.side-foot{margin-top:20px;padding:12px 10px 0;border-top:1px solid var(--border);font-size:12px;color:var(--text-disabled);line-height:1.8}
+.side-foot a{color:var(--text-sub);text-decoration:none}
+.side-foot a:hover{color:var(--primary)}
 
-/* 正文 */
-.doc{max-width:1016px;margin:0 auto;padding:32px 20px 72px}
-.doc-hd{margin-bottom:48px}
-.doc-hd .kicker{font-size:12px;color:var(--mute);margin-bottom:8px}
-.doc-hd h1{font-size:28px;font-weight:400;color:var(--ink);letter-spacing:-.5px;line-height:1.25}
-.doc-hd .meta{font-size:12px;color:var(--mute);margin-top:8px;font-variant-numeric:tabular-nums}
+/* 内容区：一节一屏，切换不滚动整页 */
+.content{flex:1;min-width:0;overflow-y:auto;padding:24px 28px 80px}
+.content::-webkit-scrollbar{width:8px}
+.content::-webkit-scrollbar-thumb{background:var(--border-strong);border-radius:4px}
+section{display:none}
+section.active{display:block}
+.crumb{font-size:12px;color:var(--text-disabled);margin-bottom:6px}
+h1{font-size:18px;font-weight:600;color:var(--text);margin-bottom:10px;letter-spacing:-.2px}
+.lead{font-size:14px;color:var(--text-sub);line-height:1.6;margin-bottom:16px;max-width:820px}
 
-.sec{margin-bottom:48px;scroll-margin-top:24px}
-.sec-crumb{font-size:12px;color:var(--mute);margin-bottom:4px}
-.sec h2{font-size:19px;font-weight:500;color:var(--ink);letter-spacing:-.2px;margin-bottom:12px}
-.sec-lead{font-size:15px;color:var(--ink-2);max-width:660px;margin-bottom:24px;line-height:1.7}
-
-/* 区块：发丝线分层，不做卡片 */
-.block{border-top:1px solid var(--hair);padding-top:20px;margin-bottom:32px}
-.block > h3{font-size:15px;font-weight:500;color:var(--ink);margin-bottom:4px}
-.block > .sub{font-size:12px;color:var(--mute);margin-bottom:16px}
-.block:last-child{margin-bottom:0}
+/* 卡片 */
+.card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:20px;margin-bottom:16px;box-shadow:var(--shadow)}
+.card > h3{font-size:16px;font-weight:600;color:var(--text);margin-bottom:6px}
+.card > .sub{font-size:12px;color:var(--text-disabled);margin-bottom:12px}
 
 /* 表格 */
-table{width:100%;border-collapse:collapse;font-size:14px;table-layout:fixed}
+table{width:100%;border-collapse:collapse;font-size:13px;table-layout:fixed}
 th{
-  font-size:12px;font-weight:500;color:var(--mute);text-align:left;white-space:nowrap;
-  padding:10px 12px;background:var(--soft);border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);
+  font-size:12px;font-weight:500;color:var(--text-sub);text-align:left;white-space:nowrap;
+  background:var(--card-2);padding:8px 12px;border-bottom:1px solid var(--border);
 }
-td{padding:10px 12px;border-bottom:1px solid var(--hair-2);color:var(--ink-2);vertical-align:top;line-height:1.6;overflow-wrap:anywhere}
-tbody tr:last-child td{border-bottom:1px solid var(--hair)}
-td:first-child{color:var(--ink);white-space:nowrap}
-tr.grp td{background:var(--canvas);color:var(--mute);font-size:12px;padding-top:20px;border-bottom:1px solid var(--hair)}
-tr.grp td:first-child{font-weight:500}
-.num{font-variant-numeric:tabular-nums;font-feature-settings:"tnum";white-space:nowrap}
-.mono{font-family:var(--mono);font-size:12px;color:var(--ink-2);white-space:nowrap}
+td{padding:8px 12px;border-bottom:1px solid var(--border);color:var(--text-sub);vertical-align:top;line-height:1.5;overflow-wrap:anywhere}
+tr:last-child td{border-bottom:0}
+td:first-child{color:var(--text);white-space:nowrap}
+tr.grp td{background:var(--card-2);color:var(--text-disabled);font-size:12px;font-weight:500;padding-top:14px}
+.num{font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1;white-space:nowrap}
+.mono{font-family:var(--mono);font-size:12px;color:var(--text-sub);white-space:nowrap}
 code{font-family:var(--mono);font-size:12px}
 pre{
-  font-family:var(--mono);font-size:12px;line-height:1.9;color:var(--ink-2);
-  background:var(--soft);border:1px solid var(--hair);border-radius:6px;
-  padding:14px 18px;overflow-x:auto;white-space:pre;
-  width:fit-content;max-width:100%;
+  font-family:var(--mono);font-size:12px;line-height:1.9;color:var(--text-sub);
+  background:var(--card-2);border:1px solid var(--border);border-radius:6px;
+  padding:12px 16px;overflow-x:auto;white-space:pre;width:fit-content;max-width:100%;
 }
-pre .c{color:var(--mute)}
+pre .c{color:var(--text-disabled)}
 
-/* 提示：左侧竖线，不用色块 */
-.callout{border-left:2px solid var(--ink);padding:2px 0 2px 16px;margin-top:16px;font-size:13px;color:var(--ink-2);line-height:1.75}
-.callout.rule{border-color:var(--accent)}
-.callout.warn{border-color:var(--ruby)}
-.callout b{font-weight:500;color:var(--ink)}
+/* 提示 */
+.note{border-left:2px solid var(--border-strong);padding:2px 0 2px 12px;margin-top:12px;font-size:13px;color:var(--text-sub);line-height:1.6}
+.note.warn{border-color:var(--danger)}
+.note b,strong{font-weight:500;color:var(--text)}
 
-/* 唯一暖色块：强制条款声明 */
-.band{background:var(--cream);border-radius:8px;padding:24px 28px;margin:8px 0 32px}
-.band .bd-k{font-size:12px;color:#7a5a1e;margin-bottom:6px}
-.band .bd-t{font-size:15px;color:#3d2a08;line-height:1.75}
-.band .bd-t b{font-weight:500;color:#2a1c04}
+/* 声明带 */
+.band{background:var(--primary-light);border-radius:8px;padding:16px 20px;margin-bottom:16px}
+.band .bd-k{font-size:11px;font-weight:500;color:var(--primary);margin-bottom:4px}
+.band .bd-t{font-size:14px;color:var(--text);line-height:1.6}
+.band .bd-t b{font-weight:600}
 
-strong{font-weight:500;color:var(--ink)}
+/* 优先级标签 */
+.pri{
+  display:inline-block;min-width:26px;text-align:center;padding:1px 6px;border-radius:4px;
+  font-size:11px;font-weight:500;font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1;
+}
+.p0{background:var(--primary-light);color:var(--primary)}
+.p1{background:var(--card-2);color:var(--text-sub);border:1px solid var(--border)}
+.p2{background:var(--card-2);color:var(--text-disabled);border:1px solid var(--border)}
 
-/* 优先级：只留字重与一处强调色 */
-.pri{font-size:12px;font-variant-numeric:tabular-nums;font-weight:500}
-.p0{color:var(--ruby)}
-.p1{color:var(--ink-2)}
-.p2{color:var(--mute)}
-
-/* 流程 */
+/* 步骤 */
 .flow{display:flex;flex-direction:column}
-.step{display:flex;gap:12px;padding:20px 0;border-bottom:1px solid var(--hair-2)}
+.step{display:flex;gap:12px;padding:16px 0;border-bottom:1px solid var(--border)}
 .step:first-child{padding-top:0}
 .step:last-child{border-bottom:0;padding-bottom:0}
 .step .no{
-  flex:0 0 18px;height:20px;font-family:var(--mono);font-size:12px;font-weight:500;color:var(--ink);
-  display:flex;align-items:center;font-variant-numeric:tabular-nums;
+  flex:0 0 20px;height:20px;border-radius:50%;background:var(--primary-light);color:var(--primary);
+  font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center;
+  font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1;
 }
 .step .bd{flex:1;min-width:0}
-.step .tt{font-size:14px;font-weight:500;color:var(--ink);margin-bottom:6px}
-.step .ds{font-size:13px;color:var(--ink-2);line-height:1.75;margin-bottom:12px}
-.step pre{margin-top:12px}
+.step .tt{font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px}
+.step .ds{font-size:13px;color:var(--text-sub);line-height:1.6;margin-bottom:10px}
 
-.sw{display:inline-block;width:18px;height:18px;border-radius:4px;border:1px solid rgba(13,37,61,.12);vertical-align:-4px;margin-right:10px}
-.tok{font-family:var(--mono);font-size:12px;color:var(--mute)}
+/* 色块 */
+.sw{display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid var(--border-strong);vertical-align:-3px;margin-right:8px}
+.tok{font-size:12px;color:var(--text-disabled);font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
 
-/* 页面索引：全文唯一的密集视觉 */
-.inv{border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);padding:4px 0;margin:0 0 32px}
-.inv-row{display:flex;gap:16px;padding:12px 0;align-items:baseline}
-.inv-row + .inv-row{border-top:1px solid var(--hair-2)}
-.inv-lab{flex:0 0 78px;display:flex;align-items:baseline;gap:6px}
-.inv-lab b{font-size:13px;font-weight:500;color:var(--ink)}
-.inv-lab span{font-size:12px;color:var(--mute);font-variant-numeric:tabular-nums}
+/* 页面索引 */
+.inv-card{padding:8px 20px}
+.inv{display:block;margin:0}
+.inv-row{display:flex;gap:16px;padding:10px 0;align-items:baseline}
+.inv-row + .inv-row{border-top:1px solid var(--border)}
+.inv-lab{flex:0 0 84px;display:flex;align-items:baseline;gap:6px}
+.inv-lab b{font-size:13px;font-weight:600;color:var(--text)}
+.inv-lab span{font-size:11px;color:var(--text-disabled);font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
 .chips{display:flex;flex-wrap:wrap;gap:6px;flex:1;min-width:0}
-.chip{
-  font-size:12px;color:var(--ink-2);border:1px solid var(--hair);border-radius:4px;
-  padding:2px 6px;line-height:1.5;white-space:nowrap;
-}
-.chip i{font-style:normal;font-family:var(--mono);font-size:11px;color:var(--mute);margin-left:4px}
+.chip{font-size:12px;color:var(--text-sub);border:1px solid var(--border);border-radius:4px;padding:2px 8px;line-height:1.5;white-space:nowrap}
+.chip i{font-style:normal;font-family:var(--mono);font-size:11px;color:var(--text-disabled);margin-left:6px}
 
-@media (min-width:1180px){
-  .shell{display:flex;min-height:100vh}
+.is-embedded .brand{display:none}
+.is-embedded .side{padding-left:14px}
+@media (max-width:900px){
+  body{flex-direction:column}
   .side{
-    position:sticky;top:0;height:100vh;width:236px;flex:0 0 236px;
-    display:block;overflow-y:auto;overflow-x:hidden;
-    background:var(--soft);border-right:1px solid var(--hair);border-bottom:0;
-    padding:24px 12px 40px;align-items:initial;gap:0;
+    width:auto;flex:none;height:auto;border-right:0;border-bottom:1px solid var(--border);
+    display:flex;align-items:center;gap:2px;padding:8px 12px;overflow-x:auto;overflow-y:hidden;
   }
-  .side-brand{padding:0 8px 24px;margin:0;border:0}
-  .side-brand .nm{font-size:13px}
-  .side-brand .vd{display:block;font-family:var(--mono);font-size:11px;color:var(--mute);font-variant-numeric:tabular-nums;margin-left:auto}
-  .side-grp{display:block;font-size:12px;color:var(--mute);padding:0 8px;margin:24px 0 4px}
-  .side-grp:first-of-type{margin-top:0}
-  .side-link{padding:6px 8px;white-space:normal;flex:none}
-  .side-link .n{display:block;font-family:var(--mono);font-size:11px;color:var(--mute);font-variant-numeric:tabular-nums;min-width:22px}
-  .side-foot{display:block;padding:16px 8px 0;margin-top:24px;border-top:1px solid var(--hair);font-size:12px;color:var(--mute);line-height:1.9}
-  .doc{flex:1;min-width:0;padding:48px 48px 96px;margin:0;max-width:1016px}
+  .side::-webkit-scrollbar{height:0;width:0}
+  .brand{padding:0 12px 0 0;margin:0 6px 0 0;border:0;border-right:1px solid var(--border);flex:0 0 auto}
+  .group,.side-foot{display:none}
+  .link{padding:5px 8px;white-space:nowrap;flex:0 0 auto}
+  .link .cnt{display:none}
+  .content{padding:20px 16px 60px}
+  .card{padding:16px}
 }
-.is-embedded .side-brand{display:none}
-.is-embedded .side{padding-left:20px}
-@media (min-width:1180px){ .is-embedded .side-brand{display:flex} }
 </style>
 <script>
-/* 被 index.html 以 iframe 载入时，顶部条不再重复品牌 */
+/* 被 index.html 以 iframe 载入时，导航不再重复品牌 */
 if(window.self!==window.top)document.documentElement.classList.add('is-embedded');
 </script>
 </head>
 <body>
-<div class="shell">
-  <aside class="side">
-    <div class="side-brand"><span class="dot"></span><span class="nm">球帝带 · 产品基线</span><span class="vd">v1.0.1</span></div>
-    <div class="side-grp">基线总览</div>
-    <a class="side-link" href="#version"><span class="n">1.1</span>版本与变更记录</a>
-    <a class="side-link" href="#structure"><span class="n">1.2</span>产品信息结构</a>
-    <a class="side-link" href="#req"><span class="n">1.3</span>功能清单</a>
-    <div class="side-grp">全局规范</div>
-    <a class="side-link" href="#nav"><span class="n">2.1</span>页面栈与导航</a>
-    <a class="side-link" href="#overlay"><span class="n">2.2</span>浮层与反馈</a>
-    <a class="side-link" href="#theme"><span class="n">2.3</span>主题与外观</a>
-    <a class="side-link" href="#msg"><span class="n">2.4</span>消息操作链路</a>
-    <a class="side-link" href="#kbd"><span class="n">2.5</span>软键盘</a>
-    <a class="side-link" href="#empty"><span class="n">2.6</span>空态与异常</a>
-    <div class="side-grp">组件与规范</div>
-    <a class="side-link" href="#color"><span class="n">3.1</span>配色</a>
-    <a class="side-link" href="#type"><span class="n">3.2</span>字体与字号</a>
-    <a class="side-link" href="#size"><span class="n">3.3</span>圆角与尺寸</a>
-    <a class="side-link" href="#motion"><span class="n">3.4</span>动效</a>
-    <div class="side-grp">团队协作</div>
-    <a class="side-link" href="#team-scope"><span class="n">4.1</span>条款生效范围</a>
-    <a class="side-link" href="#repo"><span class="n">4.2</span>仓库与入口</a>
-    <a class="side-link" href="#flow"><span class="n">4.3</span>五步流程</a>
-    <a class="side-link" href="#conflict"><span class="n">4.4</span>冲突处理规则</a>
-    <a class="side-link" href="#commit"><span class="n">4.5</span>提交信息格式</a>
-    <a class="side-link" href="#checklist"><span class="n">4.6</span>上传前检查清单</a>
-    <a class="side-link" href="#forbid"><span class="n">4.7</span>禁止事项</a>
-    <div class="side-foot">
-      原型：<a href="proto.html" target="_top">proto.html</a><br>
-      入口：<a href="index.html" target="_top">index.html</a>
-    </div>
-  </aside>
+  <nav class="side" id="side">
+    <div class="brand"><span class="dot"></span><span class="nm">产品基线</span><span class="vd">v1.0.1</span></div>
+      <div class="group">基线总览</div>
+      <a class="link" data-sec="version">1.1 版本与变更记录</a>
+      <a class="link" data-sec="structure">1.2 产品信息结构 <span class="cnt">52</span></a>
+      <a class="link" data-sec="req">1.3 功能清单 <span class="cnt">47</span></a>
+      <div class="group">全局规范</div>
+      <a class="link" data-sec="nav">2.1 页面栈与导航</a>
+      <a class="link" data-sec="overlay">2.2 浮层与反馈</a>
+      <a class="link" data-sec="theme">2.3 主题与外观</a>
+      <a class="link" data-sec="msg">2.4 消息操作链路</a>
+      <a class="link" data-sec="kbd">2.5 软键盘</a>
+      <a class="link" data-sec="empty">2.6 空态与异常</a>
+      <div class="group">组件与规范</div>
+      <a class="link" data-sec="color">3.1 配色</a>
+      <a class="link" data-sec="type">3.2 字体与字号</a>
+      <a class="link" data-sec="size">3.3 圆角与尺寸</a>
+      <a class="link" data-sec="motion">3.4 动效</a>
+      <div class="group">团队协作</div>
+      <a class="link" data-sec="team-scope">4.1 条款生效范围</a>
+      <a class="link" data-sec="repo">4.2 仓库与入口</a>
+      <a class="link" data-sec="flow">4.3 五步流程</a>
+      <a class="link" data-sec="conflict">4.4 冲突处理规则</a>
+      <a class="link" data-sec="commit">4.5 提交信息格式</a>
+      <a class="link" data-sec="checklist">4.6 上传前检查清单</a>
+      <a class="link" data-sec="forbid">4.7 禁止事项</a>
+    <div class="side-foot">原型：<a href="proto.html" target="_top">proto.html</a><br>入口：<a href="index.html" target="_top">index.html</a></div>
+  </nav>
+  <main class="content" id="content">
+    <section id="sec-version">
+      <div class="crumb">产品基线 / 基线总览 / 版本与变更记录</div>
+      <h1>1.1 版本与变更记录</h1>
+<p class="lead">原型与本文档共用同一个版本号。版本号在以下五处展示，五处同源，改一处即视为五处都要改。</p>
 
-  <main class="doc">
-    <div class="doc-hd">
-      <div class="kicker">球帝带 · 产品基线</div>
-      <h1>产品基线与协作条款</h1>
-      <div class="meta">v1.0.1 · 构建 2026-11-10 · 与原型同源升版</div>
-    </div>
-
-    <!-- 1.1 -->
-    <section class="sec" id="version">
-      <h2>1.1 版本与变更记录</h2>
-      <p class="sec-lead">原型与本文档共用同一个版本号。版本号在以下五处展示，五处同源，改一处即视为五处都要改。</p>
-
-      <div class="block">
+      <div class="card">
         <h3>版本展示位</h3>
         <p class="sub">以下位置在升版时同步替换，缺一即为未完成升版。</p>
         <table>
@@ -238,14 +219,14 @@ if(window.self!==window.top)document.documentElement.classList.add('is-embedded'
         </table>
       </div>
 
-      <div class="block">
+      <div class="card">
         <h3>变更记录</h3>
         <table>
           <thead><tr><th style="width:88px">版本</th><th style="width:104px">日期</th><th style="width:96px">类型</th><th>摘要</th></tr></thead>
           <tbody>
             <tr>
               <td>v1.0.1</td><td class="num">2026-11-10</td><td>内容变更</td>
-              <td>原型拆分为三文件：<span class="mono">index.html</span> 框架页承载切换，<span class="mono">proto.html</span> 承载原型本体，<span class="mono">rule.html</span> 承载本产品基线与协作条款；框架页解析旧深链 <span class="mono">#p=…</span> 并转发给原型页，历史评审链接保持可用。新增规范文档：基线总览、全局规范、组件与规范、团队协作四部分。版式取自 Stripe 文档系统：白色画布加冷白侧栏、深海军蓝文字、单一 indigo 强调色、发丝线分层；1.2 增页面索引带；导航在窄宽度收为顶部横条。原型界面与交互未变。</td>
+              <td>原型拆分为三文件：<span class="mono">index.html</span> 框架页承载切换，<span class="mono">proto.html</span> 承载原型本体，<span class="mono">rule.html</span> 承载本产品基线与协作条款；框架页解析旧深链 <span class="mono">#p=…</span> 并转发给原型页，历史评审链接保持可用。新增规范文档：基线总览、全局规范、组件与规范、团队协作四部分。版式沿用中台原型产品基线页的做法：左侧导航切换、单屏单节，不采用长页锚点跳转；字体改用 Outfit 加中文字体回退并随仓库内置六档字重，字号收进七档；区块为卡片式，圆角 8px、卡片内边距 20px；1.2 增页面索引带。原型界面与交互未变。</td>
             </tr>
             <tr>
               <td>v1.0.0</td><td class="num">2026-11-10</td><td>首次发布</td>
@@ -255,7 +236,7 @@ if(window.self!==window.top)document.documentElement.classList.add('is-embedded'
         </table>
       </div>
 
-      <div class="block">
+      <div class="card">
         <h3>升版规则</h3>
         <p class="sub">提交前按改动性质判定改哪一位，判定不清时按高一级处理。</p>
         <table>
@@ -266,12 +247,12 @@ if(window.self!==window.top)document.documentElement.classList.add('is-embedded'
             <tr><td>样式微调</td><td><span class="pri">版本号不变</span></td><td>文案措辞、错别字、字号配色、元素位置、注释整理。照常交付，不写变更记录行</td></tr>
           </tbody>
         </table>
-        <div class="callout warn">
+        <div class="note warn">
           <span>升版只替换当前版本展示位与本表首行，历史行保持原样。<strong>禁止全局替换版本号字符串</strong>，该操作会连带改写历史记录行。</span>
         </div>
       </div>
 
-      <div class="block">
+      <div class="card">
         <h3>多人同时升版的处理顺序</h3>
         <p class="sub">两人各自动手升版时，版本区与记录表必然冲突。按以下顺序收口，不并行处理。</p>
         <div class="flow">
@@ -292,24 +273,25 @@ v1.0.3  →  v1.1.0</pre>
         </div>
       </div>
     </section>
+    <section id="sec-structure">
+      <div class="crumb">产品基线 / 基线总览 / 产品信息结构</div>
+      <h1>1.2 产品信息结构</h1>
+<p class="lead">一级 Tab 4 个，二级页面 48 个，页面总数 52。页面名与页面 ID 同 <span class="mono">proto.html</span> 的 <span class="mono">PAGES</span> 键名一一对应，改键名即视为破坏深链，需同步改本节。</p>
 
-    <!-- 1.2 -->
-    <section class="sec" id="structure">
-      <h2>1.2 产品信息结构</h2>
-      <p class="sec-lead">一级 Tab 4 个，二级页面 48 个，页面总数 52。页面名与页面 ID 同 <span class="mono">proto.html</span> 的 <span class="mono">PAGES</span> 键名一一对应，改键名即视为破坏深链，需同步改本节。</p>
-
+      <div class="card inv-card">
       <div class="inv">
       <div class="inv-row"><div class="inv-lab"><b>对话</b><span>9</span></div><div class="chips"><span class="chip">对话<i>chats</i></span><span class="chip">聊天页<i>chat</i></span><span class="chip">搜索<i>search</i></span><span class="chip">群内搜索<i>gsearch</i></span><span class="chip">转发<i>forward</i></span><span class="chip">选择目标<i>choose</i></span><span class="chip">聊天设置<i>chatset</i></span><span class="chip">媒体<i>media</i></span><span class="chip">文件<i>files</i></span></div></div>
       <div class="inv-row"><div class="inv-lab"><b>社区</b><span>3</span></div><div class="chips"><span class="chip">社区<i>community</i></span><span class="chip">文章详情<i>post</i></span><span class="chip">XXPay 频道<i>xxpay</i></span></div></div>
       <div class="inv-row"><div class="inv-lab"><b>联系人</b><span>16</span></div><div class="chips"><span class="chip">联系人<i>contacts</i></span><span class="chip">新的朋友<i>newfriends</i></span><span class="chip">添加好友<i>addfriend</i></span><span class="chip">我的二维码<i>qrcode</i></span><span class="chip">好友资料<i>friend</i></span><span class="chip">好友申请<i>friendVerify</i></span><span class="chip">我的群聊<i>groups</i></span><span class="chip">群详情<i>groupInfo</i></span><span class="chip">群成员<i>groupMembers</i></span><span class="chip">成员资料<i>memberInfo</i></span><span class="chip">群公告<i>notice</i></span><span class="chip">群聊面具<i>mask</i></span><span class="chip">编辑群昵称<i>gname</i></span><span class="chip">好友分组<i>groupTags</i></span><span class="chip">分组详情<i>groupTagDetail</i></span><span class="chip">标签选择<i>tagPicker</i></span></div></div>
       <div class="inv-row"><div class="inv-lab"><b>我的</b><span>24</span></div><div class="chips"><span class="chip">我的<i>mine</i></span><span class="chip">个人资料<i>profile</i></span><span class="chip">用户昵称<i>nickname</i></span><span class="chip">个性签名<i>sign</i></span><span class="chip">更换头像<i>avatarEdit</i></span><span class="chip">头像审核记录<i>applylog</i></span><span class="chip">消息通知<i>notify</i></span><span class="chip">系统通知<i>sysnotify</i></span><span class="chip">可信设备<i>devices</i></span><span class="chip">设备详情<i>device</i></span><span class="chip">安全<i>security</i></span><span class="chip">解锁设置<i>unlock</i></span><span class="chip">修改密码<i>pwd</i></span><span class="chip">手机号<i>phone</i></span><span class="chip">国家地区<i>country</i></span><span class="chip">邮箱<i>email</i></span><span class="chip">账户申诉<i>appeal</i></span><span class="chip">数据与存储<i>storage</i></span><span class="chip">语言<i>lang</i></span><span class="chip">外观<i>appearance</i></span><span class="chip">字体<i>font</i></span><span class="chip">网络诊断<i>network</i></span><span class="chip">关于<i>about</i></span><span class="chip">法律条款<i>legal</i></span></div></div>
       </div>
+      </div>
         </div>
       </div>
         </div>
       </div>
 
-      <div class="block">
+      <div class="card">
         <h3>一级 Tab</h3>
         <table>
           <thead><tr><th style="width:110px">Tab</th><th style="width:130px">页面 ID</th><th style="width:96px">二级页面</th><th>承载内容</th></tr></thead>
@@ -322,7 +304,7 @@ v1.0.3  →  v1.1.0</pre>
         </table>
       </div>
 
-      <div class="block">
+      <div class="card">
         <h3>对话</h3>
         <table>
           <thead><tr><th style="width:150px">页面</th><th style="width:130px">页面 ID</th><th>承载内容</th></tr></thead>
@@ -339,7 +321,7 @@ v1.0.3  →  v1.1.0</pre>
         </table>
       </div>
 
-      <div class="block">
+      <div class="card">
         <h3>联系人</h3>
         <table>
           <thead><tr><th style="width:150px">页面</th><th style="width:130px">页面 ID</th><th>承载内容</th></tr></thead>
@@ -363,7 +345,7 @@ v1.0.3  →  v1.1.0</pre>
         </table>
       </div>
 
-      <div class="block">
+      <div class="card">
         <h3>社区</h3>
         <table>
           <thead><tr><th style="width:150px">页面</th><th style="width:130px">页面 ID</th><th>承载内容</th></tr></thead>
@@ -374,7 +356,7 @@ v1.0.3  →  v1.1.0</pre>
         </table>
       </div>
 
-      <div class="block">
+      <div class="card">
         <h3>我的</h3>
         <table>
           <thead><tr><th style="width:150px">页面</th><th style="width:130px">页面 ID</th><th>承载内容</th></tr></thead>
@@ -406,7 +388,7 @@ v1.0.3  →  v1.1.0</pre>
         </table>
       </div>
 
-      <div class="block">
+      <div class="card">
         <h3>深链协议</h3>
         <p class="sub">评审链接统一走 <span class="mono">#p=</span> 前缀。经入口页中转与直达原型页两种写法同时有效。</p>
         <table>
@@ -429,7 +411,7 @@ proto.html#p=groupInfo&id=c1
 proto.html#p=chat&id=c2&t=dark&kbd=1</pre>
       </div>
 
-      <div class="block">
+      <div class="card">
         <h3>演示数据</h3>
         <p class="sub">原型数据为 mock，全部定义在 <span class="mono">proto.html</span> 的 <span class="mono">D</span> 对象内，不含接口调用。</p>
         <table>
@@ -443,13 +425,12 @@ proto.html#p=chat&id=c2&t=dark&kbd=1</pre>
         </table>
       </div>
     </section>
+    <section id="sec-req">
+      <div class="crumb">产品基线 / 基线总览 / 功能清单</div>
+      <h1>1.3 功能清单</h1>
+<p class="lead">清单以当前原型已实现的能力为准。新增功能先加行再改原型，避免原型跑在清单之外。</p>
 
-    <!-- 1.3 -->
-    <section class="sec" id="req">
-      <h2>1.3 功能清单</h2>
-      <p class="sec-lead">清单以当前原型已实现的能力为准。新增功能先加行再改原型，避免原型跑在清单之外。</p>
-
-      <div class="block">
+      <div class="card">
         <h3>优先级定义</h3>
         <table>
           <thead><tr><th style="width:90px">级别</th><th>判定</th></tr></thead>
@@ -461,7 +442,7 @@ proto.html#p=chat&id=c2&t=dark&kbd=1</pre>
         </table>
       </div>
 
-      <div class="block">
+      <div class="card">
         <h3>功能明细</h3>
         <table>
           <thead><tr><th style="width:70px">编号</th><th style="width:70px">优先级</th><th style="width:110px">模块</th><th>功能</th></tr></thead>
@@ -522,13 +503,12 @@ proto.html#p=chat&id=c2&t=dark&kbd=1</pre>
         </table>
       </div>
     </section>
+    <section id="sec-nav">
+      <div class="crumb">产品基线 / 全局规范 / 页面栈与导航</div>
+      <h1>2.1 页面栈与导航</h1>
+<p class="lead">页面以栈结构管理，进入即入栈，返回即出栈。一级 Tab 切换重置栈。</p>
 
-    <!-- 2.1 -->
-    <section class="sec" id="nav">
-      <h2>2.1 页面栈与导航</h2>
-      <p class="sec-lead">页面以栈结构管理，进入即入栈，返回即出栈。一级 Tab 切换重置栈。</p>
-
-      <div class="block">
+      <div class="card">
         <h3>栈规则</h3>
         <table>
           <thead><tr><th style="width:150px">规则项</th><th>约定</th></tr></thead>
@@ -543,13 +523,12 @@ proto.html#p=chat&id=c2&t=dark&kbd=1</pre>
         </table>
       </div>
     </section>
+    <section id="sec-overlay">
+      <div class="crumb">产品基线 / 全局规范 / 浮层与反馈</div>
+      <h1>2.2 浮层与反馈</h1>
+<p class="lead">浮层四类，同时只存在一个。任一新浮层打开前先关闭既有浮层。</p>
 
-    <!-- 2.2 -->
-    <section class="sec" id="overlay">
-      <h2>2.2 浮层与反馈</h2>
-      <p class="sec-lead">浮层四类，同时只存在一个。任一新浮层打开前先关闭既有浮层。</p>
-
-      <div class="block">
+      <div class="card">
         <table>
           <thead><tr><th style="width:110px">类型</th><th style="width:180px">形态</th><th>关闭方式</th></tr></thead>
           <tbody>
@@ -559,18 +538,17 @@ proto.html#p=chat&id=c2&t=dark&kbd=1</pre>
             <tr><td>轻提示</td><td>底部 96px 居中，深色胶囊，白字 13px</td><td>1600ms 自动消失；新提示替换旧提示，不叠层</td></tr>
           </tbody>
         </table>
-        <div class="callout">
+        <div class="note">
           <span>破坏性操作一律二次确认，按钮文案用动作本身（删除、退出、注销），不使用「确定」这类无指向文案。</span>
         </div>
       </div>
     </section>
+    <section id="sec-theme">
+      <div class="crumb">产品基线 / 全局规范 / 主题与外观</div>
+      <h1>2.3 主题与外观</h1>
+<p class="lead">外观设置即时生效并写入内存状态，刷新页面后回到默认值。原型不落本地存储。</p>
 
-    <!-- 2.3 -->
-    <section class="sec" id="theme">
-      <h2>2.3 主题与外观</h2>
-      <p class="sec-lead">外观设置即时生效并写入内存状态，刷新页面后回到默认值。原型不落本地存储。</p>
-
-      <div class="block">
+      <div class="card">
         <h3>日夜模式</h3>
         <table>
           <thead><tr><th style="width:110px">取值</th><th>行为</th></tr></thead>
@@ -582,7 +560,7 @@ proto.html#p=chat&id=c2&t=dark&kbd=1</pre>
         </table>
       </div>
 
-      <div class="block">
+      <div class="card">
         <h3>气泡颜色</h3>
         <p class="sub">九色固定，不新增色值。深色主题下选黑色气泡时自动映射为 #4A4D57，保证与深色底可分辨。</p>
         <table>
@@ -601,7 +579,7 @@ proto.html#p=chat&id=c2&t=dark&kbd=1</pre>
         </table>
       </div>
 
-      <div class="block">
+      <div class="card">
         <h3>聊天背景与字号</h3>
         <table>
           <thead><tr><th style="width:150px">设置项</th><th>约定</th></tr></thead>
@@ -613,13 +591,12 @@ proto.html#p=chat&id=c2&t=dark&kbd=1</pre>
         </table>
       </div>
     </section>
+    <section id="sec-msg">
+      <div class="crumb">产品基线 / 全局规范 / 消息操作链路</div>
+      <h1>2.4 消息操作链路</h1>
+<p class="lead">链路从长按开始，六项操作分三条出口：单条动作、多选动作、转发动作。</p>
 
-    <!-- 2.4 -->
-    <section class="sec" id="msg">
-      <h2>2.4 消息操作链路</h2>
-      <p class="sec-lead">链路从长按开始，六项操作分三条出口：单条动作、多选动作、转发动作。</p>
-
-      <div class="block">
+      <div class="card">
         <h3>长按唤出</h3>
         <table>
           <thead><tr><th style="width:140px">项</th><th>约定</th></tr></thead>
@@ -631,7 +608,7 @@ proto.html#p=chat&id=c2&t=dark&kbd=1</pre>
         </table>
       </div>
 
-      <div class="block">
+      <div class="card">
         <h3>三条出口</h3>
         <div class="flow">
           <div class="step"><div class="no">1</div><div class="bd">
@@ -650,18 +627,17 @@ proto.html#p=chat&id=c2&t=dark&kbd=1</pre>
 勾选消息 → 删除 → 二次确认「确定删除已选的 N 条消息？」 → 即时移除</pre>
           </div></div>
         </div>
-        <div class="callout">
+        <div class="note">
           <span>多选态下长按菜单失效、单条点击只切换勾选状态。<strong>未选中任一条时点转发或删除，仅提示「请先选择消息」</strong>，不进入下一步。</span>
         </div>
       </div>
     </section>
+    <section id="sec-kbd">
+      <div class="crumb">产品基线 / 全局规范 / 软键盘</div>
+      <h1>2.5 软键盘</h1>
+<p class="lead">键盘为原型内置的 iOS 样式面板，非系统输入法，用于还原真实输入体验与截图口径。</p>
 
-    <!-- 2.5 -->
-    <section class="sec" id="kbd">
-      <h2>2.5 软键盘</h2>
-      <p class="sec-lead">键盘为原型内置的 iOS 样式面板，非系统输入法，用于还原真实输入体验与截图口径。</p>
-
-      <div class="block">
+      <div class="card">
         <table>
           <thead><tr><th style="width:150px">项</th><th>约定</th></tr></thead>
           <tbody>
@@ -675,13 +651,12 @@ proto.html#p=chat&id=c2&t=dark&kbd=1</pre>
         </table>
       </div>
     </section>
+    <section id="sec-empty">
+      <div class="crumb">产品基线 / 全局规范 / 空态与异常</div>
+      <h1>2.6 空态与异常</h1>
+<p class="lead">原型内的空态与异常态覆盖三处，其余页面不设空态，避免占位图堆叠。</p>
 
-    <!-- 2.6 -->
-    <section class="sec" id="empty">
-      <h2>2.6 空态与异常</h2>
-      <p class="sec-lead">原型内的空态与异常态覆盖三处，其余页面不设空态，避免占位图堆叠。</p>
-
-      <div class="block">
+      <div class="card">
         <table>
           <thead><tr><th style="width:160px">场景</th><th>呈现</th><th style="width:220px">后续动作</th></tr></thead>
           <tbody>
@@ -694,13 +669,12 @@ proto.html#p=chat&id=c2&t=dark&kbd=1</pre>
         </table>
       </div>
     </section>
+    <section id="sec-color">
+      <div class="crumb">产品基线 / 组件与规范 / 配色</div>
+      <h1>3.1 配色</h1>
+<p class="lead">本节列原型屏内令牌，取值由 <span class="mono">proto.html</span> 的 <span class="mono">:root</span> 与 <span class="mono">body[data-theme="dark"]</span> 提供，页面内不写死颜色。基线文档与框架页自身的版式不在本节约束范围。</p>
 
-    <!-- 3.1 -->
-    <section class="sec" id="color">
-      <h2>3.1 配色</h2>
-      <p class="sec-lead">本节列原型屏内令牌，取值由 <span class="mono">proto.html</span> 的 <span class="mono">:root</span> 与 <span class="mono">body[data-theme="dark"]</span> 提供，页面内不写死颜色。基线文档与框架页自身的版式不在本节约束范围。</p>
-
-      <div class="block">
+      <div class="card">
         <h3>浅色主题</h3>
         <table>
           <thead><tr><th style="width:130px">令牌</th><th style="width:130px">色值</th><th>用途</th></tr></thead>
@@ -718,7 +692,7 @@ proto.html#p=chat&id=c2&t=dark&kbd=1</pre>
         </table>
       </div>
 
-      <div class="block">
+      <div class="card">
         <h3>深色主题</h3>
         <table>
           <thead><tr><th style="width:130px">令牌</th><th style="width:130px">色值</th><th>用途</th></tr></thead>
@@ -732,50 +706,63 @@ proto.html#p=chat&id=c2&t=dark&kbd=1</pre>
             <tr><td><span class="mono">--input</span></td><td><span class="sw" style="background:#26282F"></span><span class="tok">#26282F</span></td><td>输入区底色</td></tr>
           </tbody>
         </table>
-        <div class="callout">
+        <div class="note">
           <span>深色主题下主色 <span class="mono">--blue</span> 不替换，仍用 #3B82F6。<strong>新增颜色先加到本节表格，再落进 CSS</strong>，两步顺序不可颠倒。</span>
         </div>
       </div>
     </section>
+    <section id="sec-type">
+      <div class="crumb">产品基线 / 组件与规范 / 字体与字号</div>
+      <h1>3.2 字体与字号</h1>
+      <p class="lead">两层各有字体栈，不混用：原型屏内跟系统字体，基线文档与框架页走 Outfit 加中文字体回退。字号只取七档，不设中间值。</p>
 
-    <!-- 3.2 -->
-    <section class="sec" id="type">
-      <h2>3.2 字体与字号</h2>
-
-      <div class="block">
+      <div class="card">
         <h3>字体栈</h3>
-        <pre>-apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB",
-"Microsoft YaHei", sans-serif</pre>
-        <p class="sub" style="margin-top:10px;margin-bottom:0">原型不加载外部字体文件，全部走系统字体。引入网络字体需先经评审，再写入本节。</p>
+        <table>
+          <thead><tr><th style="width:130px">层</th><th style="width:150px">字族</th><th>字体栈与用途</th></tr></thead>
+          <tbody>
+            <tr><td>原型屏内</td><td>系统字体</td><td><span class="mono">-apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif</span> — 手机界面按 iOS 系统字体还原，不加载网络字体</td></tr>
+            <tr><td>文档层</td><td>Outfit</td><td><span class="mono">Outfit, "Noto Sans SC", "Helvetica Neue", Helvetica, "PingFang SC", "Microsoft YaHei", Arial, sans-serif</span> — 基线文档与框架页，西文与数字用 Outfit，中文按栈序回退</td></tr>
+            <tr><td>代码与键名</td><td>等宽</td><td><span class="mono">ui-monospace, "SFMono-Regular", Consolas, Menlo, monospace</span> — 仅用于文件名、<span class="mono">PAGES</span> 键名、命令与令牌名</td></tr>
+          </tbody>
+        </table>
+        <div class="note">Outfit 六档字重随仓库内置在 <span class="mono">_fonts/</span>，不依赖 CDN。版本号、日期、计数一律走文档层字体加 <span class="mono">tabular-nums</span>，不用等宽，等宽字形宽扁，与正文并列会割裂。</div>
       </div>
 
-      <div class="block">
+      <div class="card">
         <h3>字号层级</h3>
+        <p class="sub">七档，文档层与原型屏内共用同一套档位，只换字族不换尺寸。</p>
         <table>
           <thead><tr><th style="width:150px">层级</th><th style="width:110px">字号 / 字重</th><th>用途</th></tr></thead>
           <tbody>
-            <tr><td>一级标题</td><td class="num">26px / 700</td><td>Tab 页大标题（对话、联系人、社区）</td></tr>
-            <tr><td>设备详情标题</td><td class="num">22px / 700</td><td>登录设备管理等强调型页头</td></tr>
-            <tr><td>页面标题</td><td class="num">17px / 600</td><td>导航栏居中标题</td></tr>
-            <tr><td>列表名称</td><td class="num">15–16.5px / 500</td><td>会话名、群名、设置项名称</td></tr>
-            <tr><td>正文</td><td class="num">15px / 400</td><td>消息气泡、表单值，受全局字号设置控制</td></tr>
-            <tr><td>辅助文字</td><td class="num">12–13px / 400</td><td>说明、时间、计数、副标题</td></tr>
-            <tr><td>微标</td><td class="num">9.5–11px / 500</td><td>原型条纹条、未读角标、版本号</td></tr>
+            <tr><td>统计大数值</td><td class="num">24px / 600</td><td>页面索引计数、版本号等单独成块的数字</td></tr>
+            <tr><td>页面标题</td><td class="num">18px / 600</td><td>文档每节的标题、原型 Tab 页大标题</td></tr>
+            <tr><td>区块标题</td><td class="num">16px / 600</td><td>卡片标题、设置项分组标题</td></tr>
+            <tr><td>正文</td><td class="num">14px / 400</td><td>正文段落、列表名称、左侧导航</td></tr>
+            <tr><td>表格</td><td class="num">13px / 400</td><td>表格内容、按钮文案、流程说明</td></tr>
+            <tr><td>辅助说明</td><td class="num">12px / 400</td><td>字段说明、面包屑、空态文案</td></tr>
+            <tr><td>标签文字</td><td class="num">11px / 500</td><td>优先级标签、未读角标、状态标记</td></tr>
+          </tbody>
+        </table>
+        <div class="note">原型屏内的气泡字号受「我的 → 字体」控制（12–22px 步长 1），该设置只改气泡文本，不改本节档位。</div>
+      </div>
+
+      <div class="card">
+        <h3>数字与对齐</h3>
+        <table>
+          <thead><tr><th style="width:170px">项</th><th>约定</th></tr></thead>
+          <tbody>
+            <tr><td>数字形态</td><td>版本号、日期、计数、成员数统一 <span class="mono">font-variant-numeric: tabular-nums</span> 与 <span class="mono">font-feature-settings:"tnum" 1</span>，多行纵向对齐</td></tr>
+            <tr><td>渲染参数</td><td><span class="mono">-webkit-font-smoothing: antialiased</span>、<span class="mono">-moz-osx-font-smoothing: grayscale</span>、<span class="mono">text-rendering: optimizeLegibility</span>，两层统一</td></tr>
+            <tr><td>等宽边界</td><td>页面 ID、参数键名、文件名、命令走等宽；版本号、时间、计数、金额走正文档，不使用等宽</td></tr>
           </tbody>
         </table>
       </div>
-
-      <div class="block">
-        <h3>数字对齐</h3>
-        <p class="sub" style="margin-bottom:0">状态栏时钟、版本号、未读数、成员数等数字统一启用 <span class="mono">tabular-nums</span>，多行数值纵向对齐。</p>
-      </div>
     </section>
-
-    <!-- 3.3 -->
-    <section class="sec" id="size">
-      <h2>3.3 圆角与尺寸</h2>
-
-      <div class="block">
+    <section id="sec-size">
+      <div class="crumb">产品基线 / 组件与规范 / 圆角与尺寸</div>
+      <h1>3.3 圆角与尺寸</h1>
+<div class="card">
         <h3>机身与布局</h3>
         <table>
           <thead><tr><th style="width:150px">项</th><th style="width:130px">数值</th><th>说明</th></tr></thead>
@@ -791,7 +778,24 @@ proto.html#p=chat&id=c2&t=dark&kbd=1</pre>
         </table>
       </div>
 
-      <div class="block">
+      <div class="card">
+        <h3>文档层行高与圆角</h3>
+        <p class="sub">基线文档与框架页的取值，与原型屏内互不影响。</p>
+        <table>
+          <thead><tr><th style="width:170px">项</th><th style="width:120px">取值</th><th>说明</th></tr></thead>
+          <tbody>
+            <tr><td>正文行高</td><td class="num">1.6</td><td>段落、说明、提示块</td></tr>
+            <tr><td>表格行高</td><td class="num">1.5</td><td>单元格内多行文本</td></tr>
+            <tr><td>卡片圆角</td><td class="num">8px</td><td>区块卡片、声明带</td></tr>
+            <tr><td>控件圆角</td><td class="num">6px</td><td>导航项、输入框、代码块</td></tr>
+            <tr><td>标签圆角</td><td class="num">4px</td><td>优先级标签、页面索引 chip</td></tr>
+            <tr><td>卡片内边距</td><td class="num">20px</td><td>统一取值，窄屏收为 16px</td></tr>
+            <tr><td>卡片描边</td><td class="num">1px</td><td>边线与 <span class="mono">0 1px 3px rgba(16,24,40,.06)</span> 投影同时存在</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card">
         <h3>圆角</h3>
         <table>
           <thead><tr><th style="width:150px">部位</th><th style="width:110px">圆角</th><th>说明</th></tr></thead>
@@ -807,13 +811,12 @@ proto.html#p=chat&id=c2&t=dark&kbd=1</pre>
         </table>
       </div>
     </section>
+    <section id="sec-motion">
+      <div class="crumb">产品基线 / 组件与规范 / 动效</div>
+      <h1>3.4 动效</h1>
+<p class="lead">动效四组，缓动曲线写死，不引入第三方动画库。</p>
 
-    <!-- 3.4 -->
-    <section class="sec" id="motion">
-      <h2>3.4 动效</h2>
-      <p class="sec-lead">动效四组，缓动曲线写死，不引入第三方动画库。</p>
-
-      <div class="block">
+      <div class="card">
         <table>
           <thead><tr><th style="width:150px">动效</th><th style="width:200px">参数</th><th>触发</th></tr></thead>
           <tbody>
@@ -828,16 +831,15 @@ proto.html#p=chat&id=c2&t=dark&kbd=1</pre>
         </table>
       </div>
     </section>
-
-    <!-- 4.1 -->
-    <section class="sec" id="team-scope">
-      <h2>4.1 条款生效范围</h2>
-      <div class="band">
+    <section id="sec-team-scope">
+      <div class="crumb">产品基线 / 团队协作 / 条款生效范围</div>
+      <h1>4.1 条款生效范围</h1>
+<div class="band">
         <div class="bd-k">强制条款</div>
         <div class="bd-t">第 4 章是团队协作的约定，与原型文件同时生效。参与原型更新、评审、发布的每个人按本章执行；本章条款的调整按功能变更处理，升版并在 1.1 留记录。</div>
       </div>
 
-      <div class="block">
+      <div class="card">
         <table>
           <thead><tr><th style="width:170px">适用对象</th><th>约束内容</th></tr></thead>
           <tbody>
@@ -848,18 +850,17 @@ proto.html#p=chat&id=c2&t=dark&kbd=1</pre>
             <tr><td>本章变更</td><td>条款调整视为功能变更，同步升版并在 1.1 记录，不静默修改</td></tr>
           </tbody>
         </table>
-        <div class="callout warn">
+        <div class="note warn">
           <span>原型与本文档冲突时，以本文档为准。发现冲突时先改原型，再回填本节记录；<strong>不得以「原型就是这样」为由修改规则</strong>。</span>
         </div>
       </div>
     </section>
+    <section id="sec-repo">
+      <div class="crumb">产品基线 / 团队协作 / 仓库与入口</div>
+      <h1>4.2 仓库与入口</h1>
+<p class="lead">Git 仓库是唯一事实来源。所有人在主线 <span class="mono">main</span> 上工作，不建个人长期分支。</p>
 
-    <!-- 4.2 -->
-    <section class="sec" id="repo">
-      <h2>4.2 仓库与入口</h2>
-      <p class="sec-lead">Git 仓库是唯一事实来源。所有人在主线 <span class="mono">main</span> 上工作，不建个人长期分支。</p>
-
-      <div class="block">
+      <div class="card">
         <table>
           <thead><tr><th style="width:130px">项</th><th>内容</th></tr></thead>
           <tbody>
@@ -873,18 +874,17 @@ proto.html#p=chat&id=c2&t=dark&kbd=1</pre>
             <tr><td>缓存</td><td>Cloudflare 每次回源；GitHub Pages 的 HTML 由浏览器与 CDN 各缓存 10 分钟</td></tr>
           </tbody>
         </table>
-        <div class="callout">
+        <div class="note">
           <span>验证线上更新时分清两件事：构建延迟指推送后 Pages 尚未重建完成；缓存未过期指重建已完成但浏览器仍显示旧版。核实用 <span class="mono">Ctrl+Shift+R</span> 或隐私窗口，不以首次刷新结果判定发布失败。</span>
         </div>
       </div>
     </section>
+    <section id="sec-flow">
+      <div class="crumb">产品基线 / 团队协作 / 五步流程</div>
+      <h1>4.3 五步流程</h1>
+<p class="lead">每次改动按顺序走完五步，不跳步、不并步。以下指令在仓库根目录执行。</p>
 
-    <!-- 4.3 -->
-    <section class="sec" id="flow">
-      <h2>4.3 五步流程</h2>
-      <p class="sec-lead">每次改动按顺序走完五步，不跳步、不并步。以下指令在仓库根目录执行。</p>
-
-      <div class="block">
+      <div class="card">
         <div class="flow">
           <div class="step"><div class="no">1</div><div class="bd">
             <div class="tt">拉取上游</div>
@@ -945,13 +945,12 @@ git status</pre>
         </div>
       </div>
     </section>
+    <section id="sec-conflict">
+      <div class="crumb">产品基线 / 团队协作 / 冲突处理规则</div>
+      <h1>4.4 冲突处理规则</h1>
+<p class="lead">同一处被两人改动时按位置判定，逐段处理，不整文件取一侧。</p>
 
-    <!-- 4.4 -->
-    <section class="sec" id="conflict">
-      <h2>4.4 冲突处理规则</h2>
-      <p class="sec-lead">同一处被两人改动时按位置判定，逐段处理，不整文件取一侧。</p>
-
-      <div class="block">
+      <div class="card">
         <table>
           <thead><tr><th style="width:190px">冲突位置</th><th>处理方式</th></tr></thead>
           <tbody>
@@ -964,18 +963,17 @@ git status</pre>
             <tr><td>框架页（<span class="mono">index.html</span>）</td><td>切换逻辑改动取上游；新增视图（Tab）双方都保留，插入 <span class="mono">VIEWS</span> 数组并同步改深链解析</td></tr>
           </tbody>
         </table>
-        <div class="callout">
+        <div class="note">
           <span>判定不了保留哪一侧时，先问改动方，不自行删除他人提交。合并后逐页打开验证，<strong>不以「看起来没错」作为通过标准</strong>。</span>
         </div>
       </div>
     </section>
+    <section id="sec-commit">
+      <div class="crumb">产品基线 / 团队协作 / 提交信息格式</div>
+      <h1>4.5 提交信息格式</h1>
+<p class="lead">一行摘要写清改了什么，类型用英文前缀，范围写页面或文件。</p>
 
-    <!-- 4.5 -->
-    <section class="sec" id="commit">
-      <h2>4.5 提交信息格式</h2>
-      <p class="sec-lead">一行摘要写清改了什么，类型用英文前缀，范围写页面或文件。</p>
-
-      <div class="block">
+      <div class="card">
         <pre><span class="c"># 格式：类型(范围): 摘要</span>
 feat(chat): 消息菜单增加举报入口
 fix(proto): 修复软键盘收起后输入框失焦
@@ -994,13 +992,12 @@ chore: 移除临时截图文件</pre>
         </table>
       </div>
     </section>
+    <section id="sec-checklist">
+      <div class="crumb">产品基线 / 团队协作 / 上传前检查清单</div>
+      <h1>4.6 上传前检查清单</h1>
+<p class="lead">六项全部通过再推送。任一项不通过则不上传。</p>
 
-    <!-- 4.6 -->
-    <section class="sec" id="checklist">
-      <h2>4.6 上传前检查清单</h2>
-      <p class="sec-lead">六项全部通过再推送。任一项不通过则不上传。</p>
-
-      <div class="block">
+      <div class="card">
         <table>
           <thead><tr><th style="width:52px">序</th><th style="width:200px">检查项</th><th>通过标准</th></tr></thead>
           <tbody>
@@ -1012,17 +1009,15 @@ chore: 移除临时截图文件</pre>
             <tr><td class="num">6</td><td>改动范围可控</td><td><span class="mono">git status</span> 列出的文件都是本次有意修改的</td></tr>
           </tbody>
         </table>
-        <div class="callout">
+        <div class="note">
           <span>推送后打开两个入口核对：页面可加载、样式无错位、改动处生效、旧深链仍可直达。Pages 重建期间访问到旧版属正常。</span>
         </div>
       </div>
     </section>
-
-    <!-- 4.7 -->
-    <section class="sec" id="forbid">
-      <h2>4.7 禁止事项</h2>
-
-      <div class="block">
+    <section id="sec-forbid">
+      <div class="crumb">产品基线 / 团队协作 / 禁止事项</div>
+      <h1>4.7 禁止事项</h1>
+<div class="card">
         <table>
           <thead><tr><th style="width:220px">禁止操作</th><th>原因与替代做法</th></tr></thead>
           <tbody>
@@ -1038,38 +1033,37 @@ chore: 移除临时截图文件</pre>
       </div>
     </section>
   </main>
-</div>
-
 <script>
-/* 侧栏高亮：滚动到哪一节就点亮哪一条 */
 (function(){
-  const links = Array.from(document.querySelectorAll('.side-link'));
-  const map = {};
-  links.forEach(function(a){
-    const id = a.getAttribute('href').slice(1);
-    const el = document.getElementById(id);
-    if(el) map[id] = a;
-  });
-  const io = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(!e.isIntersecting) return;
-      links.forEach(function(a){ a.classList.remove('on'); });
-      if(map[e.target.id]) map[e.target.id].classList.add('on');
-    });
-  }, { rootMargin:'-10% 0px -75% 0px', threshold:0 });
+  var SECTIONS = ['version','structure','req','nav','overlay','theme','msg','kbd','empty','color','type','size','motion','team-scope','repo','flow','conflict','commit','checklist','forbid'];
+  var content = document.getElementById('content');
+  var links = Array.prototype.slice.call(document.querySelectorAll('.link'));
 
-  Object.keys(map).forEach(function(id){ io.observe(document.getElementById(id)); });
+  function showSec(key, writeHash){
+    if(SECTIONS.indexOf(key) < 0) key = SECTIONS[0];
+    SECTIONS.forEach(function(k){
+      var el = document.getElementById('sec-' + k);
+      if(el) el.classList.toggle('active', k === key);
+    });
+    links.forEach(function(a){ a.classList.toggle('active', a.getAttribute('data-sec') === key); });
+    content.scrollTop = 0;
+    if(writeHash !== false){
+      try{ history.replaceState(null, '', '#' + key); }catch(e){}
+    }
+  }
 
   links.forEach(function(a){
-    a.addEventListener('click', function(ev){
-      ev.preventDefault();
-      const t = document.getElementById(a.getAttribute('href').slice(1));
-      if(t) t.scrollIntoView({ behavior:'smooth', block:'start' });
-      links.forEach(function(x){ x.classList.remove('on'); });
-      a.classList.add('on');
-      try{ history.replaceState(null,'',a.getAttribute('href')); }catch(e){}
-    });
+    a.addEventListener('click', function(){ showSec(a.getAttribute('data-sec')); });
   });
+
+  document.addEventListener('click', function(ev){
+    var t = ev.target.closest('[data-goto]');
+    if(!t) return;
+    showSec(t.getAttribute('data-goto'));
+  });
+
+  var hash = (location.hash || '').replace('#','').replace(/^rule\//,'');
+  showSec(hash || 'version', false);
 })();
 </script>
 </body>

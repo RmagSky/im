@@ -1,0 +1,76 @@
+/* ============================================================
+   全站字体治理
+   一、正文（一套，全端共用）
+      Outfit（西文与数字，几何无衬线）→ Noto Sans SC → 系统中文字体 → sans-serif
+      Outfit 几何体字怀开阔、数字宽度统一，比 Helvetica / Arial 更适合数据看板的表格与金额展示。
+      中文不在此声明，由系统字体按栈序回退（PingFang SC / 微软雅黑）。
+   二、等宽（仅限真正的代码场景：接口字段名、代码块、参数键名）
+      ui-monospace → SFMono-Regular → Consolas → Menlo → monospace
+   三、字重覆盖
+      六档全量内置（300 / 400 / 500 / 600 / 700 / 800），不依赖浏览器合成伪粗体，
+      避免 Outfit 字形在500 / 700 档发虚、笔画糊边。
+   四、隔离原则
+      代理 ID / 时间戳 / 金额 / 百分比 一律走正文栈，不使用等宽字体。
+      等宽字体字形宽扁、笔画等宽，与正文的 Outfit 并列出现会产生明显割裂感。
+   ============================================================ */
+
+@font-face {
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('./Outfit-300.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('./Outfit-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('./Outfit-500.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('./Outfit-600.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('./Outfit-700.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('./Outfit-800.woff2') format('woff2');
+}
+
+/* ============================================================
+   全站字体统一规则（每个 HTML 均引入本文件）
+   把「等宽字体」收敛到唯一入口 .mono，避免各处各写一串导致字体观感分裂。
+   ============================================================ */
+
+/* 正文数值类：ID、时间戳、金额、百分比、序号 —— 走正文栈 + 表格数字对齐 */
+.num,
+.mono.num,
+.v.num,
+td.num,
+th.num {
+  font-family: Outfit, "Noto Sans SC", "Helvetica Neue", Helvetica,
+    "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+  letter-spacing: 0.01em;
+}
