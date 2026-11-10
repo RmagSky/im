@@ -2,7 +2,7 @@
 
 IM Prototype Designs Via: Qdd
 
-**原型设计 · PROTOTYPE v1.1.0** —— 两个部分：可交互原型 + 产品基线，均为单文件、无外部依赖。
+**原型设计 · PROTOTYPE v1.1.1** —— 两个部分：可交互原型 + 产品基线，均为单文件、无外部依赖。
 
 ## 文件结构
 
@@ -28,6 +28,8 @@ IM Prototype Designs Via: Qdd
 - 响应式：桌面端显示手机外框 + 评审侧栏，宽度 ≤900px 自动全屏
 
 页面清单、交互口径与验收标准见 `rule.html` 第 1、2 章。
+
+`rule.html` 与 `index.html` 的版式取自 Stripe 文档系统：白色画布、冷白侧栏、深海军蓝文字、单一 indigo 强调色、发丝线分层。原型页 `proto.html` 保留产品自身的界面语言，不套用文档版式。
 
 ## 深链评审
 

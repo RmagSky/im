@@ -3,71 +3,72 @@
   球帝带 · 交互原型统一入口（框架页）
   用途：在原型与产品基线之间切换浏览。两部分为独立 HTML，也可单独打开。
   文件对应：proto.html（原型）/ rule.html（产品基线）
-  版本：v1.1.0
+  版本：v1.1.1 ｜ 版式：Stripe 文档系统
 -->
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="color-scheme" content="only light">
-<title>球帝带 · 交互原型 v1.1.0</title>
+<title>球帝带 · 交互原型 v1.1.1</title>
 <link rel="icon" href="data:,">
 <style>
 :root{
-  --blue:#3B82F6; --blue-d:#1F6FEB; --blue-l:#EAF1FE;
-  --bg:#EBEEF3; --card:#FFFFFF; --text:#101114; --text2:#5A6070; --text3:#8A8F99;
-  --line:#E6E9EF; --line2:#F0F2F6;
-  --ease:cubic-bezier(.32,.72,0,1);
+  --ink:#0d253d; --ink-2:#273951; --mute:#64748d;
+  --canvas:#ffffff; --soft:#f6f9fc;
+  --hair:#e3e8ee;
+  --accent:#533afd; --accent-bg:#f3f0ff;
+  --mono:ui-monospace,"SFMono-Regular",Consolas,Menlo,monospace;
+  --ease:cubic-bezier(.2,.7,.3,1);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%}
 body{
-  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
-  background:var(--bg);color:var(--text);display:flex;flex-direction:column;height:100vh;overflow:hidden;
-  -webkit-font-smoothing:antialiased;
+  font-family:"SF Pro Text","Inter",-apple-system,BlinkMacSystemFont,"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;
+  background:var(--canvas);color:var(--ink-2);display:flex;flex-direction:column;height:100vh;overflow:hidden;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
 }
 header{
-  height:56px;flex:0 0 56px;background:var(--card);border-bottom:1px solid var(--line);
-  display:flex;align-items:center;gap:20px;padding:0 20px;z-index:10;
+  height:56px;flex:0 0 56px;background:var(--canvas);border-bottom:1px solid var(--hair);
+  display:flex;align-items:center;gap:32px;padding:0 24px;z-index:10;
 }
-.brand{display:flex;align-items:center;gap:9px;white-space:nowrap}
-.brand .dot{width:11px;height:11px;border-radius:3px;background:var(--blue);flex:0 0 auto}
-.brand .name{font-size:16px;font-weight:600;letter-spacing:-.2px}
-.brand small{font-weight:400;color:var(--text3);font-size:12px}
+.brand{display:flex;align-items:baseline;gap:8px;white-space:nowrap}
+.brand .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);flex:0 0 auto;align-self:center}
+.brand .name{font-size:14px;font-weight:500;color:var(--ink);letter-spacing:-.1px}
+.brand small{font-size:12px;color:var(--mute)}
 .vnum{
-  font-weight:600;font-size:11px;background:var(--blue);color:#fff;padding:2px 7px;border-radius:4px;
-  letter-spacing:.5px;flex:0 0 auto;cursor:pointer;font-variant-numeric:tabular-nums;
+  font-family:var(--mono);font-size:11px;color:var(--mute);cursor:pointer;
+  font-variant-numeric:tabular-nums;align-self:center;
+  border-bottom:1px solid transparent;transition:color 120ms var(--ease),border-color 120ms var(--ease);
 }
-nav{display:flex;gap:4px;flex:1;min-width:0;overflow-x:auto;overflow-y:hidden}
+.vnum:hover{color:var(--accent);border-color:var(--accent)}
+nav{display:flex;gap:24px;flex:1;min-width:0;height:100%;overflow-x:auto;overflow-y:hidden}
 nav::-webkit-scrollbar{height:0;display:none}
 .tab{
-  padding:8px 16px;border-radius:6px;font-size:14px;color:var(--text2);cursor:pointer;
-  border:1px solid transparent;background:transparent;font-family:inherit;white-space:nowrap;flex:0 0 auto;
-  display:flex;align-items:center;gap:6px;transition:background .15s var(--ease),color .15s var(--ease),border-color .15s var(--ease);
+  position:relative;height:100%;padding:0 2px;display:flex;align-items:center;gap:6px;
+  font-size:13px;color:var(--ink-2);cursor:pointer;background:none;border:0;font-family:inherit;
+  white-space:nowrap;flex:0 0 auto;transition:color 120ms var(--ease);
 }
-.tab:hover{background:var(--bg);color:var(--text)}
-.tab.active{background:var(--blue-l);color:var(--blue-d);font-weight:600;border-color:#CFE0FE}
-.tab .badge{font-size:11px;padding:1px 6px;border-radius:4px;background:var(--bg);color:var(--text3);font-weight:500;font-variant-numeric:tabular-nums}
-.tab.active .badge{background:#fff;color:var(--blue-d)}
-.actions{display:flex;align-items:center;gap:10px;flex:0 0 auto}
-.hint{font-size:12px;color:var(--text3);display:flex;align-items:center;gap:6px;white-space:nowrap}
-.btn{
-  padding:7px 14px;border-radius:6px;font-size:13px;cursor:pointer;border:1px solid var(--line);
-  background:var(--card);color:var(--text2);font-family:inherit;white-space:nowrap;
-  transition:background .15s var(--ease),color .15s var(--ease),border-color .15s var(--ease);
+.tab:hover{color:var(--ink)}
+.tab::after{
+  content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:transparent;
+  transition:background 120ms var(--ease);
 }
-.btn:hover{border-color:var(--blue);color:var(--blue-d)}
-main{flex:1;position:relative;background:var(--bg);min-height:0}
-iframe{width:100%;height:100%;border:0;display:block;background:var(--card)}
+.tab.active{color:var(--accent)}
+.tab.active::after{background:var(--accent)}
+.tab .badge{font-family:var(--mono);font-size:11px;color:var(--mute);font-variant-numeric:tabular-nums}
+.tab.active .badge{color:var(--accent)}
+.actions{display:flex;align-items:center;gap:8px;flex:0 0 auto}
+.hint{font-size:12px;color:var(--mute);white-space:nowrap}
+main{flex:1;position:relative;background:var(--soft);min-height:0}
+iframe{width:100%;height:100%;border:0;display:block;background:var(--canvas)}
 @media (max-width:900px){
-  header{gap:12px;padding:0 12px}
+  header{gap:20px;padding:0 16px}
   .hint{display:none}
-  .brand small{display:none}
+  nav{gap:16px}
 }
 @media (max-width:640px){
-  .brand .name{font-size:14px}
-  .tab{padding:7px 11px;font-size:13px}
-  .actions .btn{display:none}
+  .brand small{display:none}
 }
 </style>
 </head>
@@ -76,16 +77,12 @@ iframe{width:100%;height:100%;border:0;display:block;background:var(--card)}
   <div class="brand">
     <span class="dot"></span>
     <span class="name">球帝带</span>
-    <small>· 交互原型</small>
-    <span class="vnum" onclick="jump('rule')" title="点击查看版本记录">v1.1.0</span>
+    <small>交互原型</small>
+    <span class="vnum" onclick="jump('rule')" title="点击查看版本记录">v1.1.1</span>
   </div>
   <nav id="nav"></nav>
   <div class="actions">
-    <span class="hint">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#8A8F99" stroke-width="1.7"/><path d="M12 11v5.5M12 7.6v.2" stroke="#8A8F99" stroke-width="2" stroke-linecap="round"/></svg>
-      演示数据为 mock，不含真实后端
-    </span>
-    <button class="btn" onclick="jump('rule')">产品基线</button>
+    <span class="hint">演示数据为 mock，不含真实后端</span>
   </div>
 </header>
 <main>
