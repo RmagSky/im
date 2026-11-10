@@ -421,7 +421,7 @@ proto.html#p=chat&id=c2&t=dark&kbd=1</pre>
         <table>
           <thead><tr><th style="width:150px">数据集</th><th style="width:90px">条数</th><th>内容</th></tr></thead>
           <tbody>
-            <tr><td>会话</td><td class="num">8</td><td>含群聊与单聊，覆盖停用、换群、已退群、新群四类标记</td></tr>
+            <tr><td>会话</td><td class="num">8</td><td>7 条正常会话加 1 条停用群；停用群整行降级为中间色，其余按正常会话呈现</td></tr>
             <tr><td>群资料</td><td class="num">7</td><td>成员数、成员头像色、群公告、记录保留时长</td></tr>
             <tr><td>社区文章</td><td class="num">4</td><td>足篮频道 2 篇、XXPay 频道 2 篇</td></tr>
             <tr><td>消息</td><td>按会话</td><td><span class="mono">D.msgs</span> 以会话 ID 为键，发送与删除会写入内存</td></tr>
@@ -452,7 +452,7 @@ proto.html#p=chat&id=c2&t=dark&kbd=1</pre>
           <thead><tr><th style="width:70px">编号</th><th style="width:70px">优先级</th><th style="width:110px">模块</th><th>功能</th></tr></thead>
           <tbody>
             <tr class="grp"><td colspan="4">对话</td></tr>
-            <tr><td>F-01</td><td><span class="pri p0">P0</span></td><td>会话列表</td><td>8 条会话，停用、换群、已退群、新群四类标记与灰化处理</td></tr>
+            <tr><td>F-01</td><td><span class="pri p0">P0</span></td><td>会话列表</td><td>8 条会话；停用群整行灰化（名称取中间色），正常会话名称取主色、预览取次色、时间取三色</td></tr>
             <tr><td>F-02</td><td><span class="pri p1">P1</span></td><td>会话列表</td><td>对话 Tab 未读角标</td></tr>
             <tr><td>F-03</td><td><span class="pri p0">P0</span></td><td>聊天页</td><td>消息流渲染：文本、图片、系统提示三类气泡，我方与对方分列</td></tr>
             <tr><td>F-04</td><td><span class="pri p0">P0</span></td><td>聊天页</td><td>输入区四入口：按住说话、输入框、表情面板、更多面板</td></tr>
