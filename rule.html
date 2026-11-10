@@ -689,6 +689,7 @@ proto.html#p=chat&id=c2&t=dark&kbd=1</pre>
             <tr><td><span class="mono">--text</span></td><td><span class="sw" style="background:#101114"></span><span class="tok">#101114</span></td><td>主文字</td></tr>
             <tr><td><span class="mono">--text2</span></td><td><span class="sw" style="background:#8A8F99"></span><span class="tok">#8A8F99</span></td><td>次要文字、说明、时间</td></tr>
             <tr><td><span class="mono">--text3</span></td><td><span class="sw" style="background:#B7BBC3"></span><span class="tok">#B7BBC3</span></td><td>占位、禁用</td></tr>
+            <tr><td><span class="mono">--text-mid</span></td><td><span class="sw" style="background:#6E7681"></span><span class="tok">#6E7681</span></td><td>失效会话名、分组标签</td></tr>
             <tr><td><span class="mono">--line</span></td><td><span class="sw" style="background:#EFF0F3"></span><span class="tok">#EFF0F3</span></td><td>分割线</td></tr>
             <tr><td><span class="mono">--input</span></td><td><span class="sw" style="background:#EFF1F5"></span><span class="tok">#EFF1F5</span></td><td>搜索框、输入区底色</td></tr>
             <tr><td><span class="mono">--red</span></td><td><span class="sw" style="background:#FF4D4F"></span><span class="tok">#FF4D4F</span></td><td>危险动作：退出群聊、删除、注销</td></tr>
@@ -779,6 +780,19 @@ proto.html#p=chat&id=c2&t=dark&kbd=1</pre>
             <tr><td>左右内边距</td><td class="num">16px</td><td>列表、分组卡片、搜索框统一取值</td></tr>
             <tr><td>会话行高</td><td class="num">74px</td><td>内边距 12/16，头像 50px，两行文字加 3px 行距</td></tr>
             <tr><td>响应式断点</td><td class="num">900px</td><td>宽度 ≤900px 时隐藏评审侧栏，机身转全屏</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3>图标按钮</h3>
+        <table>
+          <thead><tr><th style="width:170px">项</th><th>约定</th></tr></thead>
+          <tbody>
+            <tr><td>外观</td><td>只呈现图标，不带边框、底色与投影；浏览器默认控件样式一律重置</td></tr>
+            <tr><td>尺寸</td><td>顶栏与导航栏点击区 38–40px，图标 20–24px</td></tr>
+            <tr><td>颜色</td><td>跟主文字色；破坏性动作用 <span class="mono">--red</span></td></tr>
+            <tr><td>屏内滚动条</td><td>手机页面按覆盖式处理，常驻滚动条不出现</td></tr>
           </tbody>
         </table>
       </div>
